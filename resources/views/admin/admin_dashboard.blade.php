@@ -27,100 +27,55 @@
         <div class=" form_wrapper custom_scrollbar">
             <div class="row d-flex justify-content-end">
                 <div class="col-sm-6">
-                    <a  class="text-start h3">
-                        < Property Name: </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-3">
-                        <a class="btn btn-custom-red">Termination Requests</a>
-                    </div>
-                    <div class="col-lg-3 col-sm-3">
 
-                        <div class="input-group custom_search_input">
-                            <input class="form-control " type="search" value="search" id="example-search-input">
-                            <span class="">
-                                <button class="form-control  " type="button">
-                                    <img src="{{asset('assets/img/web/search_icon.svg')}}" alt="" srcset="">
-                                </button>
-                            </span>
-                        </div>
-
-
-                    </div>
-
-                </div>
-                <div class="row  ">
-
-                    <div class="   ">
-
-                        <div class="  content ">
-                            <div class="row mt-5 pt-5">
-
-                                <div class="col-sm-3 ">
-                                    <div class="test-start h6 ">
-                                        Sort by:
-                                    </div>
-                                    <select class="form-select " aria-label="Default select example">
-                                        <option selected="">Oldest Start Date</option>
-                                        <option value="1">Bellavista</option>
-                                        <option value="2">Barea</option>
-                                        <option value="3">Braamfontein</option>
-                                    </select>
-                                </div>
-                                <div class="col-sm-3">
-
-                                    <div class="test-start h6 ">
-                                        Unit Type:
-                                    </div>
-                                    <select class="form-select " aria-label="Default select example">
-                                        <option selected="">All</option>
-                                        <option value="1">Bellavista</option>
-                                        <option value="2">Barea</option>
-                                        <option value="3">Braamfontein</option>
-                                    </select>
-
-
-                                </div>
-                                <div class="col-sm-6">
-
-                                    <div class="test-end h6 ">
-                                        Time Remaining On Lease:
-                                    </div>
-                                    <div class=" d-flex justify-content-around ">
-                                        <div class="form-check px-3">
-                                            <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                            <label class="form-check-label text-dark h6" for="gridCheck1">
-                                                60 Days
-                                            </label>
-                                        </div>
-
-                                        <div class="form-check px-3">
-                                            <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                            <label class="form-check-label text-dark h6" for="gridCheck1">
-                                                3 Months
-                                            </label>
-                                        </div>
-                                        <div class="form-check px-3">
-                                            <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                            <label class="form-check-label text-dark h6" for="gridCheck1">
-                                                6 Months
-                                            </label>
-                                        </div>
-
-                                    </div>
-
-
-                                </div>
-
-
-                            </div>
 </div>
+<div class="row mt-5 pt-5 d-flex justify-content-between">
+
+
+<div class="col-lg-3">
+
+    <div>
+        <h3><b>Tickets Logged</b><h3>
+    </div>
+   
 </div>
-<br>
+<!-- <div class="col-lg-3">
+
+    <div class="test-start h6">
+        Area:
+    </div>
+    <select class="form-select" aria-label="Default select example">
+        <option selected>All</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+    </select>
+</div> -->
+
+
+
+
+<div class="col-lg-3">
+
+    <div>
+    <button class="btn"><img src="/icons/found/Black_Icon.svg" alt="Black Icon"></i> Home</button>
+    </div>
+   
+</div>
+
+
+</div>
+
+
+
+</div>
+
+</div>
+
+
  <!-- table -->
- <div class="list_wrapper table-responsive" style=" padding:0;">
-
-<table class="table table-hover">
-    <thead class="table-dark">
+ <table id="customers">
+        
         <tr>
 
             <th scope="col" class="text-center">Ticket Type</th>
@@ -227,9 +182,7 @@
    <td class="text-center">Sandile Hadebe</td>
 
 </tr>
-        
-
-
     </tbody>
 </table>
-</div>
+
+

@@ -18,4 +18,6 @@ Route::prefix('system/admin/')->group(function () {
         return view('system_admin.home');
     }
     )->name('system_admin.home');
+
+    
 });
