@@ -9,9 +9,9 @@ Route::prefix('admin')->group(function () {
     )->name('admin.home');
 
     Route::get(
-        '/dashboard',
+        '/logTicket',
         function () {
-            return view('admin.dashboard');
+            return view('admin.logTicket');
         }
-    )->name('admin.dashboard');
+    )->name('admin.logTicket');
 });
