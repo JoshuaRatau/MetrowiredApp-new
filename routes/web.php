@@ -33,7 +33,7 @@ require __DIR__.'/auth.php';
 
 require_once "web/technician.php";
 require_once "web/management.php";
-require_once "web/super_admin.php";
+require_once "web/system_admin.php";
 require_once "web/admin.php";
 
 Auth::routes();

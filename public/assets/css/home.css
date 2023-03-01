@@ -2,11 +2,21 @@
 /* change the colors */
 
 /* Reseting */
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+}
+.img {
+    background-image: url('../img/home/Background.png');
+
+    background-repeat: no-repeat;
+    background-size: 100% 100vh;
+    background-position: center center;
+    background-attachment: fixed;
 }
 
 .home-text {
@@ -17,7 +27,7 @@
 form {
     padding: 1rem;
     margin: 3rem auto;
-    width: 45% !important;
+    width: 42% !important;
 }
 
 .logo {
@@ -25,12 +35,27 @@ form {
     margin: 3rem auto;
     width: 100% !important;
 }
-
+label.form-label {
+    margin-left: 1rem!important;
+}
 .btnLogin {
-    width: 60%;
-    border-radius: 40px;
-    border:1px #100f44
+    width: 60%!important;
+    height:max-content!important;
+    border-radius: 40px!important;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2)!important;
+    background-color: whitesmoke!important;
+    color: #100f44!important;
+    border: 1px solid#ffffff!important;
+    font-weight: 600!important;
 
+}
+
+.btnLogin:active,
+.btnLogin:hover {
+    border: 1px solid #100f44!important;
+    background-color: #100f44 !important;
+    color: whitesmoke!important;
+    box-shadow: none!important;
 }
 
 .input-box {
@@ -45,7 +70,19 @@ form {
     box-shadow: none;
 
 }
-input.form-control.form-control-lg.input-box{
-background-color: white !important;
+
+input.form-control.form-control-lg.input-box {
+    background-color: white !important;
 }
 
+ @media only screen and (max-width: 760px) {
+     .img {
+         /* to rove page load speed on mobile internet connections */
+         background-image: none;
+         background-color: #ffffff;
+     }
+     form{
+        width: 90% !important;
+     }
+
+}
