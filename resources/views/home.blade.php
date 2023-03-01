@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Metrowired | Enabling Tomorrow</title>
+    <title>JOSHCO | Johannesburg Social Housing Company</title>
 
     <!-- bootstrap -->
 
@@ -17,61 +17,20 @@
     <!------ Include the above in your HEAD tag ---------->
     <script></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
+    <link rel="stylesheet" href="{{asset('assets/css/login.css')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 
     <style>
-        body {
-            background-image: url("{{ asset('assets/img/home/Background.png') }}");
-            background-repeat: no-repeat;
-            background-size: 100% 100vh;
-        }
+    body {
+        background-image: url("{{asset('assets/img/web/Tenant_Web_Login.png')}}");
+    }
     </style>
 </head>
 
 <body class="container">
-    <main class="my-auto">
 
-
-        <div class="container">
-            <div class="d-flex align-items-center justify-content-center" style="height: 100vh;">
-
-                <div class="row">
-                    <div class="col-sm-12 mx-auto d-flex align-items-center justify-content-center">
-                        <div class="text-center">
-                            <img src={{ asset('assets/img/home/MWLogo.png') }} class="img-fluid logo" alt="logo">
-                        </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="text-center home-text">
-                            <h2>Admin</h2>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 mx-auto d-flex align-items-center justify-content-center">
-                        <form class="row mb-3">
-
-                            <div class="mb-3">
-                                <label class="form-label ">Email</label>
-                                <input type="email" class="form-control form-control-lg input-box" >
-                            </div>
-                            <div class="mb-3">
-                                <label  class="form-label ">Password</label>
-                                <input type="password" class="form-control form-control-lg input-box">
-                            </div>
-
-                            <div class="p-1 d-flex align-items-center justify-content-center">
-                                <button type="submit" class="btn btn-primary btnLogin">Login</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </main>
-
-    {{-- <div class="content">
+    <div class="content">
         <div class="row">
             <div class="col-sm-12">
                 <div class="text-center mt-4">
@@ -114,11 +73,31 @@
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
 
     </div>
 
+    <!--  -->
+    <!-- <div class="wrapper ">
 
+        <div class="text-center mt-4 name">
+            ADMIN LOGIN
+        </div>
+        <form class="p-3 mt-3">
+            <div class="form-field d-flex align-items-center">
+                <span class="far fa-user"></span>
+                <input type="text" name="contect_number" id="contect_number" placeholder="Contect Number">
+            </div>
+            <div class="form-field d-flex align-items-center">
+                <span class="fas fa-key"></span>
+                <input type="password" name="password" id="pwd" placeholder="Password">
+            </div>
+            <button class="btn mt-3">Login</button>
+        </form>
+        <div class="text-center fs-6">
+            <a href="#">Forget password?</a> or <a href="#">Sign up</a>
+        </div>
+    </div> -->
 </body>
 
 </html>

@@ -35,3 +35,7 @@ require_once "web/technician.php";
 require_once "web/management.php";
 require_once "web/super_admin.php";
 require_once "web/admin.php";
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
