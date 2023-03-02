@@ -30,6 +30,8 @@
         .navbar {
             padding-left: 4rem;
             padding-right: 4rem;
+            background-color: #100f44;
+            color: #ffffff;
         }
 
         .buttonName {
@@ -55,7 +57,7 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src={{ asset('assets/img/home/Globe.png') }} alt="" width="70" height="70"

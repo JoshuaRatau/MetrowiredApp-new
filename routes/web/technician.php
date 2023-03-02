@@ -6,4 +6,8 @@ Route::prefix('technician')->group(function () {
         return view('technician.home');
     }
     )->name('technician.home');
+     Route::get('/dashboard', function () {
+        return view('technician.dashboard');
+    }
+    )->name('technician.dashboard');
 });
