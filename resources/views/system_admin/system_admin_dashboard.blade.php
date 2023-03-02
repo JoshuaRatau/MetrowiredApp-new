@@ -1,5 +1,5 @@
 
-@extends('layouts.admin')
+@extends('layouts.system_admin')
 
 
 @section('content')
@@ -48,10 +48,23 @@
 
 
     <div>
-        <h3><b>Tickets Logged</b><h3>
+        <h3><b>Active Users</b><h3>
     </div>
    
 </div>
+<!-- <div class="col-lg-3">
+
+    <div class="test-start h6">
+        Area:
+    </div>
+    <select class="form-select" aria-label="Default select example">
+        <option selected>All</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+    </select>
+</div> -->
+
 
 
 
@@ -78,30 +91,33 @@
         
         <tr>
 
-            <th scope="col" class="text-center">Ticket Type</th>
-            <th scope="col" class="text-center">Ticket Number</th>
-            <th scope="col" class="text-center">Network Type</th>
-            <th scope="col" class="text-center">Number of Points(Break-Fix)</th>
-            <th scope="col" class="text-center">Call Logged</th>
+            <th scope="col" class="text-center">Date Added</th>
+            <th scope="col" class="text-center">User Role</th>
+            <th scope="col" class="text-center">Name</th>
+            <th scope="col" class="text-center">Email Address</th>
+            <th scope="col" class="text-center">Last Active</th>
             <th scope="col" class="text-center">Affected User</th>
             <th scope="col" class="text-center">Status</th>
             <th scope="col" class="text-center">Region</th>
-            <th scope="col" class="text-center">Technician</th>
+            <th scope="col" class="text-center">Delete</th>
             
         </tr>
     </thead>
     <tbody>
         <tr>
 
-            <td class="text-center">SR</td>
-            <td class="gray_td text-center">SR564893</td>
-            <td class="text-center">WAN</td>
-            <td class="gray_td text-center">8</td>
+            <td class="text-center">03/04/2023</td>
+            <td class="gray_td text-center">System Admin</td>
+            <td class="text-center">F.Dlamini</td>
+            <td class="gray_td text-center">user@metrowired.co.za</td>
             <td class=" text-center">07:45</td>
             <td class="text-center">J.Jackman</td>
             <td class="text-center">Logged</td>
             <td class="text-center">Region A</td>
-               <td class="text-center">Sandile Hadebe</td>
+               <td class="text-center">
+              
+               <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button>
+               </td>
 
         </tr>
         <tr>
@@ -114,7 +130,10 @@
             <td class="text-center">J.Jackman</td>
             <td class="text-center">Logged</td>
             <td class="text-center">Region A</td>
-               <td class="text-center">Sandile Hadebe</td>
+               <td class="text-center">
+               <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button>
+     
+               </td>
 
         </tr>
         
@@ -128,7 +147,9 @@
             <td class="text-center">J.Jackman</td>
             <td class="text-center">Logged</td>
             <td class="text-center">Region A</td>
-               <td class="text-center">Sandile Hadebe</td>
+               <td class="text-center">
+               <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button>
+               </td>
 
         </tr>
 
@@ -142,7 +163,9 @@
 <td class="text-center">J.Jackman</td>
 <td class="text-center">Logged</td>
 <td class="text-center">Region A</td>
-   <td class="text-center">Sandile Hadebe</td>
+   <td class="text-center">
+   <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button>
+   </td>
 
 </tr>
 <tr>
@@ -155,7 +178,9 @@
 <td class="text-center">J.Jackman</td>
 <td class="text-center">Logged</td>
 <td class="text-center">Region A</td>
-   <td class="text-center">Sandile Hadebe</td>
+   <td class="text-center">
+   <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button>
+   </td>
 
    <tr>
 
@@ -167,7 +192,9 @@
 <td class="text-center">J.Jackman</td>
 <td class="text-center">Logged</td>
 <td class="text-center">Region A</td>
-   <td class="text-center">Sandile Hadebe</td>
+   <td class="text-center">
+   <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button>
+   </td>
 
 </tr>
 
@@ -179,7 +206,9 @@
 <td class="text-center">J.Jackman</td>
 <td class="text-center">Logged</td>
 <td class="text-center">Region A</td>
-   <td class="text-center">Sandile Hadebe</td>
+   <td class="text-center">
+   <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button>
+   </td>
 
 </tr>
     </tbody>

@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+/* change the colors */
+
+/* Reseting */
+
+.center {
+margin-right: 150px;
+
+}
+
+/* .map{
+  background-color: #242368;
+  color: white;
+  width: 45%;
+  border-radius: 10px 10px 10px 10px;
+  border-color: #242368;
+} */
+
+.btnMap {
+  width: 60%!important;
+  height:max-content!important;
+  border-radius: 40px!important;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2)!important;
+  background-color: #100f44 !important;
+  color: whitesmoke!important;
+  border: 1px solid#ffffff!important;
+  font-weight: 600!important;
+
+}
+
+.btnMap:active,
+.btnMap:hover {
+  border: 1px solid #100f44!important;
+  background-color: whitesmoke!important;
+  color: #100f44!important;
+  box-shadow: none!important;
+}

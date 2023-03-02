@@ -49,15 +49,36 @@
     border-radius: 20px;
   }
 
-.delete{
-    display: inline-flex;
-    background-color: #ddd;
-    border: none;
-    color: red;
-    text-decoration: none;
-    display: inline-block;
-    width: 100%;
+.generate{
+ 
+ 
+    border: solid;
+    color: #242368;;
+    width:35%;
     outline:none;
+    border-radius: 15%;
+}
+
+.form {
+  width: 55%;
+}
+
+.btnLogin {
+  width: 60%!important;
+  height:max-content!important;
+  border-radius: 40px!important;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2)!important;
+  background-color: whitesmoke!important;
+  color: #100f44!important;
+  border: 1px solid #100f44!important;
+  font-weight: 600!important;
 
 }
 
+.btnLogin:active,
+.btnLogin:hover {
+  border: 1px solid #100f44!important;
+  background-color: #100f44 !important;
+  color: whitesmoke!important;
+  box-shadow: none!important;
+}

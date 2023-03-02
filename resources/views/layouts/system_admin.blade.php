@@ -43,6 +43,19 @@
                     class="d-inline-block align-text-top">
 
             </a>
+        
+
+            <div class="col-lg-10">
+<button type="button" onclick="window.location='{{ url("system/admin/addUser") }}'" class="btn-log"> <img src={{ asset('assets/img/web/addUser.svg') }}  width="40" height="34" alt="Black Icon">Add a User</button>
+
+
+</div>
+
+</div>
+
+
+
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                 aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

@@ -49,15 +49,21 @@
     border-radius: 20px;
   }
 
-.delete{
+.print{
+  background-color: white;
     display: inline-flex;
-    background-color: #ddd;
+ 
     border: none;
-    color: red;
     text-decoration: none;
     display: inline-block;
     width: 100%;
     outline:none;
 
+}
+
+.list_wrapper{
+ width: 200px;
+  height: 150px;
+  box-shadow: 17px 13px 7px 3px rgba(255, 255, 255, 0.75);
 }
 
