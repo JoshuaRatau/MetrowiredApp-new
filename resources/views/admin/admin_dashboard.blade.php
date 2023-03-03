@@ -58,9 +58,10 @@
 <div class="col-lg-2">
 
     <div>
-    <button onclick="window.location='{{route('admin.logTicket')}}'" class="btn-log"> <img src={{ asset('assets/img/web/LogTicket.svg') }}  width="40" height="34" alt="Black Icon"> Log a ticket</button>
+    <!-- <button onclick="window.location='{{route('admin.logTicket')}}'" class="btn-log"> <img src={{ asset('assets/img/web/LogTicket.svg') }}  width="40" height="34" alt="Black Icon"> Log a ticket</button> -->
+    <button type="button" onclick="window.location='{{ url("admin/logTicket") }}'" class="btn btn-primary btn-lg btnLogin"> <img src={{ asset('assets/img/web/LogTicket.svg') }} width="40" height="34" >Log a ticket</button>
     </div>
-   
+   <br>
 </div>
 
 

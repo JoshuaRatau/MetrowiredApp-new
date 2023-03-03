@@ -45,9 +45,9 @@
             </a>
         
 
-            <div class="col-lg-10">
-<button type="button" onclick="window.location='{{ url("system/admin/addUser") }}'" class="btn-log"> <img src={{ asset('assets/img/web/addUser.svg') }}  width="40" height="34" alt="Black Icon">Add a User</button>
-
+            <div class="add">
+             <!-- <button type="button" onclick="window.location='{{ url("system/admin/addUser") }}'" class="btnLogticket"> <img src={{ asset('assets/img/web/LogTicket.svg') }} width="40" height="34" >Log a ticket</button> -->
+             <button type="button" onclick="window.location='{{ url("system/admin/addUser") }}'" class="btn btn-primary btn-lg btnLogin"> <img src={{ asset('assets/img/web/addUser.svg') }} width="40" height="34" >Add a User</button>
 
 </div>
 

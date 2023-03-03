@@ -57,7 +57,23 @@ label.form-label {
     color: whitesmoke!important;
     box-shadow: none!important;
 }
-
+.buttonName{
+    width: 60% !important;
+        height: max-content !important;
+        border-radius: 40px !important;
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2) !important;
+        background-color: whitesmoke !important;
+        color: #100f44 !important;
+        border: 1px solid#ffffff !important;
+        font-weight: 600 !important;
+}
+.buttonName:active,
+.buttonName:hover {
+    border: 1px solid #100f44 !important;
+    background-color: #100f44 !important;
+    color: whitesmoke !important;
+    box-shadow: none !important;
+}
 .input-box {
     border-radius: 40px;
     border: 2px solid black;
@@ -70,6 +86,12 @@ label.form-label {
     box-shadow: none;
 
 }
+
+
+
+
+
+
 
 input.form-control.form-control-lg.input-box {
     background-color: white !important;

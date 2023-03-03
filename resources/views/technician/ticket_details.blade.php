@@ -1,5 +1,5 @@
 
-@extends('layouts.admin')
+@extends('layouts.technician')
 
 
 @section('content')
@@ -27,6 +27,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 
+  
+
     <div class="container">
 
 <div class="backText">
@@ -38,12 +40,13 @@
 </div>
 
 
-           
+<div class="d-flex align-items-center justify-content-center">          
 
 
 <div class="container">
+
                         <div class="row">
-                        <div class="col-lg-4">
+                        <div class="col-lg-">
             <br>
                                     <h4>SR603127</h4>
                                 </div>
@@ -127,7 +130,7 @@
                                 <div class="">
 
                                 <h3>Ticket Accepted</h2>
-                                <button type="button" class="map">Update</button>
+                                <button type="button" onclick="window.location='{{ url("technician/ticketUpdate") }}'" class="map">Update</button>
 </div>
                              
 

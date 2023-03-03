@@ -35,7 +35,6 @@
 
    <main class="my-auto">
     <div class="container">
- 
         <div class=" form_wrapper custom_scrollbar">
             <div class="row d-flex justify-content-end">
                 <div class="col-sm-6">
@@ -52,18 +51,7 @@
     </div>
    
 </div>
-<!-- <div class="col-lg-3">
 
-    <div class="test-start h6">
-        Area:
-    </div>
-    <select class="form-select" aria-label="Default select example">
-        <option selected>All</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-    </select>
-</div> -->
 
 
 
@@ -71,7 +59,7 @@
 <div class="col-lg-2">
 
     <div>
-    <button onclick="window.location='{{route('admin.logTicket')}}'" class="btn-log"> <img src={{ asset('assets/img/web/LogTicket.svg') }}  width="40" height="34" alt="Black Icon"> Log a ticket</button>
+   
     </div>
    
 </div>
@@ -122,10 +110,10 @@
         </tr>
         <tr>
 
-            <td class="text-center">SR</td>
-            <td class="gray_td text-center">SR564893</td>
-            <td class="text-center">WAN</td>
-            <td class="gray_td text-center">8</td>
+            <td class="text-center">03/04/2023</td>
+            <td class="gray_td text-center">Management</td>
+            <td class="text-center">G. Dlamini</td>
+            <td class="gray_td text-center">user@metrowired.co.za</td>
             <td class=" text-center">07:45</td>
             <td class="text-center">J.Jackman</td>
             <td class="text-center">Logged</td>
@@ -139,10 +127,10 @@
         
         <tr>
 
-            <td class="text-center">SR</td>
-            <td class="gray_td text-center">SR564893</td>
-            <td class="text-center">WAN</td>
-            <td class="gray_td text-center">8</td>
+        <td class="text-center">03/04/2023</td>
+            <td class="gray_td text-center">Management</td>
+            <td class="text-center">G. Dlamini</td>
+            <td class="gray_td text-center">user@metrowired.co.za</td>
             <td class=" text-center">07:45</td>
             <td class="text-center">J.Jackman</td>
             <td class="text-center">Logged</td>
@@ -155,60 +143,59 @@
 
         <tr>
 
-<td class="text-center">SR</td>
-<td class="gray_td text-center">SR564893</td>
-<td class="text-center">WAN</td>
-<td class="gray_td text-center">8</td>
-<td class=" text-center">07:45</td>
-<td class="text-center">J.Jackman</td>
-<td class="text-center">Logged</td>
-<td class="text-center">Region A</td>
-   <td class="text-center">
-   <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button>
+        <td class="text-center">03/04/2023</td>
+            <td class="gray_td text-center">Management</td>
+            <td class="text-center">G. Dlamini</td>
+            <td class="gray_td text-center">user@metrowired.co.za</td>
+            <td class=" text-center">07:45</td>
+            <td class="text-center">J.Jackman</td>
+            <td class="text-center">Logged</td>
+            <td class="text-center">Region A</td>
+               <td class="text-center">
+               <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button>
    </td>
 
 </tr>
 <tr>
 
-<td class="text-center">SR</td>
-<td class="gray_td text-center">SR564893</td>
-<td class="text-center">WAN</td>
-<td class="gray_td text-center">8</td>
-<td class=" text-center">07:45</td>
-<td class="text-center">J.Jackman</td>
-<td class="text-center">Logged</td>
-<td class="text-center">Region A</td>
-   <td class="text-center">
-   <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button>
+<td class="text-center">03/04/2023</td>
+            <td class="gray_td text-center">Management</td>
+            <td class="text-center">G. Dlamini</td>
+            <td class="gray_td text-center">user@metrowired.co.za</td>
+            <td class=" text-center">07:45</td>
+            <td class="text-center">J.Jackman</td>
+            <td class="text-center">Logged</td>
+            <td class="text-center">Region A</td>
+               <td class="text-center">
+               <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button>
    </td>
 
    <tr>
 
-<td class="text-center">SR</td>
-<td class="gray_td text-center">SR564893</td>
-<td class="text-center">WAN</td>
-<td class="gray_td text-center">8</td>
-<td class=" text-center">07:45</td>
-<td class="text-center">J.Jackman</td>
-<td class="text-center">Logged</td>
-<td class="text-center">Region A</td>
-   <td class="text-center">
-   <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button>
+< <td class="text-center">03/04/2023</td>
+            <td class="gray_td text-center">Management</td>
+            <td class="text-center">G. Dlamini</td>
+            <td class="gray_td text-center">user@metrowired.co.za</td>
+            <td class=" text-center">07:45</td>
+            <td class="text-center">J.Jackman</td>
+            <td class="text-center">Logged</td>
+            <td class="text-center">Region A</td>
+               <td class="text-center">
+               <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button>
    </td>
 
 </tr>
 
-<td class="text-center">SR</td>
-<td class="gray_td text-center">SR564893</td>
-<td class="text-center">WAN</td>
-<td class="gray_td text-center">8</td>
-<td class=" text-center">07:45</td>
-<td class="text-center">J.Jackman</td>
-<td class="text-center">Logged</td>
-<td class="text-center">Region A</td>
-   <td class="text-center">
-   <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button>
-   </td>
+<td class="text-center">03/04/2023</td>
+            <td class="gray_td text-center">Technician</td>
+            <td class="text-center">G. Dlamini</td>
+            <td class="gray_td text-center">user@metrowired.co.za</td>
+            <td class=" text-center">07:45</td>
+            <td class="text-center">J.Jackman</td>
+            <td class="text-center">Logged</td>
+            <td class="text-center">Region A</td>
+               <td class="text-center">
+               <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button>
 
 </tr>
     </tbody>

@@ -2,6 +2,8 @@
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('technician')->group(function () {
+
+    
     Route::get('/home', function () {
         return view('technician.home');
     }
@@ -26,4 +28,8 @@ Route::prefix('technician')->group(function () {
     )->name('technician.complete');
 
 
+     Route::get('/dashboard', function () {
+        return view('technician.dashboard');
+    }
+    )->name('technician.dashboard');
 });

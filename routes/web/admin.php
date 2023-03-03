@@ -13,7 +13,7 @@ Route::prefix('admin')->group(function () {
     )->name('admin.logTicket');
 
 
-    Route::get('/admin_dashboard', function() {
+    Route::get('/dashboard', function() {
         return view('admin.admin_dashboard');
     }
     )->name('admin.admin_dashboard');

@@ -59,7 +59,7 @@
                                 </div>
 
                                 <div class="p-1 d-flex align-items-center justify-content-center">
-                                    <button type="submit" class="btn btn-primary btnLogin">Login</button>
+                                <button type="button" onclick="window.location='{{ url("technician/dashboard") }}'" class="btn btn-primary btn-lg btnLogin">Login</button>
                                 </div>
                             </form>
                         </div>

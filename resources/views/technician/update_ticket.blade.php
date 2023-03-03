@@ -1,5 +1,5 @@
 
-@extends('layouts.admin')
+@extends('layouts.technician')
 
 
 @section('content')
@@ -96,7 +96,9 @@
 <!-- 
   <button type="button" data-toggle="modal" data-targe="">Complete</button> -->
 
-  <button type="button" onclick="window.location='{{ url("technician/ticketComplete") }}'"class="btnMap">Complete</button>
+
+
+  <button type="button" onclick="window.location='{{ url("technician/dashboard") }}'" class="btn btn-primary btn-lg btnLogin">Complete</button>
 
   <!-- <button type="button" >Complete</button> -->
 </div>
