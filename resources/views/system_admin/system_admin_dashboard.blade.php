@@ -74,7 +74,7 @@
 </div>
 
 
- <!-- table -->
+<div class="table-responsive">
  <table id="customers">
         
         <tr>
@@ -84,121 +84,47 @@
             <th scope="col" class="text-center">Name</th>
             <th scope="col" class="text-center">Email Address</th>
             <th scope="col" class="text-center">Last Active</th>
-            <th scope="col" class="text-center">Affected User</th>
-            <th scope="col" class="text-center">Status</th>
             <th scope="col" class="text-center">Region</th>
             <th scope="col" class="text-center">Delete</th>
+            <th scope="col" class="text-center">Edit</th>
             
         </tr>
     </thead>
+
+
+    @foreach ($users as $user)
+
     <tbody>
-        <tr>
-
-            <td class="text-center">03/04/2023</td>
-            <td class="gray_td text-center">System Admin</td>
-            <td class="text-center">F.Dlamini</td>
-            <td class="gray_td text-center">user@metrowired.co.za</td>
-            <td class=" text-center">07:45</td>
-            <td class="text-center">J.Jackman</td>
-            <td class="text-center">Logged</td>
-            <td class="text-center">Region A</td>
-               <td class="text-center">
-              
-               <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button>
-               </td>
-
-        </tr>
-        <tr>
-
-            <td class="text-center">03/04/2023</td>
-            <td class="gray_td text-center">Management</td>
-            <td class="text-center">G. Dlamini</td>
-            <td class="gray_td text-center">user@metrowired.co.za</td>
-            <td class=" text-center">07:45</td>
-            <td class="text-center">J.Jackman</td>
-            <td class="text-center">Logged</td>
-            <td class="text-center">Region A</td>
-               <td class="text-center">
-               <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button>
      
-               </td>
 
-        </tr>
-        
-        <tr>
-
-        <td class="text-center">03/04/2023</td>
+   <!-- <td class="text-center">03/04/2023</td>
             <td class="gray_td text-center">Management</td>
             <td class="text-center">G. Dlamini</td>
             <td class="gray_td text-center">user@metrowired.co.za</td>
             <td class=" text-center">07:45</td>
-            <td class="text-center">J.Jackman</td>
+           
             <td class="text-center">Logged</td>
             <td class="text-center">Region A</td>
                <td class="text-center">
                <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button>
-               </td>
-
-        </tr>
-
-        <tr>
-
-        <td class="text-center">03/04/2023</td>
-            <td class="gray_td text-center">Management</td>
-            <td class="text-center">G. Dlamini</td>
-            <td class="gray_td text-center">user@metrowired.co.za</td>
-            <td class=" text-center">07:45</td>
-            <td class="text-center">J.Jackman</td>
-            <td class="text-center">Logged</td>
-            <td class="text-center">Region A</td>
-               <td class="text-center">
-               <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button>
-   </td>
-
-</tr>
-<tr>
-
-<td class="text-center">03/04/2023</td>
-            <td class="gray_td text-center">Management</td>
-            <td class="text-center">G. Dlamini</td>
-            <td class="gray_td text-center">user@metrowired.co.za</td>
-            <td class=" text-center">07:45</td>
-            <td class="text-center">J.Jackman</td>
-            <td class="text-center">Logged</td>
-            <td class="text-center">Region A</td>
-               <td class="text-center">
-               <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button>
-   </td>
-
-   <tr>
-
-< <td class="text-center">03/04/2023</td>
-            <td class="gray_td text-center">Management</td>
-            <td class="text-center">G. Dlamini</td>
-            <td class="gray_td text-center">user@metrowired.co.za</td>
-            <td class=" text-center">07:45</td>
-            <td class="text-center">J.Jackman</td>
-            <td class="text-center">Logged</td>
-            <td class="text-center">Region A</td>
-               <td class="text-center">
-               <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button>
-   </td>
+   </td> -->
 
 </tr>
 
-<td class="text-center">03/04/2023</td>
-            <td class="gray_td text-center">Technician</td>
-            <td class="text-center">G. Dlamini</td>
-            <td class="gray_td text-center">user@metrowired.co.za</td>
-            <td class=" text-center">07:45</td>
-            <td class="text-center">J.Jackman</td>
-            <td class="text-center">Logged</td>
-            <td class="text-center">Region A</td>
+<td class="text-center">{{$user['created_at']}}</td>
+            <td class="gray_td text-center">{{$user['type']}}</td>
+            <td class="text-center">{{$user['name']}}</td>
+            <td class="gray_td text-center">{{$user['email']}}</td>
+            <td class=" text-center"></td>
+            <td class="text-center">{{$user['region']}}</td>
                <td class="text-center">
                <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button>
+               <td class="text-center">
+               <button class="edit">Edit</button>
 
 </tr>
     </tbody>
+    @endforeach
 </table>
 
 @endsection

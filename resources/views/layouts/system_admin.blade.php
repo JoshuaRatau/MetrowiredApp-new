@@ -35,7 +35,7 @@
 </head>
 
 <body>
-<div class="container">
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -45,8 +45,9 @@
             </a>
         
 
-            <div class="add">
-             <!-- <button type="button" onclick="window.location='{{ url("system/admin/addUser") }}'" class="btnLogticket"> <img src={{ asset('assets/img/web/LogTicket.svg') }} width="40" height="34" >Log a ticket</button> -->
+            <div class="container-fluid">
+            <div class="col-sm-2">
+          
              <button type="button" onclick="window.location='{{ url("system/admin/addUser") }}'" class="btn btn-primary btn-lg btnLogin"> <img src={{ asset('assets/img/web/addUser.svg') }} width="40" height="34" >Add a User</button>
 
 </div>

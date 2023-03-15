@@ -64,6 +64,25 @@
 .list_wrapper{
  width: 200px;
   height: 150px;
-  box-shadow: 17px 13px 7px 3px rgba(255, 255, 255, 0.75);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
 }
 
+
+.form-select {
+  border-radius: 6px !important;
+  border: 2px solid black !important;
+}
+
+.form-select:focus {
+  border: 2px solid black !important;
+  border-color: black !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+
+}
+
+.search{
+  border-radius: 20px !important;
+  border: 2px solid black !important;
+  height:35px;
+}

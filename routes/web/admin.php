@@ -13,9 +13,9 @@ Route::prefix('admin')->group(function () {
     )->name('admin.logTicket');
 
 
-    Route::get('/dashboard', function() {
-        return view('admin.admin_dashboard');
-    }
-    )->name('admin.admin_dashboard');
+    // Route::get('/dashboard', function() {
+    //     return view('admin.admin_dashboard');
+    // }
+    // )->name('admin.admin_dashboard');
  
 });

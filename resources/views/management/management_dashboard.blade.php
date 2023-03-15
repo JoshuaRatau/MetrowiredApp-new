@@ -28,8 +28,16 @@
 
 
  
-  
 
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  
+    
+  
+            <div class="container">
             <div class="d-flex align-items-center justify-content-center" style="height: 100vh;">
                 <form class="row mb-3">
                     <div class="row">
@@ -64,7 +72,7 @@
 
 
 <div class="row">
-                <div class="col-lg-2">
+                <div class="col">
                     <div class="list_wrapper">
                         <div class="each_project">
                             <div class="col-12 col-lg-12 mb-3 ">
@@ -82,7 +90,7 @@
 
                     </div>
                 </div>
-                <div class="col-lg-2">
+                <div class="col">
                     <div class="list_wrapper">
                         <div class="each_project">
                             <div class="col-12 col-lg-12 mb-3 ">
@@ -102,7 +110,7 @@
                 </div>
 
 
-                <div class="col-lg-2">
+                <div class="col">
                     <div class="list_wrapper">
                         <div class="each_project">
                             <div class="col-12 col-lg-12 mb-3 ">
@@ -123,7 +131,7 @@
 
 
 
-                <div class="col-lg-2">
+                <div class="col">
                     <div class="list_wrapper">
                         <div class="each_project">
                             <div class="col-12 col-lg-12 mb-3 ">
@@ -143,7 +151,7 @@
                 </div>
 
 
-                <div class="col-lg-2">
+                <div class="col">
                     <div class="list_wrapper">
                         <div class="each_project">
                             <div class="col-12 col-lg-12 mb-3 ">
@@ -169,16 +177,23 @@
                    <h3><b>Ticket Status Reports</b></h3>
 </div>
 
-<div class="col-lg-3">
-<div class="input-group custom_search_input">
-                                    <input class="form-control " type="search" value="search" id="example-search-input">
-                                    <span class="">
-                                        <button class="form-control  " type="button">
-                                            <img src="{{asset('assets/img/web/search_icon.svg')}}" alt="" srcset="">
-                                        </button>
-                                    </span>
-                                </div>
+<div class="col-lg-4">
+<!-- <label class="form-label" for="form1"><b>Search</b></label> -->
+<div class="input-group">
+  <div class="form-outline">
+    <input id="search-focus" type="search" id="form1" class="search"  placeholder="Search" />
+   
+  </div>
+  <!-- <button type="button" class="btnSearch">
+    <i class="fas fa-search"></i>
+  </button> -->
 </div>
+</div>
+
+
+<br>
+<br>
+<br>
 <br>
                         <div class="col-lg-2">
                             <div class="test-start h6">
@@ -212,47 +227,50 @@
                             </div>
                             <select class="form-select" aria-label="Default select example">
                                 <option selected>All</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option value="1">Accepted</option>
+                                <option value="2">Started</option>
+                                <option value="3">User not available</option>
+                                <option value="3">Complete</option>
+                                <option value="3">Rejected</option>
                             </select>
                         </div>
 
                         <div class="col-lg-2">
             <div class="test-start h6">
-    status:
+    Region:
 </div>
 <select class="form-select" aria-label="Default select example">
     <option selected></option>
-    <option value="1">Accepted</option>
-    <option value="2">Started</option>
-    <option value="3">User not available</option>
-    <option value="3">Complete</option>
-    <option value="3">Complete</option>
-    <option value="3">Rejected</option>
+    <option value="1">All</option>
+    <option value="2">Region A</option>
+    <option value="4">Region B</option>
+    <option value="5">Region C</option>
+    <option value="6">Region D</option>
+    <option value="7">Region E</option>
+    <option value="8">Region F</option>
 </select>
 </div>
 
 <div class="col-lg-2">
             <div class="test-start h6">
-    status:
+    Techician:
 </div>
 <select class="form-select" aria-label="Default select example">
     <option selected></option>
-    <option value="1">Accepted</option>
-    <option value="2">Started</option>
-    <option value="3">User not available</option>
-    <option value="3">Complete</option>
-    <option value="3">Complete</option>
-    <option value="3">Rejected</option>
+    <option value="1">S. Hadebe</option>
+    <option value="2">T. Ndlangamandla</option>
+    <option value="3">C. Ngwenyama</option>
+    <option value="3">C. Maphanga</option>
+    <option value="3">C. Patel</option>
+    <option value="3">D. Samson</option>
 </select>
 </div>
 
 
-                        <div class="col-lg-2">
+                        <div class="col-lg">
                        
                             <div class="row ">
-                                <div class="col-lg-4 ">
+                                <div class="col-lg-6 ">
 
                                 <button onclick="window.location='{{route('admin.logTicket')}}'" class="print"> <img src={{ asset('assets/img/web/Download.svg') }}  width="40" height="34" alt="Black Icon"> Download</button>
                                 </div>
@@ -264,13 +282,6 @@
                         </div>
 
                     </div>
-
-
-
-
-
-
-
  
         <div class=" form_wrapper custom_scrollbar">
             <div class="row d-flex justify-content-end">
@@ -355,7 +366,7 @@
         
         <tr>
 
-        <td class="text-center">SR</td>
+        <!-- <td class="text-center">SR</td>
             <td class="gray_td text-center">SR564893</td>
             <td class="text-center">WAN</td>
             <td class="gray_td text-center">8</td>
@@ -370,8 +381,8 @@
                </td>
 
                <td class="">
-                <h6>Breakfix-Sappi Buiding. West wing 5th floor 4 network points not working and cables neeede for new printers to be...</h6>
-               </td>
+                <h6>Breakfix-Sappi Buiding. West wing 5th floor 4 network points not working and cables neeede for new printers to be...</h6> -->
+               <!-- </td> -->
 
         </tr>
 

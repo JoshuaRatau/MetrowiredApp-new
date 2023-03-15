@@ -74,18 +74,16 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                                value="option1">
-                                            <label class="form-check-label" for="inlineCheckbox1">INC</label>
+                                            <input type="checkbox" id="checkbox1" name="option1" value="INC-"  onclick="checkOption(this)">
+                                            <label for="checkbox1" >INC</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
-                                                value="option2">
-                                            <label class="form-check-label" for="inlineCheckbox2">SR</label>
+                                            <input type="checkbox" id="checkbox2" name="option2" value="SR-" onclick="checkOption(this)">
+                                            <label for="checkbox2">SR</label>
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="text" class="form-control" id="inputAddress2">
+                                    <input type="text" id="inputField">
                                     </div>
 
                                 </div>
@@ -171,17 +169,17 @@
                                     <div class="col-md-4">
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                                value="option1">
-                                            <label class="form-check-label" for="inlineCheckbox1">INC</label>
+                                                value="INC">
+                                            <label class="form-check-label" for="inlineCheckbox1">INC jhhhhhhh</label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
-                                                value="option2">
+                                                value="SR">
                                             <label class="form-check-label" for="inlineCheckbox2">SR</label>
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="text" class="form-control" id="inputAddress2">
+                                        <input type="text" class="form-control" id="input-box">
                                     </div>
                                 </div>
                             </div>
@@ -224,5 +222,20 @@
         </div>
         </div>
     </main>
+
+
+    <script>
+  function checkOption(checkbox) {
+    // Uncheck the other checkbox if this one is checked
+    if (checkbox.checked && checkbox.name === 'option1') {
+      document.querySelector('input[name="option2"]').checked = false;
+    } else if (checkbox.checked && checkbox.name === 'option2') {
+      document.querySelector('input[name="option1"]').checked = false;
+    }
+    
+    // Update the input field value
+    document.getElementById('inputField').value = checkbox.checked ? checkbox.value : '';
+  }
+</script>
 
 @endsection
