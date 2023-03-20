@@ -16,6 +16,8 @@ class CustomAuthController extends Controller
     
 
     
+
+    //Add All User
     public function registerUser(Request $request){
 
 
@@ -49,6 +51,8 @@ class CustomAuthController extends Controller
       }
 
 
+//Admin Login
+
   public function loginAdmin(Request $request){
 
 
@@ -81,9 +85,16 @@ class CustomAuthController extends Controller
 
   }
 
+//Admin Logout
 
+public function logout(){
+  if(Session::has('loginId')){
+    Session::pull('loginId');
+    return view('admin.home');
+  }
+}
 
-
+//Techician Login
   public function loginTech(Request $request){
     $request->validate([
     
@@ -115,8 +126,20 @@ class CustomAuthController extends Controller
   }
 
 
+  //Technician Logout
 
-  public function loginManager(Request $request){
+
+  public function Techlogout(){
+    if(Session::has('loginId')){
+      Session::pull('loginId');
+      return view('technician.home');
+    }
+  }
+
+
+  //System Admin Login
+
+  public function loginSystem(Request $request){
     $request->validate([
     
       'email'=>'required',
@@ -126,12 +149,12 @@ class CustomAuthController extends Controller
     $user = User::where('email', '=', $request->email)->first();
     if ($user){
       if (Hash::check($request->password, $user->password)){
-        if($user && $user->type === 'Techician'){
+        if($user && $user->type === 'System Admin'){
 
 
 
       $request->session()->put('loginId', $user->id);
-      return view('technician.dashboard');
+      return view('system_admin.system_dashboard');
 
   }else{
     return back()->with('fail', 'Incorrect login credentials');
@@ -147,7 +170,7 @@ class CustomAuthController extends Controller
   }
       
       
-
+//Dashboard for displaying username
 public function dashboard(){
 
   $data = array();
@@ -178,12 +201,11 @@ public function edit(User $user){
 }
 
 
-public function logout(){
-  if(Session::has('loginId')){
-    Session::pull('loginId');
-    return view('admin.home');
-  }
-}
+
+
+
+
+
 
 
 }

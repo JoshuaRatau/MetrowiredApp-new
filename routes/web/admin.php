@@ -8,14 +8,14 @@ Route::prefix('admin')->group(function () {
     }
     )->name('admin.home');
 
-    Route::get('/logTicket',
-        function () {return view('admin.logTicket');}
-    )->name('admin.logTicket');
+    Route::get('/logtickets',
+        function () {return view('admin.logtickets');}
+    )->name('admin.logtickets');
 
 
-    // Route::get('/dashboard', function() {
-    //     return view('admin.admin_dashboard');
-    // }
-    // )->name('admin.admin_dashboard');
+    Route::get('/dashboard', function() {
+        return view('admin.admin_dashboard');
+    }
+    )->name('admin.admin_dashboard');
  
 });

@@ -48,7 +48,7 @@
             <div class="container-fluid">
             <div class="col-sm-2">
           
-             <button type="button" onclick="window.location='{{ url("system/admin/addUser") }}'" class="btn btn-primary btn-lg btnLogin"> <img src={{ asset('assets/img/web/addUser.svg') }} width="40" height="34" >Add a User</button>
+             <button type="button" onclick="window.location='{{ url("/registration") }}'" class="btn btn-primary btn-lg btnLogin"> <img src={{ asset('assets/img/web/addUser.svg') }} width="40" height="34" >Add a User</button>
 
 </div>
 

@@ -17,7 +17,7 @@
     <!------ Include the above in your HEAD tag ---------->
     <script></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    {{-- <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}"> --}}
+     <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 
@@ -35,7 +35,7 @@
         }
 
         .buttonName {
-            width: 10rem !important;
+            width: 13rem !important;
             height: max-content !important;
             border-radius: 40px !important;
             box-shadow: 0 3px 10px rgb(0 0 0 / 0.2) !important;
@@ -43,6 +43,7 @@
             color: #100f44 !important;
             border: 1px solid#ffffff !important;
             font-weight: 600 !important;
+            margin-right: 30px;
         }
 
         .buttonName:active,
@@ -72,6 +73,9 @@
 
                 <form class="d-flex">
 
+      
+
+
                     <button class="btn btn-light buttonName" type="submit">
                         <svg width="40" height="34" viewBox="0 0 146 145" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -87,6 +91,22 @@
                         </svg>
                         Username
                     </button>
+
+
+                    <button class="btn btn-light buttonLogout" type="button" onclick="location.href='Techlogout';">
+                      
+                      <svg width="35" height="24" viewBox="0 0 51 53" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path
+                              d="M34.332 35.3386L37.9985 39.005L51 26.0035L37.9985 13.002L34.332 16.6684L41.0408 23.4032H15.8959V28.6038H41.0408L34.332 35.3386Z"
+                              fill="black" />
+                          <path
+                              d="M5.49468 0H28.8974C30.2767 0 31.5995 0.54792 32.5748 1.52322C33.5501 2.49853 34.0981 3.82133 34.0981 5.20061V10.4012H28.8974V5.20061H5.49468V46.8055H28.8974V41.6049H34.0981V46.8055C34.0981 48.1848 33.5501 49.5076 32.5748 50.4829C31.5995 51.4582 30.2767 52.0061 28.8974 52.0061H5.49468C4.11539 52.0061 2.7926 51.4582 1.81729 50.4829C0.841987 49.5076 0.294067 48.1848 0.294067 46.8055V5.20061C0.294067 3.82133 0.841987 2.49853 1.81729 1.52322C2.7926 0.54792 4.11539 0 5.49468 0V0Z"
+                              fill="black" />
+                      </svg>
+                      {{ __('Logout') }}
+                  </button>
+              </form>
 
 
                 </form>

@@ -26,13 +26,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/system_admin_dashboard.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-
- 
-  
-   
-
-
-
    <main class="my-auto">
     <div class="container">
         <div class=" form_wrapper custom_scrollbar">
@@ -92,18 +85,18 @@
     </thead>
 
 
-    @foreach ($users as $user)
+    <!-- @foreach ($users as $user) -->
 
     <tbody>
      
 </tr>
 
-<td class="text-center">{{$user['created_at']}}</td>
+<!-- <td class="text-center">{{$user['created_at']}}</td>
             <td class="gray_td text-center">{{$user['type']}}</td>
             <td class="text-center">{{$user['name']}}</td>
             <td class="gray_td text-center">{{$user['email']}}</td>
             <td class=" text-center"></td>
-            <td class="text-center">{{$user['region']}}</td>
+            <td class="text-center">{{$user['region']}}</td> -->
                <td class="text-center">
                <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button>
                <td class="text-center">
@@ -111,7 +104,7 @@
 
 </tr>
     </tbody>
-    @endforeach
+    <!-- @endforeach -->
 </table>
 
 @endsection

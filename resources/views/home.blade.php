@@ -47,14 +47,13 @@
                 <div class="col-sm-12 loginContent">
                     <div class="mb-3">
                         <label for="formGroupExampleInput" class="form-label">Email Address:</label>
-                        <input type="email" class="form-control" id="email" name="email"
-                            placeholder="">
+                        <input type="email" class="form-control"  name="email" laceholder="">
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Password:</label>
                         <div class="input-group">
 
-                            <input type="password" class="form-control" id="password" name="password"
+                            <input type="password" class="form-control"  name="password"
                                 placeholder="">
                             <span class="input-group-append">
                                 <button

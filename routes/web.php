@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\TicketsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -59,4 +60,17 @@ Route::get('/logout', [CustomAuthController::class, 'logout']);
 //Login for Technician
 Route::post('login-tech', [CustomAuthController::class, 'loginTech' ])->name('login-tech');
 Route::get('/dashboard', [CustomAuthController::class, 'dashboard']);
-Route::get('/logout', [CustomAuthController::class, 'logout']);
+Route::get('/Techlogout', [CustomAuthController::class, 'Techlogout']);
+
+//Login for Technician
+Route::post('login-system', [CustomAuthController::class, 'loginSystem' ])->name('login-system');
+Route::get('/dashboard', [CustomAuthController::class, 'dashboard']);
+Route::get('/Systemlogout', [CustomAuthController::class, 'Sytemlogout']);
+
+
+//adding a ticket
+
+
+
+
+

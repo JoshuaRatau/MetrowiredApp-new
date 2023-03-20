@@ -111,7 +111,7 @@
                             <div class="col-md-12 mb-3">
                             <label for="exampleFormControlTextarea1" class="form-label"><b>Issue Description:</b></label>
                                  <!-- <p class="text-end"> 250 character limit:</p> -->
-                                <textarea  placeholder="Leave a comment here" id="floatingTextarea2" rows="6" cols="53" maxlength="250" class="form-control" name="description"></textarea>
+                                <textarea  placeholder="Leave a comment here" id="floatingTextarea2" rows="6" cols="53" maxlength="250" class="form-control" name="decriptiom"></textarea>
 
                             </div>
                         </div>

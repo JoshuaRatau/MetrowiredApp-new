@@ -1,3 +1,9 @@
+@extends('layouts.management')
+
+@section('content')
+
+
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -24,10 +30,7 @@
     <style>
 
     </style>
-</head>
-@extends('layouts.admin')
 
-@section('content')
 <body>
     <div class="img">
         <main class="my-auto">
