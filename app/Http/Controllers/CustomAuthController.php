@@ -50,7 +50,7 @@ public function techdashboard(){
         ]);
       $user = new User();
       $user ->region = $request->region;
-       $user ->type = $request->type;
+      $user ->type = $request->type;
       $user ->name = $request->name;
       $user ->phone = $request->phone;
       $user ->email = $request->email;
@@ -207,13 +207,26 @@ public function systemdashboard(){
 
 }
 
+public function update(Request $request, $id){
+$users = User::find($id);
+$users->region = $request->input('region');
+$users->type = $request->input('type');
+$users->region = $request->input('region');
+$users->name = $request->input('name');
+$users ->phone = $request->input('phone');
+$users ->email = $request->input('email');
+$users->update();
+return redirect('sysadmindashboard');
+
+
+
+}
+
+
 public function edit($id){
-
-  $row =DB::table('users')
-  ->where('id', $id)
-  ->first();
-  }
-
+  $users= User::find($id);
+  return view('system_admin.user_edit', compact('users'));
+}
 public function delete($id){
   $delete =DB::table('users')
   ->where('id', $id)
