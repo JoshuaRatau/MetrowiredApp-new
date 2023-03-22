@@ -28,8 +28,8 @@ Route::prefix('technician')->group(function () {
     )->name('technician.complete');
 
 
-     Route::get('/dashboard', function () {
-        return view('technician.dashboard');
-    }
-    )->name('technician.dashboard');
+    //  Route::get('/dashboard', function () {
+    //     return view('technician.dashboard');
+    // }
+    // )->name('technician.dashboard');
 });

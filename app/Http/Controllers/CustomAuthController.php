@@ -4,17 +4,33 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+
 use Session;
 use Hash;
 class CustomAuthController extends Controller
 {
+
+  
+  public function admindashboard(){
+    return view('admin.dashboard_admin');
+  }
+ 
+
+public function techdashboard(){
+  return view('technician.techniciandashboard');
+}
 
 
     public function registration(){
         return view("auth.registration");
     }
     
+    public function sysadmindashboard(){
 
+      return view('system_admin.system_dashboard', [
+          'users' =>User::all(),
+      ]);
+    }
     
 
     //Add All User
@@ -70,7 +86,7 @@ class CustomAuthController extends Controller
 
 
       $request->session()->put('loginId', $user->id);
-      return redirect('dashboard');
+      return redirect('admindashboard');
 
   }else{
     return back()->with('fail', 'Incorrect Password');
@@ -110,7 +126,7 @@ public function logout(){
 
 
       $request->session()->put('loginId', $user->id);
-      return view('technician.dashboard');
+      return redirect('techdashboard');
 
   }else{
     return back()->with('fail', 'Incorrect login credentials');
@@ -137,7 +153,7 @@ public function logout(){
   }
 
 
-  //System Admin Login
+  //System Admin Login 
 
   public function loginSystem(Request $request){
     $request->validate([
@@ -154,7 +170,7 @@ public function logout(){
 
 
       $request->session()->put('loginId', $user->id);
-      return view('system_admin.system_dashboard');
+      return redirect('admindashboard');
 
   }else{
     return back()->with('fail', 'Incorrect login credentials');
@@ -177,7 +193,7 @@ public function dashboard(){
   if(Session::has('loginId')){
     $data = User::where('id', '=', Session::get('loginId'))->first();
   }
-  return view("admin.admin_dashboard" , compact('data'));
+  return redirect('techdashboard');
 }
 
 public function systemdashboard(){

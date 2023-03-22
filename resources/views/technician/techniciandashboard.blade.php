@@ -47,10 +47,10 @@
 
 
             <div class="d-flex align-items-center justify-content-center">
-   @if (count($tickets)>0)
+   @if (is_countable($tickets) && count($tickets) >0)
 
-@foreach ($tickets as $ticket)
-                <div class="card">
+@foreach ($tickets as $ticket) 
+                 <div class="card">
                     <div class="card-body">
                       <div class="row">
                             <div class="col-sm-10">
@@ -87,7 +87,7 @@
 
 <h1>There are no tickets to display</h1>
 @endif
-<div>           
+<div>            
         </div>
     </main>
 

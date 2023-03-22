@@ -92,13 +92,13 @@
     </thead>
 
 
-    @foreach ($users as $user)
+    <!-- @foreach ($users as $user) -->
 
     <tbody>
      
 </tr>
 
-<td class="text-center">{{$user['created_at']}}</td>
+<!-- <td class="text-center">{{$user['created_at']}}</td>
             <td class="gray_td text-center">{{$user['type']}}</td>
             <td class="text-center">{{$user['name']}}</td>
             <td class="gray_td text-center">{{$user['email']}}</td>
@@ -112,7 +112,7 @@
 </tr>
     </tbody>
     @endforeach
-</table>
+</table> -->
 
 @endsection
 

@@ -85,18 +85,21 @@
     </thead>
 
 
-    <!-- @foreach ($users as $user) -->
 
     <tbody>
+        
+@if (count($users)>0)
+
+@foreach ($users as $user)
      
 </tr>
 
-<!-- <td class="text-center">{{$user['created_at']}}</td>
+<td class="text-center">{{$user['created_at']}}</td>
             <td class="gray_td text-center">{{$user['type']}}</td>
             <td class="text-center">{{$user['name']}}</td>
             <td class="gray_td text-center">{{$user['email']}}</td>
             <td class=" text-center"></td>
-            <td class="text-center">{{$user['region']}}</td> -->
+            <td class="text-center">{{$user['region']}}</td>
                <td class="text-center">
                <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button>
                <td class="text-center">
@@ -104,7 +107,12 @@
 
 </tr>
     </tbody>
-    <!-- @endforeach -->
+    @endforeach
+@else
+
+<h4>There are no users to display</h4>
+@endif
+<div>
 </table>
 
 @endsection

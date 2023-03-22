@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CustomAuthController;
-use App\Http\Controllers\TicketsController;
+use App\Http\Controllers\TicketController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,30 +45,32 @@ Route::get('/registration', [CustomAuthController::class, 'registration']);
 Route::post('/register-user', [CustomAuthController::class, 'registerUser'])->name('register-user');
 
 
-Route::get('/system/admin/dashboard', [CustomAuthController::class, 'systemdashboard'])->name('systemdashboard');
+
+Route::get('/sysadmindashboard', [CustomAuthController::class, 'sysadmindashboard']);
 Route::get('/system/admin/update', [CustomAuthController::class, 'edit'])->name('edit');
 
 
 
 //Login for Admin
 Route::post('login-admin', [CustomAuthController::class, 'loginAdmin' ])->name('login-admin');
-Route::get('/dashboard', [CustomAuthController::class, 'dashboard']);
+Route::get('/admindashboard', [CustomAuthController::class, 'admindashboard']);
 Route::get('/logout', [CustomAuthController::class, 'logout']);
 
 
 
 //Login for Technician
 Route::post('login-tech', [CustomAuthController::class, 'loginTech' ])->name('login-tech');
-Route::get('/dashboard', [CustomAuthController::class, 'dashboard']);
+ Route::get('/techdashboard', [CustomAuthController::class, 'techdashboard']);
 Route::get('/Techlogout', [CustomAuthController::class, 'Techlogout']);
 
 //Login for Technician
 Route::post('login-system', [CustomAuthController::class, 'loginSystem' ])->name('login-system');
-Route::get('/dashboard', [CustomAuthController::class, 'dashboard']);
+ Route::get('/techdashboard', [TicketController::class, 'techdashboard']);
 Route::get('/Systemlogout', [CustomAuthController::class, 'Sytemlogout']);
 
 
-//adding a ticket
+Route::get('/ticket', [TicketController::class, 'ticket']);
+Route::post('/register-ticket', [TicketController::class, 'registerTicket'])->name('register-ticket');
 
 
 

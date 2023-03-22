@@ -1,5 +1,5 @@
 
-    <meta name="description" content="" />
+<meta name="description" content="" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -33,11 +33,11 @@
             </div>
             <div class="d-flex align-items-center justify-content-center">
 
-                <form class="row mb-3 logForm">
+                <div class="row mb-3 logForm">
                     <div class="row">
-                        {{-- form 1 --}}
+                      
 
-                        <form class="form" method="POST" action="{{route('tickets.store')}}">
+                        <form action="{{route('register-ticket')}}" method="post"  >
 
                         @csrf
                         <div class="col-sm-6">
@@ -46,8 +46,13 @@
                                     <label for="inputState" class="form-label">Region:</label>
                                     <select class="form-control" name="region">
                                         <option selected>All</option>
-                                        <option value="1">Region A</option>
-                                        <option value="2">Region B</option>
+                                        <option value="Region A">Region A</option>
+                                        <option value="Region B">Region B</option>
+                                        <option value="Region c">Region C</option>
+                                        <option value="Region D">Region D</option>
+                                        <option value="Region A">Region E</option>
+                                        <option value="Region B">Region F</option>
+                                        <option value="Region c">Region G</option>
                                     </select>
                                 </div>
                                 <div class="col-md-5 mb-4">
@@ -56,7 +61,7 @@
                                         <option selected>All</option>
                                         <option value="1">LAN</option>
                                         <option value="2">WAN</option>
-                                        <option value="2">OTHER</option>
+                                        <option value="3">OTHER</option>
                                     </select>
                                 </div>
                             </div>
@@ -64,6 +69,7 @@
                             <div class="col-md-12 mb-3">
                                 <label for="inputAddress2" class="form-label">Affected User</label>
                                 <input type="text"  id="inputAddress2" placeholder="Apartment, studio, or floor"  class="form-control"  name="affected_user">
+                                <span class="text-danger">@error('affected_user') {{$message}} @enderror</span>
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label for="inputAddress2" class="form-label">Ticket Number</label>
@@ -80,21 +86,24 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                    <input type="text" id="ticket_number" name="ticket_number">
+                                    <input type="text" id="ticket_number"  class="form-control" name="ticket_number">
+                                    <span class="text-danger">@error('ticket_number') {{$message}} @enderror</span>
                                     </div>
 
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="inputAddress2" class="form-label">Contact Details</label>
                                     <input type="text" id="contact"  class="form-control" name="contact">
+                                    <span class="text-danger">@error('contact') {{$message}} @enderror</span>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="inputAddress2" class="form-label">Title</label>
                                     <input type="text" class="form-control" id="title" name="title">
+                                    <span class="text-danger">@error('title') {{$message}} @enderror</span>
                                 </div>
                             </div>
                         </div>
-                        {{-- form2 --}}
+                  
                         <div class="col-sm-6">
                             <div class="col-md-6 mb-4">
                                 <label for="inputState" class="form-label">Technician</label>
@@ -107,19 +116,27 @@
                             <div class="col-md-12 mb-3">
                                 <label for="inputCity" class="form-label"><b>Alternate Contact Details</b></label>
                                 <input type="text" class="form-control" name="alternate_contact">
+                                <span class="text-danger">@error('alternate_contact') {{$message}} @enderror</span>
                             </div>
                             <div class="col-md-12 mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label"><b>Issue Description:</b></label>
-                                 <!-- <p class="text-end"> 250 character limit:</p> -->
-                                <textarea  placeholder="Leave a comment here" id="floatingTextarea2" rows="6" cols="53"  class="form-control" name="decriptiom"></textarea>
+                                    <label for="password" class="password">Description</label>
+                                    <input type="password" class="form-control" placeholder="description" name="description" value="">
+                                    <span class="text-danger">@error('description') {{$message}} @enderror</span>
+                                </div>
 
+                            <div class="col-md-12 mb-3">
+                                <label for="inputCity" class="form-label"><b>Alternate Contact Details</b></label>
+                                <input type="text" class="form-control" name="description">
+                                <span class="text-danger">@error('alternate_contact') {{$message}} @enderror</span>
                             </div>
+
+
                         </div>
 
                         <div class="col-sm-5">
                             <div class="mb-4" id="container">
-                                <button type="submit"  class="btn btn-primary buttonLog">Log</button>
-
+                                <button   class="btn btn-primary buttonLog" type="submit">Log</button>
+                              
                             </div>
 
                         </div>

@@ -16,16 +16,15 @@ return new class extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
             $table->string('region');
-            $table->string('network_type');
-            $table->string('affected_user');
-            $table->string('ticket_number');
-            $table->integer('contact');
+             $table->string('network_type');
+             $table->string('affected_user');
+             $table->string('ticket_number');
+            $table->string('contact');
             $table->string('title');
             $table->string('technician');
-            $table->integer('alternate_contact');
+             $table->string('alternate_contact');
             $table->string('description');
             $table->timestamps();
-            
         });
     }
 

@@ -11,10 +11,10 @@ Route::prefix('system/admin/')->group(function () {
     }
     )->name('system_admin.home');
 
-    Route::get('/dashboard', function () {
-        return view('system_admin.system_admin_dashboard');
-    }
-    )->name('system_admin.system_admin_dashboard');
+    // Route::get('/dashboard', function () {
+    //     return view('system_admin.system_admin_dashboard');
+    // }
+    // )->name('system_admin.system_admin_dashboard');
 
     Route::get('/addUser', function () {
         return view('system_admin.addUser');
