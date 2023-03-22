@@ -43,7 +43,7 @@
                      
                         <!-- <div class="container"> -->
 
-                        <form action="{{route('user_edit', ['user'=>$user->id])}}" method="post">
+                        <form action="{{route('user_update', ['user'=>$user->id])}}" method="post">
                             <!-- @if(Session::has('success'))
                             <div class="alert alert-success">{{Session::get('success')}}</div>
                             @endif
@@ -52,6 +52,7 @@
                             <div class="alert alert-danger">{{Session::get('fail')}}</div>
                             @endif -->
                             @csrf
+                            @method('PUT')
                             <div class="d-flex align-items-center justify-content-center">
                             <form class="row mb-3 logForm">
                     <div class="row">
@@ -89,23 +90,23 @@
                                                     
                                     <div class="col-md-12 mb-3">
                                 <label for="namr" class="form-label">Full Name</label>
-                                <input type="text" class="form-control" placeholder="name" name="name" value="">
+                                <input type="text" class="form-control" placeholder="name" name="name" value="{{$user['name']}}">
                             </div>
 
 
                          
                             <div class="col-md-12 mb-3">
                                     <label for="phone" class="form-label">Phone Number</label>
-                                    <input type="text" class="form-control" placeholder="phone" name="phone" value="">
+                                    <input type="text" class="form-control" placeholder="phone" name="phone" value="{{$user['phone']}}">
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="email" class="form-label">Email Address</label>
-                                    <input type="text" class="form-control" placeholder="email" name="email" value="">
+                                    <input type="text" class="form-control" placeholder="email" name="email" value="{{$user['email']}}">
                                 </div>
 
                                 <div class="col-md-12 mb-3">
                                     <label for="password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" placeholder="Password" name="password" value="">
+                                    <input type="password" class="form-control" placeholder="Password" name="password" value="{{$user['password']}}">
                                 </div>
                                 <div class="col-md-8 mb-3">
                                 <button type="button" class="btn btn-primary buttonGenerate">Generate</button>

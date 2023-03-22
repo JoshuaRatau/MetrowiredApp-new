@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use DB;
 use Session;
 use Hash;
 class CustomAuthController extends Controller
@@ -28,6 +28,7 @@ public function techdashboard(){
     public function sysadmindashboard(){
 
       return view('system_admin.system_dashboard', [
+
           'users' =>User::all(),
       ]);
     }
@@ -170,7 +171,7 @@ public function logout(){
 
 
       $request->session()->put('loginId', $user->id);
-      return redirect('admindashboard');
+      return redirect('sysadmindashboard');
 
   }else{
     return back()->with('fail', 'Incorrect login credentials');
@@ -206,22 +207,18 @@ public function systemdashboard(){
 
 }
 
-public function edit(User $user){
+public function edit($id){
 
+  $row =DB::table('users')
+  ->where('id', $id)
+  ->first();
+  }
 
-  return view('system_admin.user_edit',[
-    'user' => ($user)
-   
-  ]);
+public function delete($id){
+  $delete =DB::table('users')
+  ->where('id', $id)
+  ->delete();
+  return redirect('sysadmindashboard');
 
 }
-
-
-
-
-
-
-
-
-
 }

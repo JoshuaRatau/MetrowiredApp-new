@@ -101,9 +101,10 @@
             <td class=" text-center"></td>
             <td class="text-center">{{$user['region']}}</td>
                <td class="text-center">
-               <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button>
+               <!-- <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button> -->
+               <a href="delete/{{$user->id}}" class="btn btn-danger btn-xs">Delete</a>
                <td class="text-center">
-               <button class="edit">Edit</button>
+               <a href="edit/{{$user->id}}" class="btn btn btn-xs">Edit</a>
 
 </tr>
     </tbody>
