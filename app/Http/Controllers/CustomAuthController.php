@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Ticket;
 use DB;
 use Session;
 use Hash;
@@ -12,7 +13,9 @@ class CustomAuthController extends Controller
 
   
   public function admindashboard(){
-    return view('admin.dashboard_admin');
+    return view('admin.admin_dashboard',[
+      'tickets' =>Ticket::all(),
+    ]);
   }
  
 

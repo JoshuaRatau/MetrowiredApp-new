@@ -59,16 +59,16 @@
                                     <label for="inputState" class="form-label">Network Type:</label>
                                     <select id="network_type" class="form-control" name="network_type">
                                         <option selected>All</option>
-                                        <option value="1">LAN</option>
-                                        <option value="2">WAN</option>
-                                        <option value="3">OTHER</option>
+                                        <option value="LAN">LAN</option>
+                                        <option value="WAN">WAN</option>
+                                        <option value="OTHER">OTHER</option>
                                     </select>
                                 </div>
                             </div>
                             
                             <div class="col-md-12 mb-3">
                                 <label for="inputAddress2" class="form-label">Affected User</label>
-                                <input type="text"  id="inputAddress2" placeholder="Apartment, studio, or floor"  class="form-control"  name="affected_user">
+                                <input type="text"  id="inputAddress2" placeholder="name"  class="form-control"  name="affected_user">
                                 <span class="text-danger">@error('affected_user') {{$message}} @enderror</span>
                             </div>
                             <div class="col-md-12 mb-3">
@@ -109,8 +109,8 @@
                                 <label for="inputState" class="form-label">Technician</label>
                                 <select id="inputState"  class="form-control" name="technician">
                                     <option selected>All</option>
-                                    <option value="1">S. Hadebe</option>
-                                    <option value="2">T.Ndlangamandla</option>
+                                    <option value="S. Hadebe">S. Hadebe</option>
+                                    <option value="T. Ndlangamandla">T.Ndlangamandla</option>
                                 </select>
                             </div>
                             <div class="col-md-12 mb-3">
@@ -120,17 +120,11 @@
                             </div>
                             <div class="col-md-12 mb-3">
                                     <label for="password" class="password">Description</label>
-                                    <input type="password" class="form-control" placeholder="description" name="description" value="">
+                                    <input type="text" class="form-control" placeholder="description" name="description" value="">
                                     <span class="text-danger">@error('description') {{$message}} @enderror</span>
                                 </div>
 
-                            <div class="col-md-12 mb-3">
-                                <label for="inputCity" class="form-label"><b>Alternate Contact Details</b></label>
-                                <input type="text" class="form-control" name="description">
-                                <span class="text-danger">@error('alternate_contact') {{$message}} @enderror</span>
-                            </div>
-
-
+                         
                         </div>
 
                         <div class="col-sm-5">

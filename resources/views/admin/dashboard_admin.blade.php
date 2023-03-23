@@ -54,6 +54,16 @@
    
 </div>
 
+
+<div class="col-lg-2">
+
+    <div>
+ 
+    <button type="button" onclick="window.location='{{ url("/ticket") }}'" class="btn btn-primary btn-lg btnLogin"> <img src={{ asset('assets/img/web/LogTicket.svg') }} width="40" height="34" >Log a ticket</button>
+    </div>
+   <br>
+</div>
+
 <!-- table -->
 <table id="customers">
         
@@ -72,85 +82,10 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
+    @if (is_countable($tickets) > 0)
+    @foreach ($tickets as $ticket)
 
-            <td class="text-center">SR</td>
-            <td class="gray_td text-center">SR564893</td>
-            <td class="text-center">WAN</td>
-            <td class="gray_td text-center">8</td>
-            <td class=" text-center">07:45</td>
-            <td class="text-center">J.Jackman</td>
-            <td class="text-center">Logged</td>
-            <td class="text-center">Region A</td>
-               <td class="text-center">Sandile Hadebe</td>
-
-        </tr>
-        <tr>
-
-            <td class="text-center">SR</td>
-            <td class="gray_td text-center">SR564893</td>
-            <td class="text-center">WAN</td>
-            <td class="gray_td text-center">8</td>
-            <td class=" text-center">07:45</td>
-            <td class="text-center">J.Jackman</td>
-            <td class="text-center">Logged</td>
-            <td class="text-center">Region A</td>
-               <td class="text-center">Sandile Hadebe</td>
-
-        </tr>
-        
-        <tr>
-
-            <td class="text-center">SR</td>
-            <td class="gray_td text-center">SR564893</td>
-            <td class="text-center">WAN</td>
-            <td class="gray_td text-center">8</td>
-            <td class=" text-center">07:45</td>
-            <td class="text-center">J.Jackman</td>
-            <td class="text-center">Logged</td>
-            <td class="text-center">Region A</td>
-               <td class="text-center">Sandile Hadebe</td>
-
-        </tr>
-
-        <tr>
-
-<td class="text-center">SR</td>
-<td class="gray_td text-center">SR564893</td>
-<td class="text-center">WAN</td>
-<td class="gray_td text-center">8</td>
-<td class=" text-center">07:45</td>
-<td class="text-center">J.Jackman</td>
-<td class="text-center">Logged</td>
-<td class="text-center">Region A</td>
-   <td class="text-center">Sandile Hadebe</td>
-
-</tr>
 <tr>
-
-<td class="text-center">SR</td>
-<td class="gray_td text-center">SR564893</td>
-<td class="text-center">WAN</td>
-<td class="gray_td text-center">8</td>
-<td class=" text-center">07:45</td>
-<td class="text-center">J.Jackman</td>
-<td class="text-center">Logged</td>
-<td class="text-center">Region A</td>
-   <td class="text-center">Sandile Hadebe</td>
-
-   <tr>
-
-<td class="text-center">SR</td>
-<td class="gray_td text-center">SR564893</td>
-<td class="text-center">WAN</td>
-<td class="gray_td text-center">8</td>
-<td class=" text-center">07:45</td>
-<td class="text-center">J.Jackman</td>
-<td class="text-center">Logged</td>
-<td class="text-center">Region A</td>
-   <td class="text-center">Sandile Hadebe</td>
-
-</tr>
 
 <td class="text-center">SR</td>
 <td class="gray_td text-center">SR564893</td>
@@ -164,5 +99,11 @@
 
 </tr>
     </tbody>
+    @endforeach
+                    @else
+                        <h4>There are no users to display</h4>
+                        @endif
+
+
 </table>
 @endsection
