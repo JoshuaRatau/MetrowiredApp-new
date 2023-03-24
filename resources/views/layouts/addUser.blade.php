@@ -83,14 +83,16 @@
             </a>
 
 
- <div class="container-fluid">
-            <div class="col-sm-2">
-          
-             <button type="button"  class="btn btn-light buttonAdd"> <img src={{ asset('assets/img/web/addUser.svg') }} width="40" height="34" >Add a User</button>
+            <div class="container-fluid">
+                <div class="col-sm-2">
 
-</div>
+                    <button type="button" class="btn btn-light buttonAdd"> <img
+                            src={{ asset('assets/img/web/addUser.svg') }} width="40" height="34">Add a
+                        User</button>
 
-</div>
+                </div>
+
+            </div>
 
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
