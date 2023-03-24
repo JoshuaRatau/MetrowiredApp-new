@@ -48,6 +48,8 @@ Route::post('/register-user', [CustomAuthController::class, 'registerUser'])->na
 
 Route::get('/sysadmindashboard', [CustomAuthController::class, 'sysadmindashboard']);
 Route::get('edit/{id}', [CustomAuthController::class, 'edit']);
+Route::put('update-user/{id}', [CustomAuthController::class, 'update']) ;
+
 Route::get('delete/{id}', [CustomAuthController::class, 'delete']);
 
 

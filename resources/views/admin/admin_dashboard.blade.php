@@ -1,4 +1,5 @@
 
+
 @extends('layouts.admin')
 
 
@@ -54,28 +55,17 @@
 </div>
 
 
-
 <div class="col-lg-2">
 
     <div>
-    <!-- <button onclick="window.location='{{route('admin.logTicket')}}'" class="btn-log"> <img src={{ asset('assets/img/web/LogTicket.svg') }}  width="40" height="34" alt="Black Icon"> Log a ticket</button> -->
-    <button type="button" onclick="window.location='{{ url("admin/logTicket") }}'" class="btn btn-primary btn-lg btnLogin"> <img src={{ asset('assets/img/web/LogTicket.svg') }} width="40" height="34" >Log a ticket</button>
+ 
+    <button type="button" onclick="window.location='{{ url("/ticket") }}'" class="btn btn-primary btn-lg btnLogin"> <img src={{ asset('assets/img/web/LogTicket.svg') }} width="40" height="34" >Log a ticket</button>
     </div>
    <br>
 </div>
 
-
-</div>
-
-
-
-</div>
-
-</div>
-
-
- <!-- table -->
- <table id="customers">
+<!-- table -->
+<table id="customers">
         
         <tr>
 
@@ -92,99 +82,28 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
+    @if (is_countable($tickets) > 0)
+    @foreach ($tickets as $ticket)
 
-            <td class="text-center">SR</td>
-            <td class="gray_td text-center">SR564893</td>
-            <td class="text-center">WAN</td>
-            <td class="gray_td text-center">8</td>
-            <td class=" text-center">07:45</td>
-            <td class="text-center">J.Jackman</td>
-            <td class="text-center">Logged</td>
-            <td class="text-center">Region A</td>
-               <td class="text-center">Sandile Hadebe</td>
-
-        </tr>
-        <tr>
-
-            <td class="text-center">SR</td>
-            <td class="gray_td text-center">SR564893</td>
-            <td class="text-center">WAN</td>
-            <td class="gray_td text-center">8</td>
-            <td class=" text-center">07:45</td>
-            <td class="text-center">J.Jackman</td>
-            <td class="text-center">Logged</td>
-            <td class="text-center">Region A</td>
-               <td class="text-center">Sandile Hadebe</td>
-
-        </tr>
-        
-        <tr>
-
-            <td class="text-center">SR</td>
-            <td class="gray_td text-center">SR564893</td>
-            <td class="text-center">WAN</td>
-            <td class="gray_td text-center">8</td>
-            <td class=" text-center">07:45</td>
-            <td class="text-center">J.Jackman</td>
-            <td class="text-center">Logged</td>
-            <td class="text-center">Region A</td>
-               <td class="text-center">Sandile Hadebe</td>
-
-        </tr>
-
-        <tr>
-
-<td class="text-center">SR</td>
-<td class="gray_td text-center">SR564893</td>
-<td class="text-center">WAN</td>
-<td class="gray_td text-center">8</td>
-<td class=" text-center">07:45</td>
-<td class="text-center">J.Jackman</td>
-<td class="text-center">Logged</td>
-<td class="text-center">Region A</td>
-   <td class="text-center">Sandile Hadebe</td>
-
-</tr>
 <tr>
 
-<td class="text-center">SR</td>
-<td class="gray_td text-center">SR564893</td>
-<td class="text-center">WAN</td>
-<td class="gray_td text-center">8</td>
-<td class=" text-center">07:45</td>
-<td class="text-center">J.Jackman</td>
+<td class="text-center">{{$ticket['ticket_number']}}</td>
+<td class="gray_td text-center">{{$ticket['ticket_number']}}</td>
+<td class="text-center">{{$ticket['network_type']}}</td>
+<td class="gray_td text-center"></td>
+<td class=" text-center">{{$ticket['created_at']}}</td>
+<td class="text-center">{{$ticket['affected_user']}}</td>
 <td class="text-center">Logged</td>
-<td class="text-center">Region A</td>
-   <td class="text-center">Sandile Hadebe</td>
-
-   <tr>
-
-<td class="text-center">SR</td>
-<td class="gray_td text-center">SR564893</td>
-<td class="text-center">WAN</td>
-<td class="gray_td text-center">8</td>
-<td class=" text-center">07:45</td>
-<td class="text-center">J.Jackman</td>
-<td class="text-center">Logged</td>
-<td class="text-center">Region A</td>
-   <td class="text-center">Sandile Hadebe</td>
-
-</tr>
-
-<td class="text-center">SR</td>
-<td class="gray_td text-center">SR564893</td>
-<td class="text-center">WAN</td>
-<td class="gray_td text-center">8</td>
-<td class=" text-center">07:45</td>
-<td class="text-center">J.Jackman</td>
-<td class="text-center">Logged</td>
-<td class="text-center">Region A</td>
-   <td class="text-center">Sandile Hadebe</td>
+<td class="text-center">{{$ticket['region']}}</td>
+   <td class="text-center">{{$ticket['technician']}}</td>
 
 </tr>
     </tbody>
+    @endforeach
+                    @else
+                        <h4>There are no users to display</h4>
+                        @endif
+
+
 </table>
-
 @endsection
-

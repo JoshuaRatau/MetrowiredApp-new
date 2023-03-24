@@ -32,25 +32,22 @@
             <div class="row col-sm-12 mb-6">
                 <div class="text-start">
                     <h4 class="backText">
-                        < Edit User User</h4>
+                        < Add a User</h4>
                 </div>
             </div>
+<<<<<<< HEAD
 
 
 
 
 
 
+=======
+>>>>>>> 60a0eda7c621c17ac457d55e2c8be2179ea21c75
                         <!-- <div class="container"> -->
 
-                        <form action="{{route('user_update', ['user'=>$user->id])}}" method="post">
-                            <!-- @if(Session::has('success'))
-                            <div class="alert alert-success">{{Session::get('success')}}</div>
-                            @endif
-
-                            @if(Session::has('fail'))
-                            <div class="alert alert-danger">{{Session::get('fail')}}</div>
-                            @endif -->
+                        <form action="{{url ('update-user/'.$users->id)}}" method="post">
+                       
                             @csrf
                             @method('PUT')
                             <div class="d-flex align-items-center justify-content-center">
@@ -65,11 +62,13 @@
                                         <option selected>All</option>
                                         <option value="Region A">Region A</option>
                                         <option value="Region B">Region B</option>
-                                        <option value="Region C">Region C</option>
+                                        <option value="Region c">Region C</option>
                                         <option value="Region D">Region D</option>
-                                        <option value="Region E">Region E</option>
-                                        <option value="Region F">Region F</option>
-                                        <option value="Region G">Region G</option>
+                                        <option value="Region A">Region E</option>
+                                        <option value="Region B">Region F</option>
+                                        <option value="Region c">Region G</option>
+                                      
+                                        <span class="text-danger">@error('region') {{$message}} @enderror</span>
                                     </select>
                                 </div>
 
@@ -78,33 +77,39 @@
                                 <div class="col-md-5 mb-4">
                                     <label for="inputtype" class="form-label">User Role:</label>
                                     <select  class="form-control" name="type">
-                                         <option value="all">All</option>
                                         <option value="Admin">Admin</option>
-                                        <option value="Managemnt">Management</option>
-                                        <option value="Techician">Technician</option>
+                                        <option value="Management">Management</option>
+                                        <option value="Technician">Technician</option>
                                         <option value="System Admin">System Admin</option>
+                                        <span class="text-danger">@error('type') {{$message}} @enderror</span>
                                     </select>
                                     </div>
                                     <div class="col-md-12 mb-3">
                                 <label for="namr" class="form-label">Full Name</label>
-                                <input type="text" class="form-control" placeholder="name" name="name" value="{{$user['name']}}">
+                                <input type="text" class="form-control" placeholder="name" name="name" value="{{$users->name}}">
+                                <span class="text-danger">@error('name') {{$message}} @enderror</span>
                             </div>
 
 
 
                             <div class="col-md-12 mb-3">
                                     <label for="phone" class="form-label">Phone Number</label>
-                                    <input type="text" class="form-control" placeholder="phone" name="phone" value="{{$user['phone']}}">
+                                    <input type="text" class="form-control" placeholder="phone" name="phone" value="{{$users->phone}}">
+                                    <span class="text-danger">@error('phone') {{$message}} @enderror</span>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="email" class="form-label">Email Address</label>
-                                    <input type="text" class="form-control" placeholder="email" name="email" value="{{$user['email']}}">
+                                    <input type="text" class="form-control" placeholder="email" name="email" value="{{$users->email}}">
+                                    <span class="text-danger">@error('email') {{$message}} @enderror</span>
                                 </div>
 
                                 <div class="col-md-12 mb-3">
-                                    <label for="password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" placeholder="Password" name="password" value="{{$user['password']}}">
+                                    <label for="password" class="password">Password</label>
+                                    <input type="password" class="form-control" placeholder="password" name="password">
+                                    <span class="text-danger">@error('password') {{$message}} @enderror</span>
                                 </div>
+
+                             
                                 <div class="col-md-8 mb-3">
                                 <button type="button" class="btn btn-primary buttonGenerate">Generate</button>
                                 </div>
@@ -130,3 +135,9 @@
 
 @endsection
 
+<<<<<<< HEAD
+=======
+              
+
+              
+>>>>>>> 60a0eda7c621c17ac457d55e2c8be2179ea21c75
