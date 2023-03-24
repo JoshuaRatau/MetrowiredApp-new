@@ -110,29 +110,63 @@
                         <div>
                     </table>
                 </div>
-                <div class="modal fade" id="myModal">
+                {{-- Modal one --}}
+                <div class="modal fade" id="myModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+                    tabindex="-1">
                     <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <!-- Modal Header -->
-                                {{-- <div class="modal-header">
+
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            {{-- <div class="modal-header">
                                 <h4 class="modal-title">Modal Heading</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div> --}}
 
-                                <!-- Modal body -->
-                                <div class="modal-body">
-                                    <div class="mt-3 pt-3 d-flex align-items-center justify-content-center">
-                                        <h5>Are you sure you want to delete <br>this user?</h5>
-                                    </div>
-                                    <div class="mt-3 pt-3 d-flex align-items-center justify-content-center">
-                                        <a class="btn btn-danger" href="delete/{{ $user->id }}" role="button" id="btndelete">Yes</a>
-                                        <a class="btn btn-outline-dark"  data-bs-dismiss="modal" href="#" role="button" id="btndelete">No</a>
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <div class="mt-3 pt-3 d-flex align-items-center justify-content-center">
+                                    <h4>Are you sure you want to delete <br>this user?</h4>
+                                </div>
+                                <div class="mt-3 pt-3 d-flex align-items-center justify-content-center">
+
+                                    <a class="btn btn-danger" href="delete/{{ $user->id }}" role="button" id="btndelete" data-bs-toggle="modal"
+                                        data-bs-target="#sucessModal" data-bs-dismiss="modal">Yes</a>
+
+                                    <a class="btn btn-outline-dark" data-bs-dismiss="modal" href="#" role="button"
+                                        id="btndelete">No</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                {{-- Modal two --}}
+                <div class="modal fade" id="sucessModal">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            {{-- <div class="modal-header">
+                                <h4 class="modal-title">Modal Heading</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div> --}}
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <div class="mt-3 pt-3 d-flex align-items-center justify-content-center">
+                                    <h4>User Deleted</h4>
+                                </div>
+                                <div class="col-sm-12 mx-auto d-flex align-items-center justify-content-center">
+                                    <div class="text-center">
+                                        <img src={{ asset('assets/img/web/check_circle_outline_black_24dp.svg') }}
+                                            class="img-fluid logo" alt="logo" width="150" height="100">
                                     </div>
                                 </div>
-
                             </div>
+
                         </div>
+
                     </div>
                 </div>
             @endsection

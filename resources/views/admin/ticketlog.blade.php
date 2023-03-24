@@ -13,16 +13,11 @@
 
 
 
-
     <style>
         /* */
     </style>
 
 <link rel="stylesheet" href="{{ asset('assets/css/site.css') }}">
-
-
-
-
     <main>
         <div class="container">
             <div class="row col-sm-12 mb-6">
@@ -35,7 +30,7 @@
 
                 <div class="row mb-3 logForm">
                     <div class="row">
-                      
+
 
                         <form action="{{route('register-ticket')}}" method="post"  >
 
@@ -65,7 +60,7 @@
                                     </select>
                                 </div>
                             </div>
-                            
+
                             <div class="col-md-12 mb-3">
                                 <label for="inputAddress2" class="form-label">Affected User</label>
                                 <input type="text"  id="inputAddress2" placeholder="Apartment, studio, or floor"  class="form-control"  name="affected_user">
@@ -103,7 +98,7 @@
                                 </div>
                             </div>
                         </div>
-                  
+
                         <div class="col-sm-6">
                             <div class="col-md-6 mb-4">
                                 <label for="inputState" class="form-label">Technician</label>
@@ -136,7 +131,7 @@
                         <div class="col-sm-5">
                             <div class="mb-4" id="container">
                                 <button   class="btn btn-primary buttonLog" type="submit">Log</button>
-                              
+
                             </div>
 
                         </div>
@@ -250,7 +245,7 @@
     } else if (checkbox.checked && checkbox.name === 'option2') {
       document.querySelector('input[name="option1"]').checked = false;
     }
-    
+
     // Update the input field value
     document.getElementById('inputField').value = checkbox.checked ? checkbox.value : '';
   }

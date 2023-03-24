@@ -7,14 +7,16 @@ use App\Models\User;
 use DB;
 use Session;
 use Hash;
+use Illuminate\Support\Facades\Hash as FacadesHash;
+
 class CustomAuthController extends Controller
 {
 
-  
+
   public function admindashboard(){
     return view('admin.dashboard_admin');
   }
- 
+
 
 public function techdashboard(){
   return view('technician.techniciandashboard');
@@ -24,22 +26,23 @@ public function techdashboard(){
     public function registration(){
         return view("auth.registration");
     }
-    
+
     public function sysadmindashboard(){
 
       return view('system_admin.system_dashboard', [
 
           'users' =>User::all(),
+
       ]);
     }
-    
+
 
     //Add All User
     public function registerUser(Request $request){
 
 
            $request->validate([
-          'region'=>'required',     
+          'region'=>'required',
           'type'=>'required',
           'name'=>'required',
           'phone'=>'required',
@@ -58,13 +61,13 @@ public function techdashboard(){
       $res = $user->save();
       if($res){
        return back()->with('success', 'User registered Successfuly');
-      
-      // return redirect()->route('system_admin.system_admin_dashboard'); 
+
+      // return redirect()->route('system_admin.system_admin_dashboard');
 
       }else{
       return back()->with('fail', 'Something wrong');
       }
-    
+
       }
 
 
@@ -74,7 +77,7 @@ public function techdashboard(){
 
 
     $request->validate([
-    
+
       'email'=>'required',
       'password'=>'required',
     ]);
@@ -114,7 +117,7 @@ public function logout(){
 //Techician Login
   public function loginTech(Request $request){
     $request->validate([
-    
+
       'email'=>'required',
       'password'=>'required',
     ]);
@@ -154,11 +157,11 @@ public function logout(){
   }
 
 
-  //System Admin Login 
+  //System Admin Login
 
   public function loginSystem(Request $request){
     $request->validate([
-    
+
       'email'=>'required',
       'password'=>'required',
     ]);
@@ -185,8 +188,8 @@ public function logout(){
     }
 
   }
-      
-      
+
+
 //Dashboard for displaying username
 public function dashboard(){
 

@@ -48,7 +48,7 @@
                         </div>
                         <div class="col-sm-12 mx-auto d-flex align-items-center justify-content-center">
                             <!-- <div class="row mb-3"> -->
-                         
+
 
 
 
@@ -65,7 +65,7 @@
                                     <label for="email" class="form-label ">Email</label>
                                     <input type="text" class="form-control form-control-lg input-box" placeholder="email" name="email" value="{{old('email')}}">
                                     <span class="text-danger">@error('email') {{$message}} @enderror</span>
-                                    
+
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label ">Password</label>
@@ -80,7 +80,7 @@
                         </div>
                     </div>
                 </div>
-          
+
     </div>
     </main>
     </div>

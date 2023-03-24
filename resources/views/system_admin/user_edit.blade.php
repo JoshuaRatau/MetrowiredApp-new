@@ -35,12 +35,12 @@
                         < Edit User User</h4>
                 </div>
             </div>
-          
 
-     
-            
-                 
-                     
+
+
+
+
+
                         <!-- <div class="container"> -->
 
                         <form action="{{route('user_update', ['user'=>$user->id])}}" method="post">
@@ -71,7 +71,7 @@
                                         <option value="Region F">Region F</option>
                                         <option value="Region G">Region G</option>
                                     </select>
-                                </div>  
+                                </div>
 
 
 
@@ -85,16 +85,13 @@
                                         <option value="System Admin">System Admin</option>
                                     </select>
                                     </div>
-                            
-                                   
-                                                    
                                     <div class="col-md-12 mb-3">
                                 <label for="namr" class="form-label">Full Name</label>
                                 <input type="text" class="form-control" placeholder="name" name="name" value="{{$user['name']}}">
                             </div>
 
 
-                         
+
                             <div class="col-md-12 mb-3">
                                     <label for="phone" class="form-label">Phone Number</label>
                                     <input type="text" class="form-control" placeholder="phone" name="phone" value="{{$user['phone']}}">
@@ -113,12 +110,12 @@
                                 </div>
 
                             </div>
-                        
+
                         <div class="col-sm-5">
                             <div class="mb-4" id="container">
                                 <button  class="btn btn-primary buttonLog" type="submit">Edit</button>
-                            
-                        
+
+
                         <div class="col-sm-5">
                             <div class="mb-4" id="container">
                                 <button type="button" class="btn btn-primary buttonCancel">Cancel</button>
@@ -126,11 +123,10 @@
                             </div>
                             </div>
                     </div>
-                   
+
                 </form>
 
                 </main>
 
 @endsection
 
-              
