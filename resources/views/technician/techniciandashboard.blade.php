@@ -44,14 +44,15 @@
 
             </div>
 
-
-
             <div class="d-flex align-items-center justify-content-center">
-   @if (is_countable($tickets) && count($tickets) >0)
-
-@foreach ($tickets as $ticket) 
+  
                  <div class="card">
                     <div class="card-body">
+ @if (is_countable($tickets) && count($tickets) >0)
+
+@foreach ($tickets as $ticket) 
+
+               
                       <div class="row">
                             <div class="col-sm-10">
                                 <div class="row">

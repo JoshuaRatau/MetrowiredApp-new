@@ -3,8 +3,10 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\TicketController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,13 +66,13 @@ Route::get('/logout', [CustomAuthController::class, 'logout']);
 
 
 //Login for Technician
-Route::post('login-tech', [CustomAuthController::class, 'loginTech' ])->name('login-tech');
- Route::get('/techdashboard', [CustomAuthController::class, 'techdashboard']);
+Route::post('login-tech', [CustomAuthController::class, 'loginTech' ])->name('login-tech')->middleware('alreadyLoggedIn');
+  Route::get('/techdashboard', [CustomAuthController::class, 'techdashboard'])->middleware('isLoggedIn');
 Route::get('/Techlogout', [CustomAuthController::class, 'Techlogout']);
 
 //Login for Technician
 Route::post('login-system', [CustomAuthController::class, 'loginSystem' ])->name('login-system');
- Route::get('/techdashboard', [TicketController::class, 'techdashboard']);
+//   Route::get('/techdashboard', [TicketController::class, 'techdashboard']);
 Route::get('/Systemlogout', [CustomAuthController::class, 'Sytemlogout']);
 
 

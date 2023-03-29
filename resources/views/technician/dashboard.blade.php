@@ -32,6 +32,7 @@
                 <div class="row col-sm-6">
                     <div class="text-start">
                         <h4>My Tickets</h4>
+                        <h4></h4>
                     </div>
                 </div>
                 <div class="row col-sm-6">
@@ -41,15 +42,19 @@
                         </button>
                     </div>
                 </div>
-
+           
             </div>
 
+@if ($tickets !==null){
+    @foreach ($tickets as $ticket){
+        <h1>{{$ticket['affected_user']}}</h1>
+    }
+}
 
 
-            <div class="d-flex align-items-center justify-content-center">
-   @if (count($tickets)>0)
 
-@foreach ($tickets as $ticket)
+            <!-- <div class="d-flex align-items-center justify-content-center">
+  
                 <div class="card">
                     <div class="card-body">
                       <div class="row">
@@ -78,16 +83,17 @@
                                     <button type="button" onclick="window.location='{{ url("technician/ticketDetails") }}'"  class="btn btn-primary buttonView">
                                        View
                                     </button>
+                                   
                                 </div>
+                               
                             </div>
                             <hr>
-                        </div>
-                        @endforeach
-@else
+                         
+                        </div> -->
+                        @endforeach 
 
-<h1>There are no tickets to display</h1>
 @endif
-<div>           
+          
         </div>
     </main>
 

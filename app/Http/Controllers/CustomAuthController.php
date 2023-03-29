@@ -8,6 +8,7 @@ use App\Models\Ticket;
 use DB;
 use Session;
 use Hash;
+
 class CustomAuthController extends Controller
 {
 
@@ -19,23 +20,21 @@ class CustomAuthController extends Controller
   }
  
 
-public function techdashboard(){
-  return view('technician.techniciandashboard');
+  public function registration(){
+    return view("auth.registration");
+}
+
+public function sysadmindashboard(){
+
+  return view('system_admin.system_dashboard', [
+
+      'users' =>User::all(),
+  ]);
 }
 
 
-    public function registration(){
-        return view("auth.registration");
-    }
-    
-    public function sysadmindashboard(){
 
-      return view('system_admin.system_dashboard', [
 
-          'users' =>User::all(),
-      ]);
-    }
-    
 
     //Add All User
     public function registerUser(Request $request){
@@ -105,8 +104,19 @@ public function techdashboard(){
 
   }
 
-//Admin Logout
+  //Tech Dashboard
+  
+  public function techdashboard(){
 
+
+     // Get the logged-in technician
+     $user = User::find(session('loginId'));
+     $tickets = $user->assigned_to;
+return view('technician.dashboard', ['tickets' => $tickets]);
+
+
+
+      }
 public function logout(){
   if(Session::has('loginId')){
     Session::pull('loginId');
@@ -191,14 +201,14 @@ public function logout(){
       
       
 //Dashboard for displaying username
-public function dashboard(){
+// public function dashboard(){
 
-  $data = array();
-  if(Session::has('loginId')){
-    $data = User::where('id', '=', Session::get('loginId'))->first();
-  }
-  return redirect('techdashboard');
-}
+//   $data = array();
+//   if(Session::has('loginId')){
+//     $data = User::where('id', '=', Session::get('loginId'))->first();
+//   }
+//   return redirect('techdashboard', );
+// }
 
 public function systemdashboard(){
 
@@ -230,6 +240,8 @@ public function edit($id){
   $users= User::find($id);
   return view('system_admin.user_edit', compact('users'));
 }
+
+
 public function delete($id){
   $delete =DB::table('users')
   ->where('id', $id)
