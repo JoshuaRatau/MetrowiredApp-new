@@ -65,11 +65,13 @@ Route::get('/logout', [CustomAuthController::class, 'logout']);
 
 
 
+
 //Login for Technician
 Route::post('login-tech', [CustomAuthController::class, 'loginTech' ])->name('login-tech')->middleware('alreadyLoggedIn');
 Route::get('/techdashboard', [CustomAuthController::class, 'techdashboard'])->name('techdashboard.techdashboard');
 Route::get('technician/ticket_details/{id}', [TicketController::class, 'details']);
 Route::get('/Techlogout', [CustomAuthController::class, 'Techlogout']);
+Route::put('ticket-update/{id}', [TicketController::class, 'update']) ;
 
 //Login for Technician
 Route::post('login-system', [CustomAuthController::class, 'loginSystem' ])->name('login-system');

@@ -13,4 +13,10 @@ class Ticket extends Model
     {
         return $this->belongsTo(User::class, 'assigned_to');
     }
+
+    public function setStatusAttribute($value)
+{
+    $this->attributes['status'] = $value ?: 'Active';
+}
+
 }

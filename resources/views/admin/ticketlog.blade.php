@@ -75,16 +75,16 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-check form-check-inline">
-                                            <input type="checkbox" id="checkbox1" name="option1" value="INC-"  onclick="checkOption(this)">
+                                            <input type="checkbox" id="checkbox1" name="option1" value="INC-"  >
                                             <label for="checkbox1" >INC</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input type="checkbox" id="checkbox2" name="option2" value="SR-" onclick="checkOption(this)">
+                                            <input type="checkbox" id="checkbox2" name="option2" value="SR-">
                                             <label for="checkbox2">SR</label>
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                    <input type="text" id="ticket_number"  class="form-control" name="ticket_number">
+                                    <input type="text" id="inputbox"   class="form-control" name="ticket_number">
                                     <span class="text-danger">@error('ticket_number') {{$message}} @enderror</span>
                                     </div>
 
@@ -160,3 +160,35 @@
                         </div>
                     </div>
 </form>
+
+
+<script>
+$(document).ready(function() {
+    // When checkbox1 is clicked
+    $('#checkbox1').click(function() {
+        if ($(this).is(':checked')) {
+            // Set the inputbox value to checkbox1 value
+            $('#inputbox').val($(this).val());
+            // Uncheck checkbox2
+            $('#checkbox2').prop('checked', false);
+        } else {
+            // If checkbox1 is unchecked, clear the inputbox value
+            $('#inputbox').val('');
+        }
+    });
+    
+    // When checkbox2 is clicked
+    $('#checkbox2').click(function() {
+        if ($(this).is(':checked')) {
+            // Set the inputbox value to checkbox2 value
+            $('#inputbox').val($(this).val());
+            // Uncheck checkbox1
+            $('#checkbox1').prop('checked', false);
+        } else {
+            // If checkbox2 is unchecked, clear the inputbox value
+            $('#inputbox').val('');
+        }
+    });
+});
+
+ </script>

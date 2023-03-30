@@ -75,5 +75,18 @@ public function details($id){
        
 }
 
+public function update(Request $request, $id)
+{
+    $ticket = Ticket::findOrFail($id);
+    $ticket->status = $request->status;
+    $ticket->save();
+    if ($ticket->status == 'Complete') {
+        return redirect()->route('technician.home', $ticket->id);
+    } else {
+        return redirect()->back();
+    }
+
+
+}
     }
 

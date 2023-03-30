@@ -70,13 +70,31 @@
                                     <div class="mb-3">
 
                                         <label for="inputState" class="form-label"><b>Status:</b></label>
-                                        <select id="inputState" class="form-select">
+                                        <!-- <select id="inputState" class="form-select">
                                             <option selected>All</option>
                                             <option value="1">Active</option>
                                             <option value="2">Started</option>
                                             <option value="2">User not available</option>
                                             <option value="2">Complete</option>
-                                        </select>
+                                        </select> -->
+
+    <form method="POST" action="{{ url('ticket-update/'. $ticket->id) }}">
+    @csrf
+    @method('PUT')
+    <div class="form-group">
+        <label for="status">Progress Status</label>
+        <select name="status" id="status" class="form-control">
+            <option value="Started" {{ $ticket->status == 'Started' ? 'selected' : '' }}>Started</option>
+            <option value="User not available" {{ $ticket->status == 'User not available' ? 'selected' : '' }}>User not available</option>
+            <option value="Complete" {{ $ticket->status == 'Complete' ? 'selected' : '' }}>Complete</option>
+        </select>
+    </div>
+    
+
+
+
+
+
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
@@ -123,9 +141,10 @@
                          <div class="col-md-10">
                             <div class="map-Text">
                         
-                                    <button type="button" onclick="window.location='{{ url('technician/ticketUpdate') }}'"
+                                    <button type="submit"
                                         class="btn btn-primary map">Update</button>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>
