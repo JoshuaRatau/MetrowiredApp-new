@@ -9,6 +9,7 @@ use DB;
 use Session;
 use Hash;
 
+
 use Illuminate\Support\Facades\Hash as FacadesHash;
 
 class CustomAuthController extends Controller
@@ -112,11 +113,10 @@ class CustomAuthController extends Controller
   
   public function techdashboard(){
 
-
-     // Get the logged-in technician
-     $user = User::find(session('loginId'));
-     $tickets = $user->assigned_to;
-return view('technician.dashboard', ['tickets' => $tickets]);
+ 
+    $tickets = Ticket::where('assigned_to', session('loginId'))->get();
+        
+    return view('technician.dashboard', compact('tickets'));
 
 
 

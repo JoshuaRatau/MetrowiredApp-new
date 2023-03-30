@@ -26,13 +26,12 @@
 
 
 
-    <main>
+<main>
         <div class="container">
             <div class="row col-sm-12 myHeader">
                 <div class="row col-sm-6">
                     <div class="text-start">
                         <h4>My Tickets</h4>
-                        <h4></h4>
                     </div>
                 </div>
                 <div class="row col-sm-6">
@@ -42,32 +41,29 @@
                         </button>
                     </div>
                 </div>
-           
+
             </div>
 
-@if ($tickets !==null){
-    @foreach ($tickets as $ticket){
-        <h1>{{$ticket['affected_user']}}</h1>
-    }
-}
-
-
-
-            <!-- <div class="d-flex align-items-center justify-content-center">
+            <div class="d-flex align-items-center justify-content-center">
   
-                <div class="card">
+                 <div class="card">
                     <div class="card-body">
+ @if (is_countable($tickets) && count($tickets) >0)
+
+@foreach ($tickets as $ticket) 
+
+               
                       <div class="row">
                             <div class="col-sm-10">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <h4>{{$ticket['affected_user']}}</h4>
+                                        <h4>{{$ticket['description']}}</h4>
                                     </div>
                                     <div class=" col-sm-3">
                                         <p>{{$ticket['ticket_number']}}</p>
                                     </div>
                                     <div class=" col-sm-3">
-                                        <p>Phumi C. Dubula</p>
+                                        <p>{{$ticket['affected_user']}}</p>
                                     </div>
                                     <div class=" col-sm-3">
                                         <p> {{$ticket['region']}}</p>
@@ -83,17 +79,16 @@
                                     <button type="button" onclick="window.location='{{ url("technician/ticketDetails") }}'"  class="btn btn-primary buttonView">
                                        View
                                     </button>
-                                   
                                 </div>
-                               
                             </div>
                             <hr>
-                         
-                        </div> -->
-                        @endforeach 
+                        </div>
+                        @endforeach
+@else
 
+<h1>There are no tickets to display</h1>
 @endif
-          
+<div>            
         </div>
     </main>
 

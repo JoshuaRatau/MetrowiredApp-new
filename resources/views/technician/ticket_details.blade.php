@@ -30,7 +30,7 @@
         <main>
             <div class="container">
                 <div class="col-sm-12">
-                    <div class="backText" onclick="window.location='{{ url('technician/dashboard') }}'">
+                    <div class="backText" onclick="window.location='{{ url('/techdashboard') }}'">
                         <span class="mx-2">
                             <img src="{{ asset('assets/img/web/chevron-left.svg') }}" alt="" srcset="">
                         </span>
