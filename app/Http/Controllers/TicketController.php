@@ -81,7 +81,7 @@ public function update(Request $request, $id)
     $ticket->status = $request->status;
     $ticket->save();
     if ($ticket->status == 'Complete') {
-        return redirect()->route('technician.home', $ticket->id);
+        return redirect()->route('technician.update_ticket', $ticket->id);
     } else {
         return redirect()->back();
     }
