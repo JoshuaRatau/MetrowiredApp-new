@@ -76,9 +76,11 @@
 
                             <div class="col-sm-2 d-flex align-items-center justify-content-center">
                                 <div class="text-end">
-                                    <button type="button" onclick="window.location='{{ url("technician/ticketDetails") }}'"  class="btn btn-primary buttonView">
+                                <!-- <button type="button" onclick="window.href="technician/dashboard/{{$ticket->id}}"  class="btn btn-primary buttonView">
                                        View
-                                    </button>
+                                    </button> -->
+
+                                    <a href="{{ url('/technician/ticket_details', $ticket->id) }}">View Ticket</a>
                                 </div>
                             </div>
                             <hr>

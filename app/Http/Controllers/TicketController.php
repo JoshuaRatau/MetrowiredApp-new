@@ -61,7 +61,19 @@ class TicketController extends Controller
         //     ]);
         //   }
 
-          
+          //View ticket Details
+
+
+//   public function details($id){
+//     $tickets=Ticket::find($id);
+//     return view('technician.ticket_details', compact('tickets'));
+//   } 
+public function details($id){
+
+    $ticket = Ticket::find($id);
+    return view('technician.ticket_details', compact('ticket'));
+       
+}
 
     }
 

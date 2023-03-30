@@ -30,11 +30,11 @@
         <main>
             <div class="container">
                 <div class="col-sm-12">
-                    <div class="backText" onclick="window.location='{{ url('/techdashboard') }}'">
+                    <div class="backText" onclick="window.location='{{ url('techdashboard') }}'">
                         <span class="mx-2">
                             <img src="{{ asset('assets/img/web/chevron-left.svg') }}" alt="" srcset="">
                         </span>
-                        LAN-Dobsonville Fibre 8 Point
+                        {{$ticket['title']}}
                     </div>
                 </div>
 
@@ -52,14 +52,14 @@
                                     <div class="mb-3">
                                         <br>
                                         <h6>Affected User</h6>
-                                        <p>Phumi C.Dubula</p>
+                                        <p>{{$ticket['affected_user']}}</p>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="mb-3">
                                         <br>
                                         <h6>Contact Method</h6>
-                                        <p>+27 72 385 9233</p>
+                                        <p>{{$ticket['contact']}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -83,14 +83,14 @@
                                     <div class="mb-3">
 
                                         <h6>Alternate Contacts</h6>
-                                        <p>+27 82 385 9233</p>
+                                        <p>{{$ticket['alternate_contact']}}</p>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="mb-3">
                                         <br>
                                         <h6>Date Logged</h6>
-                                        <p>02 Feb 2023</p>
+                                        <p>{{$ticket->created_at->format('Y-m-d')}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -101,13 +101,13 @@
 
 
                 </div>
-              
+                <div class="d-flex align-items-start justify-content-start">
                     <div class="row">
                         <div class="col-md-10">
                             <div class="map-Text">
                                 <br>
                                 <h6>Location</h6>
-                                <p>39 Ungoye street Dobsonville Customer Service Center Dobsonville ext 4 soweto</p>
+                                <p>{{$ticket['location']}}</p>
 
                                 <button type="button" class="btn btn-primary map">View Map</button>
                             </div>
@@ -116,13 +116,13 @@
                             <div class="map-Text">
                                  <br>
                                 <h6>Description</h6>
-                                <p>We are short of network points for connectivity. We need additional points</p>
+                                <p>{{$ticket['description']}}</p>
 <br>
                             </div>
                         </div>
                          <div class="col-md-10">
                             <div class="map-Text">
-                                <h6>Ticket Accepted</h2>
+                        
                                     <button type="button" onclick="window.location='{{ url('technician/ticketUpdate') }}'"
                                         class="btn btn-primary map">Update</button>
                             </div>

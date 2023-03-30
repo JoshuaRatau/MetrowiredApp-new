@@ -57,7 +57,7 @@
                             <div class="col-sm-10">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <h4>{{$ticket['affected_user']}}</h4>
+                                        <h4>{{$ticket['description']}}</h4>
                                     </div>
                                     <div class=" col-sm-3">
                                         <p>{{$ticket['ticket_number']}}</p>
@@ -76,7 +76,7 @@
 
                             <div class="col-sm-2 d-flex align-items-center justify-content-center">
                                 <div class="text-end">
-                                    <button type="button" onclick="window.location='{{ url("technician/ticketDetails") }}'"  class="btn btn-primary buttonView">
+                                    <button type="button" onclick="window.location="{{route('technician.ticket_details'. ['ticket' =>$ticket['id']])}}"  class="btn btn-primary buttonView">
                                        View
                                     </button>
                                 </div>
