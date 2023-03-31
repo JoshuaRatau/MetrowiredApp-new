@@ -42,7 +42,8 @@
             border: 1px solid#ffffff !important;
             font-weight: 600 !important;
             margin-right: 30px;
-          
+             margin: 10px 10px 10px 10px;
+
         }
 
         .buttonName:active,
@@ -51,6 +52,7 @@
             background-color: #100f44 !important;
             color: whitesmoke !important;
             box-shadow: none !important;
+
         }
     </style>
 </head>
@@ -71,7 +73,6 @@
             <div class="collapse navbar-collapse  align-items-end justify-content-end" id="navbarScroll">
 
                 <form class="d-flex">
-
                     <button class="btn btn-light buttonName" type="submit">
                         <svg width="40" height="34" viewBox="0 0 146 145" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -85,15 +86,13 @@
                                 d="M100.142 57.3945C100.142 52.0174 98.5479 46.7609 95.5603 42.29C92.5727 37.819 88.3266 34.3343 83.3591 32.2765C78.3911 30.2188 72.9246 29.6804 67.6508 30.7295C62.3771 31.7785 57.5326 34.3678 53.7304 38.1701C49.9281 41.9723 47.3388 46.8166 46.2898 52.0905C45.2407 57.3644 45.7791 62.8308 47.8369 67.7988C49.8946 72.7663 53.3793 77.0124 57.8502 80C62.3215 82.9876 67.5777 84.582 72.9548 84.582C80.1631 84.5741 87.0736 81.7067 92.1703 76.61C97.267 71.5133 100.134 64.6028 100.142 57.3945ZM72.9548 72.4987C69.9672 72.4987 67.0473 71.6129 64.5636 69.9533C62.0798 68.2937 60.1436 65.9344 59.0004 63.1746C57.8572 60.4147 57.5581 57.3778 58.1409 54.4479C58.7237 51.5179 60.1622 48.8266 62.2744 46.7142C64.3871 44.6019 67.0781 43.1634 70.0083 42.5806C72.9379 41.9978 75.975 42.2969 78.7349 43.4401C81.4947 44.5833 83.854 46.5192 85.5136 49.0031C87.1732 51.487 88.059 54.4072 88.059 57.3945C88.059 59.378 87.6681 61.3421 86.9092 63.1746C86.1504 65.007 85.0375 66.6721 83.6353 68.075C82.2324 69.4772 80.5673 70.5901 78.7349 71.3489C76.9024 72.1078 74.9383 72.4987 72.9548 72.4987Z"
                                 fill="black" />
                         </svg>
-                      
-                    </button>
 
-                   
-               
-                  
-                    <button class="btn btn-light buttonLogout" type="button" onclick="location.href='logout';">
-                      
-                        <svg width="35" height="24" viewBox="0 0 51 53" fill="none"
+                    </button>
+                </form>
+                <form class="d-flex">
+                    <button class="btn btn-light buttonName" type="button" onclick="location.href='logout';">
+
+                        <svg width="40" height="34" viewBox="0 0 51 53" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M34.332 35.3386L37.9985 39.005L51 26.0035L37.9985 13.002L34.332 16.6684L41.0408 23.4032H15.8959V28.6038H41.0408L34.332 35.3386Z"
@@ -104,10 +103,11 @@
                         </svg>
                         {{ __('Logout') }}
                     </button>
+
                 </form>
 
 
-                </form>
+
             </div>
         </div>
     </nav>
