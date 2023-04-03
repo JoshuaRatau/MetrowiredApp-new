@@ -8,8 +8,6 @@ use App\Models\Ticket;
 use DB;
 use Session;
 use Hash;
-
-
 use Illuminate\Support\Facades\Hash as FacadesHash;
 
 class CustomAuthController extends Controller

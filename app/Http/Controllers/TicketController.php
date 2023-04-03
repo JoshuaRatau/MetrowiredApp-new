@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Users;
 use App\Models\Ticket;
+use App\Models\Completed;
 
 
 class TicketController extends Controller
@@ -74,19 +75,17 @@ public function details($id){
     return view('technician.ticket_details', compact('ticket'));
        
 }
-
 public function update(Request $request, $id)
 {
     $ticket = Ticket::findOrFail($id);
     $ticket->status = $request->status;
     $ticket->save();
     if ($ticket->status == 'Complete') {
-        return redirect()->route('technician.update_ticket', $ticket->id);
+        return view('technician.update_ticket', compact('ticket') );
     } else {
         return redirect()->back();
     }
+}
 
 
 }
-    }
-

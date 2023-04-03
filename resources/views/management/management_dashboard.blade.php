@@ -184,9 +184,7 @@
     <input id="search-focus" type="search" id="form1" class="search"  placeholder="Search" />
    
   </div>
-  <!-- <button type="button" class="btnSearch">
-    <i class="fas fa-search"></i>
-  </button> -->
+
 </div>
 </div>
 
@@ -272,11 +270,11 @@
                             <div class="row ">
                                 <div class="col-lg-6 ">
 
-                                <button onclick="window.location='{{route('admin.logTicket')}}'" class="print"> <img src={{ asset('assets/img/web/Download.svg') }}  width="40" height="34" alt="Black Icon"> Download</button>
+                                <button  class="print"> <img src={{ asset('assets/img/web/Download.svg') }}  width="40" height="34" alt="Black Icon"> Download</button>
                                 </div>
 
                                 <div class="col-lg-4 ">
-                                <button onclick="window.location='{{route('admin.logTicket')}}'" class="print"> <img src={{ asset('assets/img/web/Print.svg') }}  width="40" height="34" alt="Black Icon"> Print</button>
+                                <button  class="print"> <img src={{ asset('assets/img/web/Print.svg') }}  width="40" height="34" alt="Black Icon"> Print</button>
                                 </div>
                             </div>
                         </div>
@@ -299,8 +297,6 @@
 </div>
 
 </div>
-
-
  <!-- table -->
  <table id="customers">
         

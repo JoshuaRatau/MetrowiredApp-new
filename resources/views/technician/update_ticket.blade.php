@@ -57,9 +57,12 @@
 
                         <div class="col-sm-10">
                             <br>
+                            <form method="POST" action="{{ url('comment-update/'. $ticket->id) }}">
+                            {{ csrf_field() }}
+                            {{ method_field('put') }}
 
                             <label for="inputState" class="form-label"><b>Response:</b></label>
-                            <select id="inputState" class="form-select">
+                            <select name="response" id="inputState" class="form-select">
                                 <option selected>Select a response</option>
                                 <option value="1">Network points installed</option>
                                 <option value="2">Network point repaired</option>
@@ -75,7 +78,7 @@
                         </div>
                         <div class="col-sm-3">
                             <br>
-                            <input type="number" id="quantity" name="quantity" min="1" max="5">
+                            <input type="number" id="number_points" name="number_points" min="1" max="10">
                         </div>
 
 
@@ -84,7 +87,7 @@
                             <div class="mb-3">
                                 <label for="exampleFormControlTextarea1" class="form-label"><b>Comment:</b></label>
                                  <p class="text-end"> 250 character limit:</p>
-                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" rows="6" cols="53" maxlength="250" ></textarea>
+                                <textarea name="comment" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" rows="6" cols="53" maxlength="250" ></textarea>
 
                             </div>
 
@@ -92,21 +95,13 @@
                         </div>
                         <div class="col-sm-10">
                             <div class="text-center">
-                                <button type="button" onclick="window.location='{{ url('technician/dashboard') }}'"
-                                class="btn btn-primary btnLogin">Complete</button>
-                            </div>
-
+                                <button type="submit" class="btn btn-primary btnLogin">Complete</button>
+                                </div>
+                            </form>
                         </div>
-
                     </div>
                     <div class="row">
-
-                    </div>
-                </form>
+                    </div> 
             </div>
-
-
-
-
         </div>
     @endsection

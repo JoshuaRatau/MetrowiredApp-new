@@ -69,7 +69,7 @@
                                 <div class="col-sm-12">
                                     <div class="mb-3">
 
-                                        <label for="inputState" class="form-label"><b>Status:</b></label>
+                                        <!-- <label for="inputState" class="form-label"><b>Status:</b></label> -->
                                         <!-- <select id="inputState" class="form-select">
                                             <option selected>All</option>
                                             <option value="1">Active</option>
@@ -78,9 +78,9 @@
                                             <option value="2">Complete</option>
                                         </select> -->
 
-    <form method="POST" action="{{ url('ticket-update/'. $ticket->id) }}">
-    @csrf
-    @method('PUT')
+    <form method="POST" action="{{ url('ticket-details/'. $ticket->id) }}">
+    {{ csrf_field() }}
+{{ method_field('put') }}
     <div class="form-group">
         <label for="status">Progress Status</label>
         <select name="status" id="status" class="form-control">
@@ -142,7 +142,7 @@
                             <div class="map-Text">
                         
                                     <button type="submit"
-                                        class="btn btn-primary map">Update</button>
+ class="btn btn-primary map">Update</button>
                             </div>
                             </form>
                         </div>

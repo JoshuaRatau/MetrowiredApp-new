@@ -72,13 +72,11 @@ Route::get('/techdashboard', [CustomAuthController::class, 'techdashboard'])->na
 Route::get('technician/ticket_details/{id}', [TicketController::class, 'details']);
 Route::get('/Techlogout', [CustomAuthController::class, 'Techlogout']);
 Route::put('ticket-update/{id}', [TicketController::class, 'update']) ;
+Route::put('comment-update/{id}', [CommentsController::class, 'store']) ;
 
 //Login for Technician
 Route::post('login-system', [CustomAuthController::class, 'loginSystem' ])->name('login-system');
-//   Route::get('/techdashboard', [TicketController::class, 'techdashboard']);
 Route::get('/Systemlogout', [CustomAuthController::class, 'Sytemlogout']);
-
-
 Route::get('/ticket', [TicketController::class, 'ticket']);
 Route::post('/register-ticket', [TicketController::class, 'registerTicket'])->name('register-ticket');
 
