@@ -167,12 +167,6 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
 
                         <div class="modal-content">
-                            <!-- Modal Header -->
-                            {{-- <div class="modal-header">
-                                <h4 class="modal-title">Modal Heading</h4>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                            </div> --}}
-
                             <!-- Modal body -->
                             <div class="modal-body">
                                 <div class="mt-3 pt-3 d-flex align-items-center justify-content-center">

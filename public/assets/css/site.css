@@ -6,8 +6,10 @@
 }
 
 .backText {
-    margin-left: 9rem;
-    margin-right: 9rem;
+    margin-left: 5.2rem;
+    margin-right: 5.2rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
 }
 
 #container {
@@ -21,7 +23,7 @@
 .buttonCancel {
     display: inline-block;
     width: 60% !important;
-    margin: 10px 10px 10px 10px;
+    margin: 30px 30px 30px 30px;
     height: max-content !important;
     border-radius: 40px !important;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2) !important;
@@ -30,6 +32,12 @@
     border: 1px solid#ffffff !important;
     font-weight: 600 !important;
 
+}
+#btndelete {
+    width: 40% !important;
+    margin: 10px 10px 10px 10px;
+    height: max-content !important;
+    border-radius: 40px !important;
 }
 
 .buttonCancel:active,
@@ -85,7 +93,7 @@
 .buttonLog {
     display: inline-block;
     width: 60% !important;
-    margin: 10px 10px 10px 10px;
+    margin: 30px 30px 30px 30px;
     height: max-content !important;
     border-radius: 40px !important;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2) !important;
