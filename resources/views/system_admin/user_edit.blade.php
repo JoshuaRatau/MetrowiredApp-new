@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="d-flex align-items-center justify-content-center">
-                   
+
 
                     <form action="{{ url('update-user/' . $users->id) }}" method="post">
 
@@ -155,6 +155,7 @@
 
                             </form>
                         </div>
+                    </form>
                 </div>
 
                 </form>

@@ -83,7 +83,7 @@
             </a>
 
 
-            <div class="container-fluid">
+            {{-- <div class="container-fluid">
                 <div class="col-sm-2">
 
                     <button type="button" class="btn btn-light buttonAdd"> <img
@@ -92,7 +92,7 @@
 
                 </div>
 
-            </div>
+            </div> --}}
 
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"

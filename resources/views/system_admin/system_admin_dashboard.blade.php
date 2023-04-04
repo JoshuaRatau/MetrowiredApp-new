@@ -100,18 +100,18 @@
                             </tr>
 
                             <!-- <td class="text-center">{{ $user['created_at'] }}</td>
-                <td class="gray_td text-center">{{ $user['type'] }}</td>
-                <td class="text-center">{{ $user['name'] }}</td>
-                <td class="gray_td text-center">{{ $user['email'] }}</td>
-                <td class=" text-center"></td>
-                <td class="text-center">{{ $user['region'] }}</td>
-                   <td class="text-center">
-                   <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button>
-                   <td class="text-center">
-                   <button class="edit">Edit</button>
+                    <td class="gray_td text-center">{{ $user['type'] }}</td>
+                    <td class="text-center">{{ $user['name'] }}</td>
+                    <td class="gray_td text-center">{{ $user['email'] }}</td>
+                    <td class=" text-center"></td>
+                    <td class="text-center">{{ $user['region'] }}</td>
+                       <td class="text-center">
+                       <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button>
+                       <td class="text-center">
+                       <button class="edit">Edit</button>
 
-    </tr>
-        </tbody>
+        </tr>
+            </tbody>
     @endforeach
-    </table> -->
+        </table> -->
                         @endsection

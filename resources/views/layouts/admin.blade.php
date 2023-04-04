@@ -42,7 +42,7 @@
             border: 1px solid#ffffff !important;
             font-weight: 600 !important;
             margin-right: 30px;
-             margin: 10px 10px 10px 10px;
+            margin: 10px 10px 10px 10px;
 
         }
 

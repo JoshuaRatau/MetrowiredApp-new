@@ -41,12 +41,10 @@ require_once "web/system_admin.php";
 require_once "web/admin.php";
 
 Auth::routes();
-
+// Routes for System Admin
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/registration', [CustomAuthController::class, 'registration']);
 Route::post('/register-user', [CustomAuthController::class, 'registerUser'])->name('register-user');
-
-
 
 Route::get('/sysadmindashboard', [CustomAuthController::class, 'sysadmindashboard']);
 Route::get('edit/{id}', [CustomAuthController::class, 'edit']);
@@ -58,7 +56,7 @@ Route::get('delete/{id}', [CustomAuthController::class, 'delete']);
 
 
 
-//Login for Admin
+//Routes for Admin
 Route::post('login-admin', [CustomAuthController::class, 'loginAdmin' ])->name('login-admin');
 Route::get('/admindashboard', [CustomAuthController::class, 'admindashboard']);
 Route::get('/logout', [CustomAuthController::class, 'logout']);
@@ -66,7 +64,7 @@ Route::get('/logout', [CustomAuthController::class, 'logout']);
 
 
 
-//Login for Technician
+//Routes for Technician
 Route::post('login-tech', [CustomAuthController::class, 'loginTech' ])->name('login-tech')->middleware('alreadyLoggedIn');
 Route::get('/techdashboard', [CustomAuthController::class, 'techdashboard'])->name('techdashboard.techdashboard');
 Route::get('technician/ticket_details/{id}', [TicketController::class, 'details']);
@@ -74,7 +72,7 @@ Route::get('/Techlogout', [CustomAuthController::class, 'Techlogout']);
 Route::put('ticket-update/{id}', [TicketController::class, 'update']) ;
 Route::put('comment-update/{id}', [CommentsController::class, 'store']) ;
 
-//Login for Technician
+//Routes for Technician
 Route::post('login-system', [CustomAuthController::class, 'loginSystem' ])->name('login-system');
 Route::get('/Systemlogout', [CustomAuthController::class, 'Sytemlogout']);
 Route::get('/ticket', [TicketController::class, 'ticket']);

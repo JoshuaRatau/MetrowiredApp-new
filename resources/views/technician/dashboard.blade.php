@@ -26,7 +26,7 @@
 
 
 
-<main>
+    <main>
         <div class="container">
             <div class="row col-sm-12 myHeader">
                 <div class="row col-sm-6">
@@ -45,53 +45,50 @@
             </div>
 
             <div class="d-flex align-items-center justify-content-center">
-  
-                 <div class="card">
+
+                <div class="card">
                     <div class="card-body">
- @if (is_countable($tickets) && count($tickets) >0)
+                        @if (is_countable($tickets) && count($tickets) > 0)
 
-@foreach ($tickets as $ticket) 
-
-               
-                      <div class="row">
-                            <div class="col-sm-10">
+                            @foreach ($tickets as $ticket)
                                 <div class="row">
-                                    <div class="col-sm-12">
-                                        <h4>{{$ticket['description']}}</h4>
+                                    <div class="col-sm-10">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <h4>{{ $ticket['title'] }}</h4>
+                                            </div>
+                                            <div class=" col-sm-3">
+                                                <p>{{ $ticket['ticket_number'] }}</p>
+                                            </div>
+                                            <div class=" col-sm-3">
+                                                <p>{{ $ticket['affected_user'] }}</p>
+                                            </div>
+                                            <div class=" col-sm-3">
+                                                <p> {{ $ticket['region'] }}</p>
+                                            </div>
+                                            <div class=" col-sm-3">
+                                                <p>LAN</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class=" col-sm-3">
-                                        <p>{{$ticket['ticket_number']}}</p>
-                                    </div>
-                                    <div class=" col-sm-3">
-                                        <p>{{$ticket['affected_user']}}</p>
-                                    </div>
-                                    <div class=" col-sm-3">
-                                        <p> {{$ticket['region']}}</p>
-                                    </div>
-                                    <div class=" col-sm-3">
-                                        <p>LAN</p>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="col-sm-2 d-flex align-items-center justify-content-center">
-                                <div class="text-end">
-                                <!-- <button type="button" onclick="window.href="technician/dashboard/{{$ticket->id}}"  class="btn btn-primary buttonView">
-                                       View
-                                    </button> -->
+                                    <div class="col-sm-2 d-flex align-items-center justify-content-center">
+                                        <div class="text-end">
+                                            <button type="button" class="btn btn-primary buttonView" onclick="window.location='{{ url('/technician/ticket_details', $ticket->id) }}'">
+                                                View
+                                            </button>
 
-                                    <a href="{{ url('/technician/ticket_details', $ticket->id) }}">View Ticket</a>
+                                            {{-- <a href="{{ url('/technician/ticket_details', $ticket->id) }}">View Ticket</a> --}}
+                                        </div>
+                                    </div>
+                                    <hr>
                                 </div>
-                            </div>
-                            <hr>
+                            @endforeach
+                        @else
+                            <h1>There are no tickets to display</h1>
+                        @endif
+                        <div>
                         </div>
-                        @endforeach
-@else
-
-<h1>There are no tickets to display</h1>
-@endif
-<div>            
-        </div>
     </main>
 
 @endsection

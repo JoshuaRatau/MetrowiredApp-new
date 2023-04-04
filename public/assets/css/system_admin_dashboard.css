@@ -87,24 +87,20 @@
 /* Reseting */
 
 .logForm {
-    width: 80% !important;
+    /* width: 80% !important;
     padding-top: 3rem;
-    padding-bottom: 1rem;
+    padding-bottom: 1rem; */
     /* margin: 50px 50px 50px 50px!important; */
+width: 50% !important;
+        margin-left: auto;
+        margin-right: auto;
 }
 
 .backText {
-    margin-left: 9rem;
-    margin-right: 9rem;
+    /* margin-left: 9rem;
+    margin-right: 9rem; */
 }
 
-#container {
-    display: flex;
-    justify-content: space-between;
-
-    margin: auto;
-
-}
 
 .buttonCancel {
     display: inline-block;
