@@ -30,7 +30,7 @@
                     <div class="col-sm-6">
 
                     </div>
-                    <div class="row mt-5 pt-5 d-flex justify-content-between">
+                    <div class="row mt-2 pt-2 d-flex justify-content-between">
 
 
                         <div class="col-lg-3">
@@ -43,7 +43,7 @@
 
                         </div>
 
-                 
+
 
 
                     </div>

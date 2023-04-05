@@ -27,23 +27,18 @@
 
 
 
-
-
-
-
-
-        <main class="my-auto">
+        <main>
             <div class="container">
 
                 <div class=" form_wrapper custom_scrollbar">
                     <div class="row d-flex justify-content-end">
-                        {{-- <div class="col-sm-6">
+                        <div class="col-sm-6">
 
-                        </div> --}}
-                        <div class="row  d-flex justify-content-between">
+                        </div>
+                        <div class="row mt-3 pt-3 d-flex justify-content-between">
                             <div class="col-lg-3">
                                 <div>
-                                    <h3 style="padding: 10px 10px"><b>Tickets Logged</b>
+                                    <h3><b>Tickets Logged </b>
                                         <h3>
                                 </div>
 
@@ -56,51 +51,60 @@
 
                                     <button type="button" onclick="window.location='{{ url('/ticket') }}'"
                                         class="btn btn-primary btn-lg btnLogin"> <img
-                                            src={{ asset('assets/img/web/LogTicket.svg') }} width="40"
+                                            src={{ asset('assets/img/web/LogTicket.svg') }} width="35"
                                             height="34">Log a ticket</button>
                                 </div>
                                 <br>
                             </div>
 
                             <!-- table -->
-                            <table id="customers">
-
-                                <tr>
-
-                                    <th scope="col" class="text-center">Ticket Type</th>
-                                    <th scope="col" class="text-center">Ticket Number</th>
-                                    <th scope="col" class="text-center">Network Type</th>
-                                    <th scope="col" class="text-center">Number of Points(Break-Fix)</th>
-                                    <th scope="col" class="text-center">Call Logged</th>
-                                    <th scope="col" class="text-center">Affected User</th>
-                                    <th scope="col" class="text-center">Status</th>
-                                    <th scope="col" class="text-center">Region</th>
-                                    <th scope="col" class="text-center">Technician</th>
-
-                                </tr>
-                                </thead>
-                                <tbody>
-                                    @if (is_countable($tickets) > 0)
-                                        @foreach ($tickets as $ticket)
-                                            <tr>
-
-                                                <td class="text-center">SR</td>
-                                                <td class="gray_td text-center">SR564893</td>
-                                                <td class="text-center">WAN</td>
-                                                <td class="gray_td text-center">8</td>
-                                                <td class=" text-center">07:45</td>
-                                                <td class="text-center">J.Jackman</td>
-                                                <td class="text-center">Logged</td>
-                                                <td class="text-center">Region A</td>
-                                                <td class="text-center">Sandile Hadebe</td>
-
-                                            </tr>
-                                </tbody>
-                                @endforeach
-                            @else
-                                <h4>There are no users to display</h4>
-                                @endif
+                            <div class="table-responsive">
 
 
-                            </table>
-                        @endsection
+                                <table id="customers" class="table table-borderede">
+                                    <thead>
+                                        <tr>
+
+                                            <th scope="col" class="text-center">Ticket Type</th>
+                                            <th scope="col" class="text-center">Ticket Number</th>
+                                            <th scope="col" class="text-center">Network Type</th>
+                                            <th scope="col" class="text-center">Number of Points(Break-Fix)</th>
+                                            <th scope="col" class="text-center">Call Logged</th>
+                                            <th scope="col" class="text-center">Affected User</th>
+                                            <th scope="col" class="text-center">Status</th>
+                                            <th scope="col" class="text-center">Region</th>
+                                            <th scope="col" class="text-center">Technician</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (is_countable($tickets) > 0)
+                                            @foreach ($tickets as $ticket)
+                                                <tr>
+
+                                                    <td class="text-center">{{ $ticket['ticket_number'] }}</td>
+                                                    <td class="gray_td text-center">{{ $ticket['ticket_number'] }}</td>
+                                                    <td class="text-center">{{ $ticket['network_type'] }}</td>
+                                                    <td class="gray_td text-center">{{ $ticket['fixes'] }}</td>
+                                                    <td class=" text-center">{{ $ticket['created_at'] }}</td>
+                                                    <td class="text-center">{{ $ticket['affected_user'] }}</td>
+                                                    <td class="text-center">Logged</td>
+                                                    <td class="text-center">{{ $ticket['region'] }}</td>
+                                                    <td class="text-center">{{ $ticket['technician'] }}</td>
+
+                                                </tr>
+                                            @endforeach
+                                        @else
+                                            <h4>There are no users to display</h4>
+                                        @endif
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    @endsection

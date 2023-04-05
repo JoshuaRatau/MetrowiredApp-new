@@ -1,4 +1,3 @@
-
 @extends('layouts.system_admin')
 
 @section('title', 'Metrowired')
@@ -30,10 +29,15 @@
             <div class="d-flex justify-content-center">
                 <div class="row">
                     <div class="col-md-12">
-                        <h4 class="backText">
-                            < Add a User</h4>
+                        <div class="backText" onclick="window.location='{{ url('sysadmindashboard') }}'">
+                            <span class="mx-2">
+                                <img src="{{ asset('assets/img/web/chevron-left.svg') }}" alt="" srcset="">
+                            </span>
+                            Add a User
+                        </div>
                     </div>
                     <div class="col-md-12">
+
                         <form action="{{ route('register-user') }}" method="post" class="logForm">
                             @if (Session::has('success'))
                                 <div class="alert alert-success">{{ Session::get('success') }}</div>
@@ -120,7 +124,7 @@
                                 <div class="col-sm-12 mb-3 text-end">
                                     <button type="button" class="btn btn-primary buttonGenerate">Generate</button>
                                 </div>
-                                <div class="row p-5">
+                                <div class="row p-lg-3 p-sm-1">
                                     <div class="col-sm-6">
                                         <button class="btn btn-primary buttonLog" data-bs-toggle="modal"
                                             data-bs-target="#addModal"type="submit">Add</button>
@@ -132,7 +136,7 @@
                             </div>
                         </form>
                     </div>
-                </div>-
+                </div>
             </div>
 
             {{-- Modal one --}}
