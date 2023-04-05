@@ -96,6 +96,12 @@ width: 50% !important;
         margin-right: auto;
 }
 
+ @media only screen and (max-width: 760px) {
+    .logForm{
+        width: 100%!important;
+    }
+
+ }
 .backText {
     /* margin-left: 9rem;
     margin-right: 9rem; */
