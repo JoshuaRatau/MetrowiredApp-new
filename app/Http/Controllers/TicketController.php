@@ -9,6 +9,13 @@ use App\Models\Ticket;
 use App\Models\Completed;
 
 
+
+
+use App\Exports\MyTableExport;
+use Maatwebsite\Excel\Facades\Excel;
+
+
+
 class TicketController extends Controller
 {
 
@@ -71,6 +78,13 @@ class TicketController extends Controller
 //     $tickets=Ticket::find($id);
 //     return view('technician.ticket_details', compact('tickets'));
 //   }
+
+
+
+
+
+
+
     public function details($id)
     {
 
@@ -85,12 +99,35 @@ public function update(Request $request, $id)
     $ticket->status = $request->status;
     $ticket->save();
     if ($ticket->status == 'Complete') {
-        return redirect()->route('technician.update_ticket', $ticket->id);
+        return view('technician.update_ticket', ['ticket' =>$ticket]);
     } else {
         return redirect()->back();
     }
+}
 
+public function storeComments(Request $request, $ticketId)
+{
+    $ticket = Ticket::findOrFail($ticketId);
+    $ticket->response = $request->input('response');
+    $ticket->response = $request->input('number_points');
+    $ticket->comments = $request->input('comments');
+    $ticket->save();
+
+    return redirect()->route('technician.home');
+}
+
+
+
+public function download()
+{
+    $data = Ticket::all(); 
+    $fileName = 'management_reports.xlsx'; // Replace your_file_name with the name you want to give your Excel file
+    
+    return Excel::download(function($excel) use ($data) {
+        $excel->sheet('Sheet1', function($sheet) use ($data) {
+            $sheet->fromArray($data);
+        });
+    }, $fileName);
+}
 
 }
-    }
-

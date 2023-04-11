@@ -111,7 +111,7 @@ class CustomAuthController extends Controller
   
   public function techdashboard(){
 
- 
+
     $tickets = Ticket::where('assigned_to', session('loginId'))->get();
         
     return view('technician.dashboard', compact('tickets'));
@@ -206,15 +206,6 @@ public function logout(){
   }
 
 
-//Dashboard for displaying username
-// public function dashboard(){
-
-//   $data = array();
-//   if(Session::has('loginId')){
-//     $data = User::where('id', '=', Session::get('loginId'))->first();
-//   }
-//   return redirect('techdashboard', );
-// }
 
 public function systemdashboard(){
 
@@ -255,4 +246,71 @@ public function delete($id){
   return redirect('sysadmindashboard');
 
 }
+
+
+//Management Screens
+
+public function loginManagement(Request $request){
+  $request->validate([
+
+    'email'=>'required',
+    'password'=>'required',
+  ]);
+
+  $user = User::where('email', '=', $request->email)->first();
+  if ($user){
+    if (Hash::check($request->password, $user->password)){
+      if($user && $user->type === 'Management'){
+
+
+
+    $request->session()->put('loginId', $user->id);
+    return redirect('managementdashboard');
+
+}else{
+  return back()->with('fail', 'Incorrect login credentials');
 }
+
+}else{
+return back()->with('fail', 'Incorrect login credentials');
+}
+  }else{
+    return back()->with('fail', 'Inorrect login credentials');
+  }
+
+}
+
+public function managementdashboard(){
+$data = array();
+if(Session::has('loginId')){
+  $data = User::where('id', '=',Session::has('loginId'))->first();
+ 
+
+  //Counting
+  $service = DB::table('tickets')->where('ticket_number', 'like', 'sr%')->count();
+  $incident = DB::table('tickets')->where('ticket_number', 'like', 'in%')->count();
+  $open = Ticket::where('status', 'Active')->count();
+  $closed = Ticket::where('status', 'Complete')->count();
+  $ticketCount = Ticket::count();
+  $tickets = Ticket::all();
+ 
+  
+  
+
+}
+return view('management.management_dashboard', compact('data', 'service', 'incident' , 'open', 'closed', 'ticketCount', 'tickets'));
+
+
+}
+
+public function managementlogout(){
+  if(Session::has('loginId')){
+    Session::pull('loginId');
+    return view('management.home');
+  }
+}
+
+}
+
+
+

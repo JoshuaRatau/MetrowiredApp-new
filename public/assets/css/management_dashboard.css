@@ -9,23 +9,23 @@
     overflow: hidden;
   }
   
-#customers {
+#myTable {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
   
   }
   
-  #customers td{
+  #myTable td{
     border: 1px solid #ddd;
     padding: 8px;
   }
   
-  #customers td:nth-child(odd){background-color: #ddd;}
+  #myTable td:nth-child(odd){background-color: #ddd;}
   
-  #customers td:hover {background-color: #f2f2f2;}
+  #myTable td:hover {background-color: #f2f2f2;}
   
-  #customers th {
+  #myTable th {
     padding-top: 12px;
     padding-bottom: 12px;
     font-weight: normal;
@@ -86,3 +86,18 @@
   border: 2px solid black !important;
   height:35px;
 }
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #myTable, #myTable * {
+    visibility: visible;
+  }
+  #myTable {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+

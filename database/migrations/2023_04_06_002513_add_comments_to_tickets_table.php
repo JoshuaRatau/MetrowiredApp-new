@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('ticket_id')->constrained()->onDelete('cascade');
-            $table->string('response');
-            $table->integer('number_points');
-           $table->string('comment');
-            $table->timestamps();
+        Schema::table('tickets', function (Blueprint $table) {
+            //$table->string('status')->default('Active');
+            $table->string('response')->nullable();
+            $table->integer('breaks_number')->nullable();
+            $table->string('comment')->default('No comment');
         });
     }
 
@@ -30,6 +28,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::table('tickets', function (Blueprint $table) {
+            //
+        });
     }
 };

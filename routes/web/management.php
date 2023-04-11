@@ -10,10 +10,6 @@ Route::prefix('management')->group(function () {
         }
     )->name('management.home');
 
-    Route::get('/dashboard',
-        function () {
-            return view('management.management_dashboard');
-        }
-    )->name('management.management_dashboard');
+  
 
 });
