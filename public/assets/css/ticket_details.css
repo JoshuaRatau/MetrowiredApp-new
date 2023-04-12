@@ -49,9 +49,9 @@
 
 .map {
     display: inline-block;
-    width: 60% !important;
+    width: 25% !important;
     height: 3rem !important;
-    /* margin: 10px 10px 10px 10px; */
+    margin-top: 10px ;
     height: max-content !important;
     border-radius: 40px !important;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2) !important;
@@ -71,8 +71,9 @@
 }
 
 .form-select {
-    border-radius: 6px;
-    border: 2px solid black;
+    border-radius: 6px!important;
+    border: 2px solid black!important;
+
 }
 
 h3 {
@@ -86,13 +87,33 @@ h3 {
 }
 
 .map-Text {
-    padding-left: 220px;
-    width: 60%;
+    /* padding-left: 220px;
+    width: 60%; */
 }
-.card{
+
+.card {
     width: 80% !important;
-        margin-top: 3rem;
-        border: 0px solid !important;
-        box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
-        background-color: #ffffff;
+    margin-top: 2.5rem;
+    border: 0px solid !important;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    background-color: #ffffff;
+}
+
+.card-body{
+    margin: 1em 1em 1em 1em;
+}
+@media only screen and (max-width: 760px) {
+    .map {
+     width: 100%!important;
+    }
+    .card{
+     width: 98%!important;
+
+    }
+    .card-body{
+        margin: 0px;
+    }
+
+
+
 }

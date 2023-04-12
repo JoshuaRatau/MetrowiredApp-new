@@ -19,7 +19,7 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
         </script>
         <!------ Include the above in your HEAD tag ---------->
-       
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{ asset('assets/css/ticket_update.css') }}">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
@@ -99,7 +99,7 @@
                         </div>
                     </div>
                     <div class="row">
-                    </div> 
+                    </div>
             </div>
         </div>
     @endsection

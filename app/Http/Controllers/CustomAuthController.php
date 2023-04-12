@@ -112,9 +112,14 @@ class CustomAuthController extends Controller
   public function techdashboard(){
 
 
-    $tickets = Ticket::where('assigned_to', session('loginId'))->get();
-        
-    return view('technician.dashboard', compact('tickets'));
+
+    $tickets = Ticket::where('assigned_to', session('loginId'))->get(); 
+
+    $username = array();
+    if(Session::has('loginId')){
+      $username = User::where('id', '=' , Session::get('loginId'))->first() ;
+    }
+    return view('technician.dashboard', compact( 'username', 'tickets'));
 
 
 
@@ -294,8 +299,6 @@ if(Session::has('loginId')){
   $ticketCount = Ticket::count();
   $tickets = Ticket::all();
  
-  
-  
 
 }
 return view('management.management_dashboard', compact('data', 'service', 'incident' , 'open', 'closed', 'ticketCount', 'tickets'));

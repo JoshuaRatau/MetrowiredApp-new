@@ -232,15 +232,15 @@
             <div class="test-start h6">
     Region:
 </div>
-<select class="form-select" aria-label="Default select example">
+<select class="form-select" aria-label="Default select example"  id="region" name="region">
     <option selected></option>
-    <option value="1">All</option>
-    <option value="2">Region A</option>
-    <option value="4">Region B</option>
-    <option value="5">Region C</option>
-    <option value="6">Region D</option>
-    <option value="7">Region E</option>
-    <option value="8">Region F</option>
+    <option value="">All</option>
+    <option value="regionA">Region A</option>
+    <option value="regionB">Regio B</option>
+    <option value="regionC">Region C</option>
+    <option value="regionD">Region D</option>
+    <option value="regionE">Region E</option>
+    <option value="regionF">Region F</option>
 </select>
 </div>
 
@@ -290,7 +290,7 @@
 
 <!-- table -->
 <table id="myTable">
- @foreach($tickets as $ticket)
+
         <tr>
 
             <th scope="col" class="text-center">Ticket Type</th>
@@ -309,7 +309,7 @@
         </tr>
     </thead>
     <tbody>
-
+    @foreach($tickets as $ticket)
     <tr>
 
 <td class="text-center">{{ substr($ticket->ticket_number, 0, 2) }}</td>
@@ -338,6 +338,14 @@
   function printTable() {
     window.print();
   }
+
+//Filter Using Region
+
+document.getElementById("region").addEventListener("change", function() {
+    this.form.submit();
+});
+
+
 </script>
 
 

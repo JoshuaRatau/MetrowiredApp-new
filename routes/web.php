@@ -41,13 +41,10 @@ require_once "web/system_admin.php";
 require_once "web/admin.php";
 
 Auth::routes();
-
+// Routes for System Admin
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/registration', [CustomAuthController::class, 'registration']);
 Route::post('/register-user', [CustomAuthController::class, 'registerUser'])->name('register-user');
-
-
-
 
 Route::get('/sysadmindashboard', [CustomAuthController::class, 'sysadmindashboard']);
 Route::get('edit/{id}', [CustomAuthController::class, 'edit']);
@@ -58,16 +55,16 @@ Route::get('delete/{id}', [CustomAuthController::class, 'delete']);
 
 
 
-//Login for Admin
+//Routes for Admin
 Route::post('login-admin', [CustomAuthController::class, 'loginAdmin' ])->name('login-admin');
 Route::get('/admindashboard', [CustomAuthController::class, 'admindashboard']);
 Route::get('/logout', [CustomAuthController::class, 'logout']);
-Route::post('/register-ticket', [TicketController::class, 'registerU'])->name('register-ticket');
+Route::post('/register-ticket', [TicketController::class, 'registerTicket'])->name('register-ticket');
 
 
 
 
-//Login for Technician
+//Routes for Technician
 Route::post('login-tech', [CustomAuthController::class, 'loginTech' ])->name('login-tech')->middleware('alreadyLoggedIn');
 Route::get('/techdashboard', [CustomAuthController::class, 'techdashboard'])->name('techdashboard.techdashboard');
 Route::get('technician/ticket_details/{id}', [TicketController::class, 'details']);
@@ -75,7 +72,7 @@ Route::get('/Techlogout', [CustomAuthController::class, 'Techlogout']);
 Route::put('ticket-details/{id}', [TicketController::class, 'update']) ;
 Route::get('completed-tickets', [TicketController::class, 'completedTickets'])->name('completed-ticketsw');
 
-//Login for Sytem-Admin
+//Login for Technician
 Route::post('login-system', [CustomAuthController::class, 'loginSystem' ])->name('login-system');
 Route::get('/Systemlogout', [CustomAuthController::class, 'Sytemlogout']);
 Route::get('/ticket', [TicketController::class, 'ticket']);
@@ -89,8 +86,17 @@ Route::get('/managementdashboard', [CustomAuthController::class, 'managementdash
 Route::get('/managementlogout', [CustomAuthController::class, 'managementlogout']);
 Route::get('/download-excel', [TicketController::class, 'downloadExcel'])->name('download-excel');
 Route::get('/tickets/export', [TicketController::class, 'exportTicketsToExcel'])->name('tickets.export');
-
 Route::get('/download-excel', [TicketController::class, 'download'])->name('download-excel');
+
+
+
+Route::get('/managementdashboard/{region?}', [CustomAuthController::class, 'index']);
+
+
+
+
+
+
 
 
 

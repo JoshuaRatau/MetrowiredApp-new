@@ -105,6 +105,16 @@ public function update(Request $request, $id)
     }
 }
 
+public function index(Request $request)
+{
+    $region = $request->input('region');
+    $ticket= Ticket::where('region', $region)->get();
+    return view('management.management_dashboard', compact('ticket'));
+}
+
+
+
+
 public function storeComments(Request $request, $ticketId)
 {
     $ticket = Ticket::findOrFail($ticketId);
@@ -121,7 +131,7 @@ public function storeComments(Request $request, $ticketId)
 public function download()
 {
     $data = Ticket::all(); 
-    $fileName = 'management_reports.xlsx'; // Replace your_file_name with the name you want to give your Excel file
+    $fileName = 'management_reports.xlsx'; //Replace your_file_name with the name you want to give your Excel file
     
     return Excel::download(function($excel) use ($data) {
         $excel->sheet('Sheet1', function($sheet) use ($data) {
