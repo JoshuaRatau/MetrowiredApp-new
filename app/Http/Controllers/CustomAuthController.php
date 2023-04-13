@@ -91,8 +91,6 @@ class CustomAuthController extends Controller
             if (Hash::check($request->password, $user->password)) {
                 if ($user && $user->type === 'Admin') {
 
-
-
                     $request->session()->put('loginId', $user->id);
                     return redirect('admindashboard');
 

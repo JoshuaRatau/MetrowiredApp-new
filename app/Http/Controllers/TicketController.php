@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Users;
 use App\Models\Ticket;
 use App\Models\Completed;
+use DB;
+use Session;
+use Hash;
 
 
 
 
 
 use App\Exports\MyTableExport;
+use Illuminate\Support\Facades\Redirect;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -57,13 +61,13 @@ class TicketController extends Controller
 
         $res = $ticket->save();
         if ($res) {
-            return back()->with('success', 'Ticket has been logged.You will be able to see this ticket on your dashboard.');
+            return redirect()->back()->with('success', 'User registered Successfuly');
+
+            // return redirect()->route('system_admin.system_admin_dashboard');
 
         } else {
-            return back()->with('fail', 'Ticket failed to be logged,retry again to log your ticket.');
-
+            return redirect()->back()->with('fail', 'Something wrong');
         }
-        ;
     }
 
     //   public function techdashboard(){
