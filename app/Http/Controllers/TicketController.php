@@ -11,6 +11,7 @@ use App\Models\Completed;
 
 
 
+
 use App\Exports\MyTableExport;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -111,6 +112,13 @@ public function index(Request $request)
     $ticket= Ticket::where('region', $region)->get();
     return view('management.management_dashboard', compact('ticket'));
 }
+
+
+
+
+
+
+
 
 
 

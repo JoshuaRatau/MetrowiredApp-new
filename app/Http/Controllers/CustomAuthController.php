@@ -8,6 +8,7 @@ use App\Models\Ticket;
 use DB;
 use Session;
 use Hash;
+use Auth;
 use Illuminate\Support\Facades\Hash as FacadesHash;
 
 class CustomAuthController extends Controller
@@ -19,11 +20,7 @@ class CustomAuthController extends Controller
       'tickets' =>Ticket::all(),
     ]);
   }
- 
 
-// public function techdashboard(){
-//   return view('technician.techniciandashboard');
-// }
 
 
     public function registration(){
@@ -109,21 +106,20 @@ class CustomAuthController extends Controller
 
   //Tech Dashboard
   
-  public function techdashboard(){
-
-
-
+  public function techdashboard(Request $request){
     $tickets = Ticket::where('assigned_to', session('loginId'))->get(); 
-
-    $username = array();
+    
+    $data = array();
     if(Session::has('loginId')){
-      $username = User::where('id', '=' , Session::get('loginId'))->first() ;
+      $data = User::where('id', '=' , Session::get('loginId'))->first() ;
+
+
+      //count
+      $assignedTickets = Ticket::where('assigned_to', $data->id)->count();
     }
-    return view('technician.dashboard', compact( 'username', 'tickets'));
-
-
-
+    return view('technician.dashboard', compact( 'data', 'tickets', 'assignedTickets' ));
       }
+      
 public function logout(){
   if(Session::has('loginId')){
     Session::pull('loginId');
@@ -163,6 +159,9 @@ public function logout(){
   }
 
 
+
+  
+
   //Technician Logout
 
 
@@ -172,7 +171,6 @@ public function logout(){
       return view('technician.home');
     }
   }
-
 
 
 
@@ -289,6 +287,7 @@ public function managementdashboard(){
 $data = array();
 if(Session::has('loginId')){
   $data = User::where('id', '=',Session::has('loginId'))->first();
+  
  
 
   //Counting

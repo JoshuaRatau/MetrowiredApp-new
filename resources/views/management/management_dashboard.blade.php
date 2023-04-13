@@ -188,6 +188,7 @@
 <br>
 <br>
 <br>
+
                         <div class="col-lg-2">
                             <div class="test-start h6">
                                 Ticket Type:
