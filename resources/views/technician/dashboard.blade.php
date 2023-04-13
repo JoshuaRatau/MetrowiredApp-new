@@ -36,8 +36,9 @@
                 </div>
                 <div class="row col-sm-6">
                     <div class="text-start text-sm-end">
+                    
                         <button type="button" class="btn btn-primary buttonNew">
-                            <span class="badge badge-light">9</span> New
+                            <span class="badge badge-light">{{$assignedTickets}}</span> New
                         </button>
                     </div>
                 </div>
@@ -45,7 +46,7 @@
             </div>
 
             <div class="d-flex align-items-center justify-content-center">
-
+           
                 <div class="card">
                     <div class="card-body">
                         @if (is_countable($tickets) && count($tickets) > 0)

@@ -72,7 +72,7 @@ Route::get('/Techlogout', [CustomAuthController::class, 'Techlogout']);
 Route::put('ticket-details/{id}', [TicketController::class, 'update']) ;
 Route::get('completed-tickets', [TicketController::class, 'completedTickets'])->name('completed-ticketsw');
 
-//Login for Technician
+//Login for System Admin
 Route::post('login-system', [CustomAuthController::class, 'loginSystem' ])->name('login-system');
 Route::get('/Systemlogout', [CustomAuthController::class, 'Sytemlogout']);
 Route::get('/ticket', [TicketController::class, 'ticket']);

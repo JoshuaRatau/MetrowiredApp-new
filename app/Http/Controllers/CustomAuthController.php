@@ -15,17 +15,15 @@ class CustomAuthController extends Controller
 {
 
 
-    public function admindashboard()
-    {
-        return view('admin.admin_dashboard', [
-            'tickets' => Ticket::all(),
-        ]);
-    }
+  public function admindashboard(){
+    return view('admin.admin_dashboard',[
+      'tickets' =>Ticket::all(),
+    ]);
+  }
 
 
 
-    public function registration()
-    {
+    public function registration(){
         return view("auth.registration");
     }
 
@@ -105,32 +103,31 @@ class CustomAuthController extends Controller
             return back()->with('fail', 'Your not an Admin');
         }
 
+  }
+
+  //Tech Dashboard
+
+  public function techdashboard(){
+
+
+
+    $tickets = Ticket::where('assigned_to', session('loginId'))->get();
+
+    $username = array();
+    if(Session::has('loginId')){
+      $username = User::where('id', '=' , Session::get('loginId'))->first() ;
     }
-
-    //Tech Dashboard
-
-    public function techdashboard(Request $request)
-    {
-        $tickets = Ticket::where('assigned_to', session('loginId'))->get();
-
-        $data = array();
-        if (Session::has('loginId')) {
-            $data = User::where('id', '=', Session::get('loginId'))->first();
+    return view('technician.dashboard', compact( 'username', 'tickets'));
 
 
-            //count
-            $assignedTickets = Ticket::where('assigned_to', $data->id)->count();
-        }
-        return view('technician.dashboard', compact('data', 'tickets', 'assignedTickets'));
-    }
 
-    public function logout()
-    {
-        if (Session::has('loginId')) {
-            Session::pull('loginId');
-            return view('admin.home');
-        }
-    }
+      }
+public function logout(){
+  if(Session::has('loginId')){
+    Session::pull('loginId');
+    return view('admin.home');
+  }
+}
 
     //Techician Login
     public function loginTech(Request $request)
@@ -163,6 +160,9 @@ class CustomAuthController extends Controller
         }
 
     }
+
+
+
 
 
 
@@ -296,12 +296,10 @@ class CustomAuthController extends Controller
 
     }
 
-    public function managementdashboard()
-    {
-        $data = array();
-        if (Session::has('loginId')) {
-            $data = User::where('id', '=', Session::has('loginId'))->first();
-
+public function managementdashboard(){
+$data = array();
+if(Session::has('loginId')){
+  $data = User::where('id', '=',Session::has('loginId'))->first();
 
 
             //Counting
