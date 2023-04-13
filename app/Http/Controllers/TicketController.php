@@ -11,6 +11,7 @@ use App\Models\Completed;
 
 
 
+
 use App\Exports\MyTableExport;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -93,51 +94,58 @@ class TicketController extends Controller
 
     }
 
-public function update(Request $request, $id)
-{
-    $ticket = Ticket::findOrFail($id);
-    $ticket->status = $request->status;
-    $ticket->save();
-    if ($ticket->status == 'Complete') {
-        return view('technician.update_ticket', ['ticket' =>$ticket]);
-    } else {
-        return redirect()->back();
+    public function update(Request $request, $id)
+    {
+        $ticket = Ticket::findOrFail($id);
+        $ticket->status = $request->status;
+        $ticket->save();
+        if ($ticket->status == 'Complete') {
+            return view('technician.update_ticket', ['ticket' => $ticket]);
+        } else {
+            return redirect()->back();
+        }
     }
-}
 
-public function index(Request $request)
-{
-    $region = $request->input('region');
-    $ticket= Ticket::where('region', $region)->get();
-    return view('management.management_dashboard', compact('ticket'));
-}
-
+    public function index(Request $request)
+    {
+        $region = $request->input('region');
+        $ticket = Ticket::where('region', $region)->get();
+        return view('management.management_dashboard', compact('ticket'));
+    }
 
 
 
-public function storeComments(Request $request, $ticketId)
-{
-    $ticket = Ticket::findOrFail($ticketId);
-    $ticket->response = $request->input('response');
-    $ticket->response = $request->input('number_points');
-    $ticket->comments = $request->input('comments');
-    $ticket->save();
-
-    return redirect()->route('technician.home');
-}
 
 
 
-public function download()
-{
-    $data = Ticket::all();
-    $fileName = 'management_reports.xlsx'; //Replace your_file_name with the name you want to give your Excel file
 
-    return Excel::download(function($excel) use ($data) {
-        $excel->sheet('Sheet1', function($sheet) use ($data) {
-            $sheet->fromArray($data);
-        });
-    }, $fileName);
-}
+
+
+
+
+    public function storeComments(Request $request, $ticketId)
+    {
+        $ticket = Ticket::findOrFail($ticketId);
+        $ticket->response = $request->input('response');
+        $ticket->response = $request->input('number_points');
+        $ticket->comments = $request->input('comments');
+        $ticket->save();
+
+        return redirect()->route('technician.home');
+    }
+
+
+
+    public function download()
+    {
+        $data = Ticket::all();
+        $fileName = 'management_reports.xlsx'; //Replace your_file_name with the name you want to give your Excel file
+
+        return Excel::download(function ($excel) use ($data) {
+            $excel->sheet('Sheet1', function ($sheet) use ($data) {
+                $sheet->fromArray($data);
+            });
+        }, $fileName);
+    }
 
 }
