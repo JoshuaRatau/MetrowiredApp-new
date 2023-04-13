@@ -8,7 +8,7 @@ use App\Models\Ticket;
 use DB;
 use Session;
 use Hash;
-use Illuminate\Support\Facades\Hash as FacadesHash;
+
 
 class CustomAuthController extends Controller
 {
@@ -19,7 +19,7 @@ class CustomAuthController extends Controller
       'tickets' =>Ticket::all(),
     ]);
   }
- 
+
 
 // public function techdashboard(){
 //   return view('technician.techniciandashboard');
@@ -29,7 +29,7 @@ class CustomAuthController extends Controller
     public function registration(){
         return view("auth.registration");
     }
-    
+
     public function sysadmindashboard(){
 
   return view('system_admin.system_dashboard', [
@@ -37,7 +37,7 @@ class CustomAuthController extends Controller
           'users' =>User::all(),
       ]);
     }
-    
+
 
     //Add All User
     public function registerUser(Request $request){
@@ -108,12 +108,12 @@ class CustomAuthController extends Controller
   }
 
   //Tech Dashboard
-  
+
   public function techdashboard(){
 
- 
+
     $tickets = Ticket::where('assigned_to', session('loginId'))->get();
-        
+
     return view('technician.dashboard', compact('tickets'));
 
 

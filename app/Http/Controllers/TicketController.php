@@ -49,13 +49,13 @@ class TicketController extends Controller
 
         $res = $ticket->save();
         if ($res) {
-             return back()->with('success', 'Ticket has been logged.You will be able to see this ticket on your dashboard.');
+            return back()->with('success', 'Ticket has been logged.You will be able to see this ticket on your dashboard.');
 
         } else {
-             return back()->with('fail', 'Ticket failed to be logged,retry again to log your ticket.');
+            return back()->with('fail', 'Ticket failed to be logged,retry again to log your ticket.');
 
         }
- ;
+        ;
     }
 
     //   public function techdashboard(){
@@ -74,23 +74,22 @@ class TicketController extends Controller
     public function details($id)
     {
 
-    $ticket = Ticket::find($id);
-    return view('technician.ticket_details', compact('ticket'));
-       
-}
+        $ticket = Ticket::find($id);
+        return view('technician.ticket_details', compact('ticket'));
 
-public function update(Request $request, $id)
-{
-    $ticket = Ticket::findOrFail($id);
-    $ticket->status = $request->status;
-    $ticket->save();
-    if ($ticket->status == 'Complete') {
-        return redirect()->route('technician.update_ticket', $ticket->id);
-    } else {
-        return redirect()->back();
     }
 
+    public function update(Request $request, $id)
+    {
+        $ticket = Ticket::findOrFail($id);
+        $ticket->status = $request->status;
+        $ticket->save();
+        if ($ticket->status == 'Complete') {
+            return redirect()->route('technician.update_ticket', $ticket->id);
+        } else {
+            return redirect()->back();
+        }
 
-}
+
     }
-
+}
