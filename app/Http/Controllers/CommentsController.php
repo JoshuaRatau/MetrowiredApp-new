@@ -9,9 +9,9 @@ use App\Models\Ticket;
 class CommentsController extends Controller
 {
     //
-    public function store(Ticket $ticket, Request $request)
+    public function store(Request $request, $id)
     {
-        $comment = new Comment;
+        $ticket = Ticket::findOrFail($id);
         $comment->ticket_id = $ticket->id;
         $comment->response = $request->response;
         $comment ->number_points = $request->number_points;

@@ -49,7 +49,6 @@ Route::post('/register-user', [CustomAuthController::class, 'registerUser'])->na
 Route::get('/sysadmindashboard', [CustomAuthController::class, 'sysadmindashboard']);
 Route::get('edit/{id}', [CustomAuthController::class, 'edit']);
 Route::put('update-user/{id}', [CustomAuthController::class, 'update']) ;
-
 Route::get('delete/{id}', [CustomAuthController::class, 'delete']);
 
 
@@ -60,6 +59,7 @@ Route::get('delete/{id}', [CustomAuthController::class, 'delete']);
 Route::post('login-admin', [CustomAuthController::class, 'loginAdmin' ])->name('login-admin');
 Route::get('/admindashboard', [CustomAuthController::class, 'admindashboard']);
 Route::get('/logout', [CustomAuthController::class, 'logout']);
+Route::post('/register-ticket', [TicketController::class, 'registerTicket'])->name('register-ticket');
 
 
 
@@ -69,14 +69,38 @@ Route::post('login-tech', [CustomAuthController::class, 'loginTech' ])->name('lo
 Route::get('/techdashboard', [CustomAuthController::class, 'techdashboard'])->name('techdashboard.techdashboard');
 Route::get('technician/ticket_details/{id}', [TicketController::class, 'details']);
 Route::get('/Techlogout', [CustomAuthController::class, 'Techlogout']);
-Route::put('ticket-update/{id}', [TicketController::class, 'update']) ;
-Route::put('comment-update/{id}', [CommentsController::class, 'store']) ;
+Route::put('ticket-details/{id}', [TicketController::class, 'update']) ;
+Route::get('completed-tickets', [TicketController::class, 'completedTickets'])->name('completed-ticketsw');
 
-//Routes for Technician
+//Login for Technician
 Route::post('login-system', [CustomAuthController::class, 'loginSystem' ])->name('login-system');
 Route::get('/Systemlogout', [CustomAuthController::class, 'Sytemlogout']);
 Route::get('/ticket', [TicketController::class, 'ticket']);
-Route::post('/register-ticket', [TicketController::class, 'registerTicket'])->name('register-ticket');
+Route::post('/store-comment', [TicketController::class, 'storeComment'])->name('store-comment');
+
+
+//Management Login
+
+Route::post('login-management', [CustomAuthController::class, 'loginManagement'])->name('login-management');
+Route::get('/managementdashboard', [CustomAuthController::class, 'managementdashboard']);
+Route::get('/managementlogout', [CustomAuthController::class, 'managementlogout']);
+Route::get('/download-excel', [TicketController::class, 'downloadExcel'])->name('download-excel');
+Route::get('/tickets/export', [TicketController::class, 'exportTicketsToExcel'])->name('tickets.export');
+Route::get('/download-excel', [TicketController::class, 'download'])->name('download-excel');
+
+
+
+Route::get('/managementdashboard/{region?}', [CustomAuthController::class, 'index']);
+
+
+
+
+
+
+
+
+
+
 
 
 

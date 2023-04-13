@@ -1,5 +1,5 @@
 
-@extends('layouts.admin')
+@extends('layouts.management')
 
 
 @section('content') 
@@ -25,18 +25,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('assets/css/management_dashboard.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
  
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-  
-    
-  
             <div class="container">
             <div class="d-flex align-items-center justify-content-center" style="height: 100vh;">
                 <form class="row mb-3">
@@ -83,7 +78,7 @@
                             </div>
                             <div class="col-12 col-lg-12">
                                 <div class=" text-center h4">
-                                    <p>530</p>
+                                    <p>{{$incident}}</p>
                                 </div>
                             </div>
                         </div>
@@ -101,7 +96,7 @@
                             </div>
                             <div class="col-12 col-lg-12">
                                 <div class=" text-center h4">
-                                    <p>285</p>
+                                    <p>{{ $service }}</p>
                                 </div>
                             </div>
                         </div>
@@ -121,7 +116,7 @@
                             </div>
                             <div class="col-12 col-lg-12">
                                 <div class=" text-center h4">
-                                    <p>810</p>
+                                    <p>{{$ticketCount}}</p>
                                 </div>
                             </div>
                         </div>
@@ -142,7 +137,7 @@
                             </div>
                             <div class="col-12 col-lg-12">
                                 <div class=" text-center h4">
-                                    <p>310</p>
+                                    <p>{{$open}}</p>
                                 </div>
                             </div>
                         </div>
@@ -162,7 +157,7 @@
                             </div>
                             <div class="col-12 col-lg-12">
                                 <div class=" text-center h4">
-                                    <p>500</p>
+                                    <p>{{$closed}}</p>
                                 </div>
                             </div>
                         </div>
@@ -208,7 +203,7 @@
                         <div class="col-lg-2">
 
                             <div class="test-start h6">
-                                Network Type:
+                              
                             </div>
                             <select class="form-select" aria-label="Default select example">
                                 <option selected>All</option>
@@ -237,15 +232,15 @@
             <div class="test-start h6">
     Region:
 </div>
-<select class="form-select" aria-label="Default select example">
+<select class="form-select" aria-label="Default select example"  id="region" name="region">
     <option selected></option>
-    <option value="1">All</option>
-    <option value="2">Region A</option>
-    <option value="4">Region B</option>
-    <option value="5">Region C</option>
-    <option value="6">Region D</option>
-    <option value="7">Region E</option>
-    <option value="8">Region F</option>
+    <option value="">All</option>
+    <option value="regionA">Region A</option>
+    <option value="regionB">Regio B</option>
+    <option value="regionC">Region C</option>
+    <option value="regionD">Region D</option>
+    <option value="regionE">Region E</option>
+    <option value="regionF">Region F</option>
 </select>
 </div>
 
@@ -265,16 +260,19 @@
 </div>
 
 
+
                         <div class="col-lg">
                        
                             <div class="row ">
                                 <div class="col-lg-6 ">
 
                                 <button  class="print"> <img src={{ asset('assets/img/web/Download.svg') }}  width="40" height="34" alt="Black Icon"> Download</button>
+                                <a href="{{ route('download-excel') }}" class="btn btn-primary">Download Excel</a>
+
                                 </div>
 
                                 <div class="col-lg-4 ">
-                                <button  class="print"> <img src={{ asset('assets/img/web/Print.svg') }}  width="40" height="34" alt="Black Icon"> Print</button>
+                                <button onclick="printTable()" class="print"> <img src={{ asset('assets/img/web/Print.svg') }}  width="40" height="34" alt="Black Icon"> Print</button>
                                 </div>
                             </div>
                         </div>
@@ -288,18 +286,11 @@
 </div>
 <div class="row mt-5 pt-5 d-flex justify-content-between">
 
-
-
 </div>
 
+<!-- table -->
+<table id="myTable">
 
-
-</div>
-
-</div>
- <!-- table -->
- <table id="customers">
-        
         <tr>
 
             <th scope="col" class="text-center">Ticket Type</th>
@@ -318,105 +309,46 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
+    @foreach($tickets as $ticket)
+    <tr>
 
-            <td class="text-center">SR</td>
-            <td class="gray_td text-center">SR564893</td>
-            <td class="text-center">WAN</td>
-            <td class="gray_td text-center">8</td>
-            <td class=" text-center">07:45</td>
-            <td class="text-center">10:35</td>
-            <td class="text-center">11:40</td>
-            <td class="text-center">Closed</td>
-            <td class="text-center">Region C</td>
-            <td class="text-center">Thulani<br> Ndlangamandla</td>
-               <td class="">
-                <h6>Breakfix-Sappi Buiding. West wing 5th floor 4 network points not working and cables neeede for new printers to be...</h6>
-               </td>
+<td class="text-center">{{ substr($ticket->ticket_number, 0, 2) }}</td>
+<td class="gray_td text-center">{{ $ticket['ticket_number'] }}</td>
+<td class="text-center">{{ $ticket['network_type'] }}</td>
+<td class="gray_td text-center">{{ $ticket['fixes'] }}</td>
+<td class=" text-center">{{ $ticket['created_at'] }}</td>
+<td class="text-center">10:35</td>
+<td class="text-center">11:40</td>
+<td class="text-center">{{ $ticket['status'] }}</td>
+<td class="text-center">{{ $ticket['region'] }}</td>
+<td class="text-center">Thulani<br> Ndlangamandla</td>
+   <td class="">
+    <h6>{{ $ticket['description'] }}</h6>
+   </td>
 
-               <td class="">
-                <h6>Breakfix-Sappi Buiding. West wing 5th floor 4 network points not working and cables neeede for new printers to be...</h6>
-               </td>
-        </tr>
-        <tr>
-
-        <td class="text-center">SR</td>
-            <td class="gray_td text-center">SR564893</td>
-            <td class="text-center">WAN</td>
-            <td class="gray_td text-center">8</td>
-            <td class=" text-center">07:45</td>
-            <td class="text-center">10:35</td>
-            <td class="text-center">11:40</td>
-            <td class="text-center">Closed</td>
-            <td class="text-center">Region C</td>
-            <td class="text-center">Thulani<br> Ndlangamandla</td>
-               <td class="">
-                <h6>Breakfix-Sappi Buiding. West wing 5th floor 4 network points not working and cables neeede for new printers to be...</h6>
-               </td>
-
-               <td class="">
-                <h6>Breakfix-Sappi Buiding. West wing 5th floor 4 network points not working and cables neeede for new printers to be...</h6>
-               </td>
-
-        </tr>
-        
-        <tr>
-
-        <!-- <td class="text-center">SR</td>
-            <td class="gray_td text-center">SR564893</td>
-            <td class="text-center">WAN</td>
-            <td class="gray_td text-center">8</td>
-            <td class=" text-center">07:45</td>
-            <td class="text-center">10:35</td>
-            <td class="text-center">11:40</td>
-            <td class="text-center">Closed</td>
-            <td class="text-center">Region C</td>
-            <td class="text-center">Thulani<br> Ndlangamandla</td>
-               <td class="">
-                <h6>Breakfix-Sappi Buiding. West wing 5th floor 4 network points not working and cables neeede for new printers to be...</h6>
-               </td>
-
-               <td class="">
-                <h6>Breakfix-Sappi Buiding. West wing 5th floor 4 network points not working and cables neeede for new printers to be...</h6> -->
-               <!-- </td> -->
-
-        </tr>
-
-        <tr>
-
-        <!-- <td class="text-center">SR</td>
-            <td class="gray_td text-center">SR564893</td>
-            <td class="text-center">WAN</td>
-            <td class="gray_td text-center">8</td>
-            <td class=" text-center">07:45</td>
-            <td class="text-center">10:35</td>
-            <td class="text-center">11:40</td>
-            <td class="text-center">Closed</td>
-            <td class="text-center">Region C</td>
-            <td class="text-center">Thulani<br> Ndlangamandla</td>
-               <td class="">
-                <h6>Breakfix-Sappi Buiding. West wing 5th floor 4 network points not working and cables neeede for new printers to be...</h6>
-               </td>
-
-               <td class="">
-                <h6>Breakfix-Sappi Buiding. West wing 5th floor 4 network points not working and cables neeede for new printers to be...</h6>
-               </td> -->
-
-</tr>
-<tr>
-
-
-
-   <tr>
-
-  
-</tr>
-
-
-
+   <td class="">
+    <h6>Breakfix-Sappi Buiding. West wing 5th floor 4 network points not working and cables neeede for new printers to be...</h6>
+   </td>
 </tr>
     </tbody>
+    @endforeach
 </table>
+
+<script>
+  function printTable() {
+    window.print();
+  }
+
+//Filter Using Region
+
+document.getElementById("region").addEventListener("change", function() {
+    this.form.submit();
+});
+
+
+</script>
+
+
 
 @endsection
 

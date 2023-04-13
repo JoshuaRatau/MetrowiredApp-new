@@ -13,7 +13,6 @@
         <title>Metrowired | Enabling Tomorrow</title>
 
         <!-- bootstrap -->
-
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -57,8 +56,9 @@
 
                         <div class="col-sm-10">
                             <br>
-                         
-
+                            <form method="POST" action="{{ route('store-comment', $ticket->id) }}">
+                                @csrf
+                                @method('PUT')
                             <label for="inputState" class="form-label"><b>Response:</b></label>
                             <select name="response" id="inputState" class="form-select">
                                 <option selected>Select a response</option>
@@ -76,7 +76,7 @@
                         </div>
                         <div class="col-sm-3">
                             <br>
-                            <input type="number" id="number_points" name="number_points" min="1" max="10">
+                            <input type="number" name="number_points" min="1" max="10">
                         </div>
 
 
