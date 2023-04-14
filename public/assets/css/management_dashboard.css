@@ -7,25 +7,29 @@
     border-collapse: collapse;
     border-radius: 1em;
     overflow: hidden;
-  }
-  
+}
+
 #myTable {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
-  
-  }
-  
-  #myTable td{
+
+}
+
+#myTable td {
     border: 1px solid #ddd;
     padding: 8px;
-  }
-  
-  #myTable td:nth-child(odd){background-color: #ddd;}
-  
-  #myTable td:hover {background-color: #f2f2f2;}
-  
-  #myTable th {
+}
+
+#myTable td:nth-child(odd) {
+    background-color: #ddd;
+}
+
+#myTable td:hover {
+    background-color: #f2f2f2;
+}
+
+#myTable th {
     padding-top: 12px;
     padding-bottom: 12px;
     font-weight: normal;
@@ -33,9 +37,9 @@
     background-color: black;
     color: white;
     width: 15px;
-  }
+}
 
-  .btn-log{
+.btn-log {
     background-color: #242368;
     border: none;
     color: white;
@@ -47,57 +51,90 @@
     font-weight: bold;
     pointer-events: none;
     border-radius: 20px;
-  }
+}
 
-.print{
-  background-color: white;
+.print {
+    background-color: white;
     display: inline-flex;
- 
+
     border: none;
     text-decoration: none;
     display: inline-block;
     width: 100%;
-    outline:none;
+    outline: none;
 
 }
 
-.list_wrapper{
- width: 200px;
-  height: 150px;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+.list_wrapper {
+    width: 200px;
+    height: 150px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
 }
 
 
 .form-select {
-  border-radius: 6px !important;
-  border: 2px solid black !important;
+    border-radius: 6px !important;
+    border: 2px solid black !important;
 }
 
 .form-select:focus {
-  border: 2px solid black !important;
-  border-color: black !important;
-  outline: 0 !important;
-  box-shadow: none !important;
+    border: 2px solid black !important;
+    border-color: black !important;
+    outline: 0 !important;
+    box-shadow: none !important;
 
 }
 
-.search{
-  border-radius: 20px !important;
-  border: 2px solid black !important;
-  height:35px;
+.search {
+    width: 100% !important;
+    border-radius: 35px !important;
+    border: 2px solid black !important;
+    height: 45px;
+    padding: 10px 10px 10px 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
 }
 
 @media print {
-  body * {
-    visibility: hidden;
-  }
-  #myTable, #myTable * {
-    visibility: visible;
-  }
-  #myTable {
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
+    body * {
+        visibility: hidden;
+    }
+
+    #myTable,
+    #myTable * {
+        visibility: visible;
+    }
+
+    #myTable {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
 }
 
+.card-details {
+    width: 100%;
+    height: 18vh;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+
+/* If the screen size is 1200px wide or more, set the font-size to 80px */
+@media (min-width: 1200px) {
+    .responsive-font-example {
+        font-size: 80px;
+    }
+}
+
+/* If the screen size is smaller than 1200px, set the font-size to 80px */
+@media (max-width: 1199.98px) {
+    .select-text {
+        font-size: 14px !important;
+    }
+
+    .print {
+        width: 15px !important;
+    }
+    .card-title{
+        font-size: 14px !important;
+    }
+
+}

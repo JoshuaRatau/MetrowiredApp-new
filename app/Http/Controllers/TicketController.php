@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Ticket;
 use Session;
 use App\Models\Completed;
-use Auth;
+use DB;
+use Hash;
+
 
 
 
 
 use App\Exports\MyTableExport;
+use Illuminate\Support\Facades\Redirect;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -58,13 +61,13 @@ class TicketController extends Controller
 
         $res = $ticket->save();
         if ($res) {
-             return back()->with('success', 'Ticket has been logged.You will be able to see this ticket on your dashboard.');
+            return redirect()->back()->with('success', 'User registered Successfuly');
+
+            // return redirect()->route('system_admin.system_admin_dashboard');
 
         } else {
-             return back()->with('fail', 'Ticket failed to be logged,retry again to log your ticket.');
-
+            return redirect()->back()->with('fail', 'Something wrong');
         }
- ;
     }
 
     //   public function techdashboard(){
@@ -89,77 +92,64 @@ class TicketController extends Controller
 
     public function details($id)
     {
-$data = array();
-if(Session::has('loginId')){
-    $data = User::where('id', '=',Session::has('loginId'))->first(); 
-}
-    $ticket = Ticket::find($id);
-    return view('technician.ticket_details', compact('data','ticket'));
-       
-}
 
+        $ticket = Ticket::find($id);
+        return view('technician.ticket_details', compact('ticket'));
 
-
-
-
-public function Technicianlogout(){
-  
-      return view('technician.home');
     }
-  
 
-public function update(Request $request, $id)
-{
-    $ticket = Ticket::findOrFail($id);
-    $ticket->status = $request->status;
-    $ticket->save();
-    if ($ticket->status == 'Complete') {
-        return view('technician.update_ticket', ['ticket' =>$ticket]);
-    } else {
-        return redirect()->back();
+    public function update(Request $request, $id)
+    {
+        $ticket = Ticket::findOrFail($id);
+        $ticket->status = $request->status;
+        $ticket->save();
+        if ($ticket->status == 'Complete') {
+            return view('technician.update_ticket', ['ticket' => $ticket]);
+        } else {
+            return redirect()->back();
+        }
     }
-}
 
-public function index(Request $request)
-{
-    $region = $request->input('region');
-    $ticket= Ticket::where('region', $region)->get();
-    return view('management.management_dashboard', compact('ticket'));
-}
-
-
-
-public function assigneTickects()
-{
-    $technicianId = Auth::user()->id;
-    $assignedTicketsCount = Ticket::where('assigned_to', $id)->count();
-
-    return view('techdashboard', compact('assignedTicketsCount'));
-}
-
-
-public function storeComment(Request $request, $id)
-{
-    $ticket = Ticket::findOrFail($id);
-    $ticket->response = $request->input('response');
-    $ticket->response = $request->input('number_points');
-    $ticket->comments = $request->input('comments');
-    $ticket->save();
-    return redirect()->route('technician.home');
-}
+    public function index(Request $request)
+    {
+        $region = $request->input('region');
+        $ticket = Ticket::where('region', $region)->get();
+        return view('management.management_dashboard', compact('ticket'));
+    }
 
 
 
-public function download()
-{
-    $data = Ticket::all(); 
-    $fileName = 'management_reports.xlsx'; //Replace your_file_name with the name you want to give your Excel file
-    
-    return Excel::download(function($excel) use ($data) {
-        $excel->sheet('Sheet1', function($sheet) use ($data) {
-            $sheet->fromArray($data);
-        });
-    }, $fileName);
-}
+
+
+
+
+
+
+
+
+    public function storeComments(Request $request, $ticketId)
+    {
+        $ticket = Ticket::findOrFail($ticketId);
+        $ticket->response = $request->input('response');
+        $ticket->response = $request->input('number_points');
+        $ticket->comments = $request->input('comments');
+        $ticket->save();
+
+        return redirect()->route('technician.home');
+    }
+
+
+
+    public function download()
+    {
+        $data = Ticket::all();
+        $fileName = 'management_reports.xlsx'; //Replace your_file_name with the name you want to give your Excel file
+
+        return Excel::download(function ($excel) use ($data) {
+            $excel->sheet('Sheet1', function ($sheet) use ($data) {
+                $sheet->fromArray($data);
+            });
+        }, $fileName);
+    }
 
 }
