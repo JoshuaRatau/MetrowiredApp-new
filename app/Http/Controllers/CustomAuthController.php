@@ -52,17 +52,16 @@ class CustomAuthController extends Controller
 
 
         ]);
-        $user = new User();
-        $user->region = $request->region;
-        $user->type = $request->type;
-        $user->name = $request->name;
-        $user->phone = $request->phone;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $res = $user->save();
-        if ($res) {
-            
-       return redirect('sysadmindashboard');
+      $user = new User();
+      $user ->region = $request->region;
+      $user ->type = $request->type;
+      $user ->name = $request->name;
+      $user ->phone = $request->phone;
+      $user ->email = $request->email;
+      $user ->password = Hash::make($request->password);
+      $res = $user->save();
+      if($res){
+       return back()->with('success', 'User registered Successfuly');
 
             // return redirect()->route('system_admin.system_admin_dashboard');
 
@@ -108,17 +107,22 @@ class CustomAuthController extends Controller
 
   //Tech Dashboard
 
-  public function techdashboard(){
+  public function techdashboard( Request $request){
 
 
 
     $tickets = Ticket::where('assigned_to', session('loginId'))->get();
 
-    $username = array();
+    
+
+    $data = array();
     if(Session::has('loginId')){
-      $username = User::where('id', '=' , Session::get('loginId'))->first() ;
+      $data = User::where('id', '=' , Session::get('loginId'))->first() ;
+
+        //count
+        $assignedTickets = Ticket::where('assigned_to', $data->id)->count();
     }
-    return view('technician.dashboard', compact( 'username', 'tickets'));
+    return view('technician.dashboard', compact( 'data', 'tickets', 'assignedTickets' ));
 
 
 
