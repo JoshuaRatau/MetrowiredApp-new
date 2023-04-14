@@ -16,20 +16,20 @@
 
 }
 
-#myTable td {
+#tblData td {
     border: 1px solid #ddd;
     padding: 8px;
 }
 
-#myTable td:nth-child(odd) {
+#tblData td:nth-child(odd) {
     background-color: #ddd;
 }
 
-#myTable td:hover {
+#tblData td:hover {
     background-color: #f2f2f2;
 }
 
-#myTable th {
+#tblData th {
     padding-top: 12px;
     padding-bottom: 12px;
     font-weight: normal;

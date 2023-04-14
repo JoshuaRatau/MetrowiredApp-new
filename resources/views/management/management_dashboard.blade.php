@@ -12,6 +12,8 @@
     <!------ Include the above in your HEAD tag ---------->
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="styleshet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
@@ -189,13 +191,13 @@
                     <div class="row ">
                         <div class="col-md-6 col-sm-6 p-3">
 
-                            <button class="print select-text"> <img src={{ asset('assets/img/web/Download.svg') }} width="40"
+                            <button onclick="exportTableToExcel('tblData')" class="print select-text"> <img src={{ asset('assets/img/web/Download.svg') }} width="40"
                                     height="34" alt="Black Icon"> Download</button>
 
                         </div>
 
                         <div class="col-md-2 col-sm-6 p-3">
-                            <button onclick="printTable()" class="print select-text"> <img
+                            <button onclick="printTable()" class="print"> <img
                                     src={{ asset('assets/img/web/Print.svg') }} width="40" height="34"
                                     alt="Black Icon"> Print</button>
                         </div>
@@ -203,7 +205,9 @@
                 </div>
             </div>
             <div class="table-responsive">
-                <table class="table table-bordered">
+                <table class="table table-bordered" id="tblData">
+              
+
                     <thead class="table-dark">
                         <tr>
                             <th scope="col" class="text-center">Ticket Type</th>
@@ -226,20 +230,20 @@
                                 <tr>
 
                                     <td class="text-center">{{ substr($ticket->ticket_number, 0, 2) }}</td>
-                                    <td class="gray_td text-center">{{ $ticket['ticket_number'] }}</td>
+                                    <td class="table-secondary text-center">{{ $ticket['ticket_number'] }}</td>
                                     <td class="text-center">{{ $ticket['network_type'] }}</td>
-                                    <td class="gray_td text-center">{{ $ticket['fixes'] }}</td>
+                                    <td class="table-secondary text-center">{{ $ticket['fixes'] }}</td>
                                     <td class=" text-center">{{ $ticket['created_at'] }}</td>
-                                    <td class="text-center">10:35</td>
+                                    <td class=" table-secondary text-center">10:35</td>
                                     <td class="text-center">11:40</td>
-                                    <td class="text-center">{{ $ticket['status'] }}</td>
+                                    <td class="table-secondary text-center">{{ $ticket['status'] }}</td>
                                     <td class="text-center">{{ $ticket['region'] }}</td>
-                                    <td class="text-center">Thulani<br> Ndlangamandla</td>
+                                    <td class="table-secondary text-center">Thulani<br> Ndlangamandla</td>
                                     <td class="">
                                         <h6>{{ $ticket['description'] }}</h6>
                                     </td>
 
-                                    <td class="">
+                                    <td class="table-secondary">
                                         <h6>Breakfix-Sappi Buiding. West wing 5th floor 4 network points not working
                                             and cables neeede for new printers to be...</h6>
                                     </td>
@@ -259,4 +263,64 @@
 
         </div>
     </main>
+
+<script>
+
+function exportTableToExcel(tableID, filename = ''){
+    var downloadLink;
+    var dataType = 'application/vnd.ms-excel';
+    var tableSelect = document.getElementById(tableID);
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+    
+    // Specify file name
+    filename = filename?filename+'.xls':'excel_data.xls';
+    
+    // Create download link element
+    downloadLink = document.createElement("a");
+    
+    document.body.appendChild(downloadLink);
+    
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['\ufeff', tableHTML], {
+            type: dataType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+    
+        // Setting the file name
+        downloadLink.download = filename;
+        
+        //triggering the function
+        downloadLink.click();
+    }
+}
+
+</script>
+
+
+<script>
+  function printTable() {
+        var table = document.getElementById("tblData");
+        var html = table.outerHTML;
+        var newWindow = window.open();
+        newWindow.document.write(html);
+        newWindow.print();
+        newWindow.close();
+  }
+</script>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/script.js" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="js/script.js" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js "></script>
+<script type="text/javascript" src="js/script.js" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js "></script>
+
+
+
+
+
 @endsection
+
