@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -20,22 +21,20 @@
     {{-- <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}"> --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-
     <style>
         * {
             margin: 0px;
             padding: 0px;
         }
-
         .navbar {
             padding-left: 4rem;
             padding-right: 4rem;
             background-color: #100f44;
             color: #ffffff;
         }
-
         .buttonName {
-            width: 13rem !important;
+            width: 10rem !important;
+            margin: 20px 20px 20px 20px;
             height: max-content !important;
             border-radius: 40px !important;
             box-shadow: 0 3px 10px rgb(0 0 0 / 0.2) !important;
@@ -43,11 +42,7 @@
             color: #100f44 !important;
             border: 1px solid#ffffff !important;
             font-weight: 600 !important;
-            margin-right: 30px;
-             margin: 10px 10px 10px 10px;
-
         }
-
         .buttonName:active,
         .buttonName:hover {
             border: 1px solid #100f44 !important;
@@ -55,10 +50,12 @@
             color: whitesmoke !important;
             box-shadow: none !important;
         }
-        .custom-toggler.navbar-toggler {
+          .custom-toggler.navbar-toggler {
             border-color: #ffffff;
             color: #ffffff;
         }
+        /* Setting the stroke to green using rgb values (0, 128, 0) */
+
         .custom-toggler .navbar-toggler-icon {
             background-image: url(
 "data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
@@ -68,20 +65,22 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src={{ asset('assets/img/home/Globe.png') }} alt="" width="70" height="70"
                     class="d-inline-block align-text-top">
 
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                 aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse  align-items-end justify-content-end" id="navbarScroll">
 
-                <form class="d-flex">
+
+
+            <form class="d-flex">
                     <button class="btn btn-light buttonName" type="submit">
                         <svg width="40" height="34" viewBox="0 0 146 145" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -97,10 +96,12 @@
                         </svg>
                             {{$data->email}}
                     </button>
-                </form>
-                <form class="d-flex">
-                    <button class="btn btn-light buttonName" type="button" onclick="location.href='Techlogout';">
-
+                </form action="{{ route('technician.home') }}" method="GET">
+                
+                
+                    <button class="btn btn-light buttonName" type="submit"
+                        onclick="event.preventDefault();
+                                        this.closest('form').submit();">
                         <svg width="40" height="34" viewBox="0 0 51 53" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -112,9 +113,7 @@
                         </svg>
                         {{ __('Logout') }}
                     </button>
-
                 </form>
-
 
 
             </div>

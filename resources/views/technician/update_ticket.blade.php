@@ -1,7 +1,4 @@
-@extends('layouts.technician')
 
-
-@section('content')
     <!DOCTYPE html>
 
     <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -56,7 +53,7 @@
 
                         <div class="col-sm-10">
                             <br>
-                            <form method="POST" action="{{ route('store-comment', $ticket->id) }}">
+                            <form method="POST" action="{{ url('store-Comment'. $ticket->id) }}">
                                 @csrf
                                 @method('PUT')
                             <label for="inputState" class="form-label"><b>Response:</b></label>
@@ -102,4 +99,4 @@
                     </div>
             </div>
         </div>
-    @endsection
+  

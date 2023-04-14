@@ -59,7 +59,8 @@ class CustomAuthController extends Controller
       $user ->password = Hash::make($request->password);
       $res = $user->save();
       if($res){
-       return back()->with('success', 'User registered Successfuly');
+       
+       return redirect('sysadmindashboard');
 
       // return redirect()->route('system_admin.system_admin_dashboard');
 
@@ -89,6 +90,7 @@ class CustomAuthController extends Controller
 
 
       $request->session()->put('loginId', $user->id);
+    
       return redirect('admindashboard');
 
   }else{
@@ -143,6 +145,7 @@ public function logout(){
 
 
       $request->session()->put('loginId', $user->id);
+      $request->session()->put('last_login', now());
       return redirect('techdashboard');
 
   }else{
@@ -171,9 +174,6 @@ public function logout(){
       return view('technician.home');
     }
   }
-
-
-
 
 
   //System Admin Login
@@ -208,11 +208,7 @@ public function logout(){
 
   }
 
-
-
 public function systemdashboard(){
-
-
   return view('system_admin.system_admin_dashboard',[
     'users' => User::all(),
     'userInput' => '<script>alert("hello")</script>'
@@ -302,9 +298,7 @@ if(Session::has('loginId')){
 }
 return view('management.management_dashboard', compact('data', 'service', 'incident' , 'open', 'closed', 'ticketCount', 'tickets'));
 
-
 }
-
 public function managementlogout(){
   if(Session::has('loginId')){
     Session::pull('loginId');

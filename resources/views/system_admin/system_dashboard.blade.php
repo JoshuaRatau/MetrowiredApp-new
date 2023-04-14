@@ -75,7 +75,7 @@
                                 @foreach ($users as $user)
                         </tr>
 
-                        <td class="text-center">{{ $user['created_at'] }}</td>
+                        <td class="text-center">{{ $user['created_at']->format('Y-m-d') }}</td>
                         <td class="table-secondary text-center">{{ $user['type'] }}</td>
                         <td class="text-center">{{ $user['name'] }}</td>
                         <td class="table-secondary text-center">{{ $user['email'] }}</td>
@@ -115,8 +115,8 @@
                                 <h4>Are you sure you want to delete <br>this user?</h4>
                             </div>
                             <div class="mt-3 pt-3 d-flex align-items-center justify-content-center">
-
-                                <a class="btn btn-danger" href="delete/{{ $user->id }}" role="button"
+                                 
+                                    <a class="btn btn-danger" href="delete/{{ $user->id }}" role="button"
                                     id="btndelete" data-bs-toggle="modal" data-bs-target="#sucessModal"
                                     data-bs-dismiss="modal">Yes</a>
 

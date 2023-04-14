@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Models\Users;
+use App\Models\User;
 use App\Models\Ticket;
+use Session;
 use App\Models\Completed;
-
+use Auth;
 
 
 
@@ -88,11 +89,24 @@ class TicketController extends Controller
 
     public function details($id)
     {
-
+$data = array();
+if(Session::has('loginId')){
+    $data = User::where('id', '=',Session::has('loginId'))->first(); 
+}
     $ticket = Ticket::find($id);
-    return view('technician.ticket_details', compact('ticket'));
+    return view('technician.ticket_details', compact('data','ticket'));
        
 }
+
+
+
+
+
+public function Technicianlogout(){
+  
+      return view('technician.home');
+    }
+  
 
 public function update(Request $request, $id)
 {
@@ -115,22 +129,22 @@ public function index(Request $request)
 
 
 
-
-
-
-
-
-
-
-
-public function storeComments(Request $request, $ticketId)
+public function assigneTickects()
 {
-    $ticket = Ticket::findOrFail($ticketId);
+    $technicianId = Auth::user()->id;
+    $assignedTicketsCount = Ticket::where('assigned_to', $id)->count();
+
+    return view('techdashboard', compact('assignedTicketsCount'));
+}
+
+
+public function storeComment(Request $request, $id)
+{
+    $ticket = Ticket::findOrFail($id);
     $ticket->response = $request->input('response');
     $ticket->response = $request->input('number_points');
     $ticket->comments = $request->input('comments');
     $ticket->save();
-
     return redirect()->route('technician.home');
 }
 

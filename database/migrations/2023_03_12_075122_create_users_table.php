@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('email')->unique();
             $table->string('password');
+            $table->timestamp('last_logged_in_at')->nullable();
             $table->timestamps(); 
     
         });

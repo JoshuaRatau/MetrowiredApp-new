@@ -67,16 +67,19 @@ Route::post('/register-ticket', [TicketController::class, 'registerTicket'])->na
 //Routes for Technician
 Route::post('login-tech', [CustomAuthController::class, 'loginTech' ])->name('login-tech')->middleware('alreadyLoggedIn');
 Route::get('/techdashboard', [CustomAuthController::class, 'techdashboard'])->name('techdashboard.techdashboard');
-Route::get('technician/ticket_details/{id}', [TicketController::class, 'details']);
+ Route::get('technician/ticket_details/{id}', [TicketController::class, 'details']);
+Route::get('technician/ticket_update/{id}', [TicketController::class,  'complete']);
+
 Route::get('/Techlogout', [CustomAuthController::class, 'Techlogout']);
+Route::get('/Technicianlogout', [TicketController::class, 'Technicianlogout']);
 Route::put('ticket-details/{id}', [TicketController::class, 'update']) ;
-Route::get('completed-tickets', [TicketController::class, 'completedTickets'])->name('completed-ticketsw');
+
 
 //Login for System Admin
 Route::post('login-system', [CustomAuthController::class, 'loginSystem' ])->name('login-system');
 Route::get('/Systemlogout', [CustomAuthController::class, 'Sytemlogout']);
 Route::get('/ticket', [TicketController::class, 'ticket']);
-Route::post('/store-comment', [TicketController::class, 'storeComment'])->name('store-comment');
+Route::put('/store-comment/{id}', [TicketController::class, 'storeComment']);
 
 
 //Management Login
