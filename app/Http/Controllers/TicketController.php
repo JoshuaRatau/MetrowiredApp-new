@@ -36,14 +36,14 @@ class TicketController extends Controller
     public function registerTicket(Request $request)
     {
         $request->validate([
-            // 'region'=>'required',
-            // 'network_type'=>'required',
-            // 'affected_user'=>'required',
-            // 'ticket_number'=>'required',
-            // 'contact'=>'required',
-            // 'title'=>'required',
-            // 'technician'=>'required',
-            // 'alternate_contact'=>'required',
+            'region'=>'required',
+            'network_type'=>'required',
+            'affected_user'=>'required',
+            'ticket_number'=>'required',
+            'contact'=>'required',
+            'title'=>'required',
+            'technician'=>'required',
+            'alternate_contact'=>'required',
 
         ]);
         $ticket = new Ticket();
@@ -112,9 +112,11 @@ class TicketController extends Controller
 
     public function index(Request $request)
     {
-        $region = $request->input('region');
-        $ticket = Ticket::where('region', $region)->get();
-        return view('management.management_dashboard', compact('ticket'));
+        // $region = $request->input('region');
+        // $ticket = Ticket::where('region', $region)->get();
+        // return view('management.management_dashboard', compact('ticket'));
+        $tickets = Tickets::all();
+        return view('management.management_dashboard')->with('ticket s', $tickets);
     }
 
 

@@ -4,16 +4,19 @@
 @section('title', 'Metrowired')
 @section('meta')
     <meta name="description" content="" />
+   
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
+ <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="styleshet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
@@ -116,7 +119,7 @@
                 <div class="col-md-6 col-sm-12 p-3">
                     <div class="input-group d-flex justify-content-md-end justify-content-sm-start">
                         <div class="form-outline">
-                            <input id="search-focus" type="search" id="form1" class="search" placeholder="Search" />
+                            <input id="search" name="search" type="search" id="form1" class="search" placeholder="Search" autocomplete="off" />
                         </div>
                     </div>
                 </div>
@@ -162,7 +165,7 @@
                     <div class="test-start h6 select-text">
                         Region:
                     </div>
-                    <select class="form-select" aria-label="Default select example" id="region" name="region">
+                    <select class="form-select" aria-label="Default select example" id="filter" name="region">
                         <option selected></option>
                         <option value="">All</option>
                         <option value="regionA">Region A</option>
@@ -313,10 +316,53 @@ function exportTableToExcel(tableID, filename = ''){
 
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/script.js" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="js/script.js" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js "></script>
-<script type="text/javascript" src="js/script.js" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js "></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+});
+
+//
+
+
+
+
+
+
+
+
+
+//Filter By region
+
+
+$(document).ready(function() {
+    $('#filter').change(function() {
+        var keyword = $(this).val();
+
+        $.ajax({
+            url: '{{ route("search", ":region") }}'.replace(':region', keyword),
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                var rows = '';
+
+                $.each(data, function(index, item) {
+                    rows += '<tr>';
+                    rows += '<td>' + item.column1 + '</td>';
+                    rows += '<td>' + item.column2 + '</td>';
+                    rows += '</tr>';
+                });
+
+                $('#tblData tbody').html(rows);
+            }
+        });
+    });
+});
+
+
+
+</script>
+
 
 
 

@@ -9,7 +9,7 @@ use DB;
 use Session;
 use Hash;
 use Auth;
-use Illuminate\Support\Facades\Hash as FacadesHash;
+use Illuminate\Support\Facades\Validator;
 
 class CustomAuthController extends Controller
 {
@@ -137,7 +137,7 @@ public function logout(){
     //Techician Login
     public function loginTech(Request $request)
     {
-        $request->validate([
+        $validateData = $request -> validate([
 
             'email' => 'required',
             'password' => 'required',
@@ -323,6 +323,20 @@ public function managementlogout(){
     Session::pull('loginId');
     return view('management.home');
   }
+}
+
+
+///Search by registration
+
+
+
+public function search($region)
+{
+    $data = DB::table('tickets')
+            ->where('region', 'LIKE', '%'.$region.'%')
+            ->get();
+
+    return response()->json($data);
 }
 
 }
