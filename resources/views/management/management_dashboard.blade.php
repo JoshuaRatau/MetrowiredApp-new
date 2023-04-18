@@ -165,15 +165,13 @@
                     <div class="test-start h6 select-text">
                         Region:
                     </div>
-                    <select class="form-select" aria-label="Default select example" id="filter" name="region">
+                    <select class="form-select" aria-label="Default select example" id="filter" name="region" id="region-dropdown">
                         <option selected></option>
-                        <option value="">All</option>
-                        <option value="regionA">Region A</option>
-                        <option value="regionB">Regio B</option>
-                        <option value="regionC">Region C</option>
-                        <option value="regionD">Region D</option>
-                        <option value="regionE">Region E</option>
-                        <option value="regionF">Region F</option>
+                        <option value="">All Regions</option>
+                        @foreach($regions as $region)
+                        <option value="{{ $region->region }}">{{ $region->region }}</option>
+                            @endforeach
+                       
                     </select>
                 </div>
                 <div class=" col-md-2 col-sm-12">
@@ -316,48 +314,7 @@ function exportTableToExcel(tableID, filename = ''){
 
 
 
-<script type="text/javascript">
 
-$(document).ready(function(){
-
-});
-
-//
-
-
-
-
-
-
-
-
-
-//Filter By region
-
-
-$(document).ready(function() {
-    $('#filter').change(function() {
-        var keyword = $(this).val();
-
-        $.ajax({
-            url: '{{ route("search", ":region") }}'.replace(':region', keyword),
-            type: 'GET',
-            dataType: 'json',
-            success: function(data) {
-                var rows = '';
-
-                $.each(data, function(index, item) {
-                    rows += '<tr>';
-                    rows += '<td>' + item.column1 + '</td>';
-                    rows += '<td>' + item.column2 + '</td>';
-                    rows += '</tr>';
-                });
-
-                $('#tblData tbody').html(rows);
-            }
-        });
-    });
-});
 
 
 

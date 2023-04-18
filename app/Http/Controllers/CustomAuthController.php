@@ -111,7 +111,7 @@ class CustomAuthController extends Controller
 
 
 
-    $tickets = Ticket::where('assigned_to', session('loginId'))->get();
+    $tickets = Ticket::where('assigned_to', session('loginId'))->where('status', '!=', 'Complete')->get();
 
     
 
@@ -120,7 +120,7 @@ class CustomAuthController extends Controller
       $data = User::where('id', '=' , Session::get('loginId'))->first() ;
 
         //count
-        $assignedTickets = Ticket::where('assigned_to', $data->id)->count();
+        $assignedTickets = Ticket::where('assigned_to', $data->id)->where('status', '!=', 'Complete')->count();
     }
     return view('technician.dashboard', compact( 'data', 'tickets', 'assignedTickets' ));
 
@@ -165,14 +165,6 @@ public function logout(){
         }
 
     }
-
-
-
-
-
-
-
-
     //Technician Logout
 
 
@@ -297,7 +289,7 @@ public function systemdashboard(){
 
     }
 
-public function managementdashboard(){
+public function managementdashboard(Request $request){
 $data = array();
 if(Session::has('loginId')){
   $data = User::where('id', '=',Session::has('loginId'))->first();
@@ -312,8 +304,13 @@ if(Session::has('loginId')){
             $tickets = Ticket::all();
 
 
+            //Region:
+            $information = DB::table('tickets')->get();
+            $regions = DB::table('tickets')->distinct()->pluck('region');
+
+
 }
-return view('management.management_dashboard', compact('data', 'service', 'incident' , 'open', 'closed', 'ticketCount', 'tickets'));
+return view('management.management_dashboard', compact('data', 'service', 'incident' , 'open', 'closed', 'ticketCount', 'tickets', 'information', 'regions'));
 
 
 }
@@ -327,8 +324,6 @@ public function managementlogout(){
 
 
 ///Search by registration
-
-
 
 public function search($region)
 {

@@ -53,9 +53,7 @@
 
                         <div class="col-sm-10">
                             <br>
-                            <form method="POST" action="{{ url('store-Comment'. $ticket->id) }}">
-                                @csrf
-                                @method('PUT')
+                          
                             <label for="inputState" class="form-label"><b>Response:</b></label>
                             <select name="response" id="inputState" class="form-select">
                                 <option selected>Select a response</option>
@@ -72,8 +70,9 @@
                             </select>
                         </div>
                         <div class="col-sm-3">
-                            <br>
-                            <input type="number" name="number_points" min="1" max="10">
+                            <br> 
+                            <input type="text" class="form-control" placeholder="email" name="breaks_number">
+                            <!-- <input  class="form-control" type="number" name="breaks_number"> -->
                         </div>
 
 
@@ -95,7 +94,7 @@
                             </form>
                         </div>
                     </div>
-                    <div class="row">
+                  
                     </div>
             </div>
         </div>
