@@ -127,6 +127,8 @@ class TicketController extends Controller
         $ticket->save();
        
 
+        
+
         //reomove ticket from techncian dashboad
     
         return redirect()->route('technician.home');

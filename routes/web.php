@@ -79,7 +79,7 @@ Route::put('ticket-details/{id}', [TicketController::class, 'update']) ;
 
 //Login for System Admin
 Route::post('login-system', [CustomAuthController::class, 'loginSystem' ])->name('login-system');
-Route::get('/Systemlogout', [CustomAuthController::class, 'Sytemlogout']);
+Route::get('/Systemlogout', [CustomAuthController::class, 'Systemlogout']);
 Route::get('/ticket', [TicketController::class, 'ticket']);
 Route::put('/store-comment/{id}', [TicketController::class, 'storecomment']);
 

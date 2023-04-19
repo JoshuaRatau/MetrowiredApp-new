@@ -168,9 +168,7 @@
                     <select class="form-select" aria-label="Default select example" id="filter" name="region" id="region-dropdown">
                         <option selected></option>
                         <option value="">All Regions</option>
-                        @foreach($regions as $region)
-                        <option value="{{ $region->region }}">{{ $region->region }}</option>
-                            @endforeach
+                    
                        
                     </select>
                 </div>

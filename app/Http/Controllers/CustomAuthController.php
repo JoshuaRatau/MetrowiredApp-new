@@ -46,12 +46,21 @@ class CustomAuthController extends Controller
             'region' => 'required',
             'type' => 'required',
             'name' => 'required',
-            'phone' => 'required',
+            'phone' => 'required | digits:10',
             'email' => 'required |email|unique:users',
             'password' => 'required|min:5| max:12',
 
 
-        ]);
+        ],
+    [
+
+        'phone.digits' => 'The phone number must be exactly 10 digits.'   
+    ]
+    
+    );
+
+
+
       $user = new User();
       $user ->region = $request->region;
       $user ->type = $request->type;
@@ -59,7 +68,7 @@ class CustomAuthController extends Controller
       $user ->phone = $request->phone;
       $user ->email = $request->email;
       $user ->password = Hash::make($request->password);
-      $res = $user->save();
+            $res = $user->save();
       if($res){
        return back()->with('success', 'User registered Successfuly');
 
@@ -214,13 +223,21 @@ public function logout(){
 
 public function systemdashboard(){
 
-
   return view('system_admin.system_admin_dashboard',[
     'users' => User::all(),
     'userInput' => '<script>alert("hello")</script>'
   ]);
-
     }
+
+
+    public function Systemlogout(){
+        if(Session::has('loginId')){
+          Session::pull('loginId');
+          return view('system_admin.home');
+        }
+      }
+
+
 
     public function update(Request $request, $id)
     {
@@ -233,12 +250,7 @@ public function systemdashboard(){
         $users->email = $request->input('email');
         $users->update();
         return redirect('sysadmindashboard');
-
-
-
     }
-
-
     public function edit($id)
     {
         $users = User::find($id);
@@ -307,8 +319,6 @@ if(Session::has('loginId')){
             //Region:
             $information = DB::table('tickets')->get();
             $regions = DB::table('tickets')->distinct()->pluck('region');
-
-
 }
 return view('management.management_dashboard', compact('data', 'service', 'incident' , 'open', 'closed', 'ticketCount', 'tickets', 'information', 'regions'));
 
@@ -322,9 +332,7 @@ public function managementlogout(){
   }
 }
 
-
 ///Search by registration
-
 public function search($region)
 {
     $data = DB::table('tickets')

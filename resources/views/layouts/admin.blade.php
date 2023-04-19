@@ -128,9 +128,8 @@
                     username
                 </button>
                 <x-auth-session-status class="mb-4" :status="session('status')" />
-                <form method="POST">
-                    @csrf
-                    <button class="btn btn-light buttonLog" type="submit" onclick="location.href='Techlogout';"
+               
+                    <button class="btn btn-light buttonLog" type="submit" onclick="location.href='logout';"
                         onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         <svg width="40" height="34" viewBox="0 0 51 53" fill="currentColor"
@@ -144,7 +143,7 @@
                         </svg>
                         {{ __('Logout') }}
                     </button>
-                </form>
+               
 
 
             </div>
