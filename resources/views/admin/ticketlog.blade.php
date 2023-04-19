@@ -23,8 +23,6 @@
 <link rel="stylesheet" href="{{ asset('assets/css/site.css') }}">
 @section('content')
 
-
-
     <main>
         <div class="container">
             <div class="row col-sm-12 mb-6">

@@ -8,6 +8,7 @@ use App\Models\Ticket;
 use DB;
 use Session;
 use Hash;
+use Illuminate\Support\Facades\Log;
 
 class MobileController extends Controller
 {
@@ -16,6 +17,7 @@ class MobileController extends Controller
     //Login for technician
     public function loginTech(Request $request)
     {
+
         $request->validate([
 
             'email' => 'required',
@@ -30,6 +32,7 @@ class MobileController extends Controller
 
 
                     $request->session()->put('loginId', $user->id);
+                    
                     return response()->json(['success' => 'User logged in successful', 'user' => $user]);
 
                 } else {
@@ -56,6 +59,41 @@ class MobileController extends Controller
     {
         $tickets = Ticket::where('assigned_to', $request->input('id'))->get();
         return response()->json($tickets);
+    }
+
+    public function ticketDetails($id)
+    {
+        $ticket = Ticket::find($id);
+
+        if (!$ticket) {
+            return response()->json(['error' => 'Ticket not found'], 404);
+        }
+
+        return response()->json($ticket);
+    }
+
+    public function updateStatus(Request $request, $id)
+    {
+        $ticket = Ticket::findOrFail($id);
+        $ticket->status = $request->status;
+        $ticket->save();
+
+        return response()->json([
+            'message' => 'Ticket status updated successfully'
+        ]);
+    }
+
+    public function updateComplete(Request $request, $id)
+    {
+        $ticket = Ticket::findOrFail($id);
+        $ticket->response = $request->response;
+        $ticket->breaks_number = $request->breaks_number;
+        $ticket->comment = $request->comment;
+        $ticket->save();
+
+        return response()->json([
+            'message' => 'Ticket completed successfully'
+        ]);
     }
 
     public function update(Request $request, $id)
