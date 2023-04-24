@@ -32,7 +32,7 @@ class MobileController extends Controller
 
 
                     $request->session()->put('loginId', $user->id);
-                    
+
                     return response()->json(['success' => 'User logged in successful', 'user' => $user]);
 
                 } else {
@@ -94,6 +94,11 @@ class MobileController extends Controller
         return response()->json([
             'message' => 'Ticket completed successfully'
         ]);
+    }
+
+    public function countTickets(){
+        $activeTicketsCount = Ticket::where('status', 'Active')->count();
+        return response()->json(['count' => $activeTicketsCount]);
     }
 
     public function update(Request $request, $id)

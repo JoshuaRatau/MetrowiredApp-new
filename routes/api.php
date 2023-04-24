@@ -25,10 +25,10 @@ Route::get('/ticketlist', [MobileController::class, 'ticketList']);
 Route::get('/ticketdetails/{id}', [MobileController::class, 'ticketDetails']);
 Route::put('/tickets/{id}/status', [MobileController::class, 'updateStatus']);
 Route::put('/complete/{id}', [MobileController::class, 'updateComplete']);
+Route::get('/countNew', [MobileController::class, 'countTickets']);
 
 Route::get('/Techlogout', [CustomAuthController::class, 'Techlogout']);
-Route::put('ticket-update/{id}', [TicketController::class, 'update']);
-Route::put('comment-update/{id}', [CommentsController::class, 'store']);
+
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
