@@ -249,6 +249,11 @@
                             <div class="col-md-12 mb-3">
                                 <label for="inputAddress2" class="form-label">Location</label>
                                 <input type="text" class="form-control" id="location" name="location">
+                                <span class="text-danger">
+                                        @error('location')
+                                            {{ $message }}
+                                        @enderror
+                                    </span>
                             </div>
                         </div>
 

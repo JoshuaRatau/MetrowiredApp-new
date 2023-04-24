@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::table('tickets', function (Blueprint $table) {
-            //$table->string('status')->default('Active');
-            $table->string('response')->nullable();
-            $table->integer('breaks_number')->nullable();
+          
+            $table->string('response')->default('no respond');
+            $table->integer('breaks_number')->default('0');
             $table->string('comment')->default('No comment');
         });
     }

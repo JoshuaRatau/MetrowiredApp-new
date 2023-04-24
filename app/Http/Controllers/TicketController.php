@@ -86,10 +86,6 @@ class TicketController extends Controller
 
 
 
-
-
-
-
     public function details($id)
     {
 
@@ -104,7 +100,8 @@ class TicketController extends Controller
         $ticket->status = $request->status;
         $ticket->save();
         if ($ticket->status == 'Complete') {
-            return view('technician.update_ticket', ['ticket' => $ticket]);
+            return view('technician.complete', ['ticket' => $ticket]);
+         
         } else {
             return redirect()->back();
         }
@@ -112,29 +109,28 @@ class TicketController extends Controller
 
     public function index(Request $request)
     {
-        $region = $request->input('region');
-        $ticket = Ticket::where('region', $region)->get();
-        return view('management.management_dashboard', compact('ticket'));
+        
+        $tickets = Tickets::all();
+        $regions = DB::table('tickets')->select('region')->distinct()->get();
+        return view('management.management_dashboard')->with('tickets');
     }
 
 
 
 
-
-
-
-
-
-
-
-    public function storeComments(Request $request, $ticketId)
+    public function storecomment(Request $request, $ticketId)
     {
         $ticket = Ticket::findOrFail($ticketId);
         $ticket->response = $request->input('response');
-        $ticket->response = $request->input('number_points');
-        $ticket->comments = $request->input('comments');
+        $ticket->breaks_number= $request->input('breaks_number');
+        $ticket->comment = $request->input('comment');
         $ticket->save();
+       
 
+        
+
+        //reomove ticket from techncian dashboad
+    
         return redirect()->route('technician.home');
     }
 

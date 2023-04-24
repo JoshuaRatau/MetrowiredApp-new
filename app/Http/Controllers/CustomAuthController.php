@@ -9,7 +9,7 @@ use DB;
 use Session;
 use Hash;
 use Auth;
-use Illuminate\Support\Facades\Hash as FacadesHash;
+use Illuminate\Support\Facades\Validator;
 
 class CustomAuthController extends Controller
 {
@@ -46,12 +46,21 @@ class CustomAuthController extends Controller
             'region' => 'required',
             'type' => 'required',
             'name' => 'required',
-            'phone' => 'required',
+            'phone' => 'required | digits:10',
             'email' => 'required |email|unique:users',
             'password' => 'required|min:5| max:12',
 
 
-        ]);
+        ],
+    [
+
+        'phone.digits' => 'The phone number must be exactly 10 digits.'   
+    ]
+    
+    );
+
+
+
       $user = new User();
       $user ->region = $request->region;
       $user ->type = $request->type;
@@ -59,7 +68,7 @@ class CustomAuthController extends Controller
       $user ->phone = $request->phone;
       $user ->email = $request->email;
       $user ->password = Hash::make($request->password);
-      $res = $user->save();
+            $res = $user->save();
       if($res){
        return back()->with('success', 'User registered Successfuly');
 
@@ -111,7 +120,7 @@ class CustomAuthController extends Controller
 
 
 
-    $tickets = Ticket::where('assigned_to', session('loginId'))->get();
+    $tickets = Ticket::where('assigned_to', session('loginId'))->where('status', '!=', 'Complete')->get();
 
     
 
@@ -120,7 +129,7 @@ class CustomAuthController extends Controller
       $data = User::where('id', '=' , Session::get('loginId'))->first() ;
 
         //count
-        $assignedTickets = Ticket::where('assigned_to', $data->id)->count();
+        $assignedTickets = Ticket::where('assigned_to', $data->id)->where('status', '!=', 'Complete')->count();
     }
     return view('technician.dashboard', compact( 'data', 'tickets', 'assignedTickets' ));
 
@@ -137,7 +146,7 @@ public function logout(){
     //Techician Login
     public function loginTech(Request $request)
     {
-        $request->validate([
+        $validateData = $request -> validate([
 
             'email' => 'required',
             'password' => 'required',
@@ -165,14 +174,6 @@ public function logout(){
         }
 
     }
-
-
-
-
-
-
-
-
     //Technician Logout
 
 
@@ -222,13 +223,21 @@ public function logout(){
 
 public function systemdashboard(){
 
-
   return view('system_admin.system_admin_dashboard',[
     'users' => User::all(),
     'userInput' => '<script>alert("hello")</script>'
   ]);
-
     }
+
+
+    public function Systemlogout(){
+        if(Session::has('loginId')){
+          Session::pull('loginId');
+          return view('system_admin.home');
+        }
+      }
+
+
 
     public function update(Request $request, $id)
     {
@@ -241,12 +250,7 @@ public function systemdashboard(){
         $users->email = $request->input('email');
         $users->update();
         return redirect('sysadmindashboard');
-
-
-
     }
-
-
     public function edit($id)
     {
         $users = User::find($id);
@@ -297,7 +301,7 @@ public function systemdashboard(){
 
     }
 
-public function managementdashboard(){
+public function managementdashboard(Request $request){
 $data = array();
 if(Session::has('loginId')){
   $data = User::where('id', '=',Session::has('loginId'))->first();
@@ -312,8 +316,11 @@ if(Session::has('loginId')){
             $tickets = Ticket::all();
 
 
+            //Region:
+            $information = DB::table('tickets')->get();
+            $regions = DB::table('tickets')->distinct()->pluck('region');
 }
-return view('management.management_dashboard', compact('data', 'service', 'incident' , 'open', 'closed', 'ticketCount', 'tickets'));
+return view('management.management_dashboard', compact('data', 'service', 'incident' , 'open', 'closed', 'ticketCount', 'tickets', 'information', 'regions'));
 
 
 }
@@ -323,6 +330,16 @@ public function managementlogout(){
     Session::pull('loginId');
     return view('management.home');
   }
+}
+
+///Search by registration
+public function search($region)
+{
+    $data = DB::table('tickets')
+            ->where('region', 'LIKE', '%'.$region.'%')
+            ->get();
+
+    return response()->json($data);
 }
 
 }

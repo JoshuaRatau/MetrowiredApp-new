@@ -10,6 +10,16 @@ Route::prefix('technician')->group(function () {
     )->name('technician.home');
 
 
+
+
+    //Testing
+
+    Route::get('/testing', function () {
+        return view('technician.validations');
+    }
+    )->name('technician.validations');
+
+
    
   
     Route::get('/ticketUpdate', function () {

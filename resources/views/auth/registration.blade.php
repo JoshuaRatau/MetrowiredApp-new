@@ -113,7 +113,7 @@
                                 </div>
                                 <div class="col-sm-12 mb-3">
                                     <label for="password" class="password">Password</label>
-                                    <input type="password" class="form-control" placeholder="password" name="password"
+                                    <input type="password"  id="password" class="form-control" placeholder="password" name="password"
                                         value="">
                                     <span class="text-danger">
                                         @error('password')
@@ -122,12 +122,11 @@
                                     </span>
                                 </div>
                                 <div class="col-sm-12 mb-3 text-end">
-                                    <button type="button" class="btn btn-primary buttonGenerate">Generate</button>
+                                    <button type="button" id="generate-password" class="btn btn-primary buttonGenerate">Generate</button>
                                 </div>
                                 <div class="row p-lg-3 p-sm-1">
                                     <div class="col-sm-6">
-                                        <button class="btn btn-primary buttonLog" data-bs-toggle="modal"
-                                            data-bs-target="#addModal"type="submit">Add</button>
+                                        <button class="btn btn-primary buttonLog"  type="submit">Add</button>
                                     </div>
                                     <div class="col-sm-6">
                                         <button type="button" class="btn btn-primary buttonCancel">Cancel</button>
@@ -171,6 +170,34 @@
                 </div>
             </div>
         </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#generate-password').click(function() {
+            // Generate a random password
+            var password = generatePassword();
+
+            // Set the password field value
+            $('#password').val(password);
+        });
+    });
+
+    function generatePassword() {
+        // Define the characters to use in the password
+        var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+{}|:<>?-=[];,./';
+
+        // Generate a random password
+        var password = '';
+        for (var i = 0; i < 12; i++) {
+            password += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+
+        return password;
+    }
+</script>
+
 
     </main>
 @endsection

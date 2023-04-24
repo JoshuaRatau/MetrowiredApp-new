@@ -63,7 +63,7 @@
                             @csrf
                                 <div class="mb-3">
                                     <label for="email" class="form-label ">Email</label>
-                                    <input type="text" class="form-control form-control-lg input-box" placeholder="email" name="email" value="{{old('email')}}">
+                                    <input type="text" class="form-control form-control-lg input-box" placeholder="email" name="email" id="name" value="{{old('email')}}">
                                     <span class="text-danger">@error('email') {{$message}} @enderror</span>
                                     
                                 </div>
