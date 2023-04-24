@@ -126,7 +126,8 @@
                                 </div>
                                 <div class="row p-lg-3 p-sm-1">
                                     <div class="col-sm-6">
-                                        <button class="btn btn-primary buttonLog"  type="submit">Add</button>
+                                    <button class="btn btn-primary buttonLog" data-bs-toggle="modal"
+                                            data-bs-target="#addModal"type="submit">Add</button>
                                     </div>
                                     <div class="col-sm-6">
                                         <button type="button" class="btn btn-primary buttonCancel">Cancel</button>
@@ -138,7 +139,7 @@
                 </div>
             </div>
 
-            {{-- Modal one --}}
+          
             <div class="modal fade" id="addModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
                 tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered" role="document">

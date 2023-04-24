@@ -70,23 +70,9 @@ class TicketController extends Controller
         }
     }
 
-    //   public function techdashboard(){
-    //     return view('technician.dashboard', [
-    //         'tickets' =>Ticket::all(),
-    //     ]);
-    //   }
-
-    //View ticket Details
 
 
-    //   public function details($id){
-//     $tickets=Ticket::find($id);
-//     return view('technician.ticket_details', compact('tickets'));
-//   }
-
-
-
-    public function details($id)
+   public function details($id)
     {
 
         $ticket = Ticket::find($id);
@@ -102,10 +88,14 @@ class TicketController extends Controller
         if ($ticket->status == 'Complete') {
             return view('technician.complete', ['ticket' => $ticket]);
          
-        } else {
+        } else if ($ticket->status == 'User not available'){
+            return view('technician.complete', ['ticket' => $ticket]);
+        }else{
             return redirect()->back();
         }
-    }
+            
+        }
+    
 
     public function index(Request $request)
     {
@@ -127,14 +117,22 @@ class TicketController extends Controller
         $ticket->save();
        
 
+        // DRY
+        $tickets = Ticket::where('assigned_to', session('loginId'))->where('status', '!=', 'Complete')->get();
+
+        $data = array();
+        if(Session::has('loginId')){
+          $data = User::where('id', '=' , Session::get('loginId'))->first() ;
+    
+            //count
+            $assignedTickets = Ticket::where('assigned_to', $data->id)->where('status', '!=', 'Complete')->count();
+        }
         
 
         //reomove ticket from techncian dashboad
     
-        return redirect()->route('technician.home');
+        return view('technician.dashboard', compact( 'data', 'tickets', 'assignedTickets' ));
     }
-
-
 
     public function download()
     {
@@ -147,5 +145,4 @@ class TicketController extends Controller
             });
         }, $fileName);
     }
-
 }

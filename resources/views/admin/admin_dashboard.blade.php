@@ -32,7 +32,7 @@
                     <div class="col-sm-6 p-2">
                         <div class="d-flex justify-content-sm-end justify-content-lg-end">
                                 <button type="button" onclick="window.location='{{ url('/ticket') }}'"
-                                        class="btn btn-primary btn-lg btnLogin"> <img
+                                        class="btnLogin"> <img
                                             src={{ asset('assets/img/web/LogTicket.svg') }} width="35"
                                             height="34">Log a ticket</button>
                         </div>
@@ -52,7 +52,7 @@
                             <th scope="col" class="text-center">Affected User</th>
                             <th scope="col" class="text-center">Status</th>
                             <th scope="col" class="text-center">Region</th>
-                            <th scope="col" class="text-center">Technician</th>
+                           
                         </tr>
                     </thead>
                     <tbody>
@@ -68,7 +68,7 @@
                                     <td class="table-secondary text-center">{{ $ticket['affected_user'] }}</td>
                                     <td class="text-center">Logged</td>
                                     <td class="table-secondary text-center">{{ $ticket['region'] }}</td>
-                                    <td class="text-center">{{ $ticket['technician'] }}</td>
+                                  
 
                                 </tr>
                             @endforeach
@@ -77,7 +77,6 @@
                         @endif
 
                     </tbody>
-
                     <div>
                 </table>
             </div>

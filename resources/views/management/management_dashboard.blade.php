@@ -119,7 +119,7 @@
                 <div class="col-md-6 col-sm-12 p-3">
                     <div class="input-group d-flex justify-content-md-end justify-content-sm-start">
                         <div class="form-outline">
-                            <input id="search" name="search" type="search" id="form1" class="search" placeholder="Search" autocomplete="off" />
+                            <input id="myInput" name="search" type="search" id="form1" class="search" placeholder="Search" autocomplete="off" />
                         </div>
                     </div>
                 </div>
@@ -141,31 +141,31 @@
                     <div class="test-start h6 select-text">
                         Network Type:
                     </div>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>All</option>
-                        <option value="1">@lang('messages.welcome')</option>
-                        <option value="2">Service Requests</option>
-
+                    <select  id="myDropdown" class="form-select" aria-label="Default select example">
+                        <option value="">All</option>
+                        <option value="LAN">LAN</option>
+                        <option value="WAN">WAN</option>
+                        <option value="All">All</option>
                     </select>
+
                 </div>
                 <div class=" col-md-2 col-sm-12">
                     <div class="test-start h6 select-text">
                         status:
                     </div>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>All</option>
-                        <option value="1">Accepted</option>
-                        <option value="2">Started</option>
-                        <option value="3">User not available</option>
-                        <option value="3">Complete</option>
-                        <option value="3">Rejected</option>
+                    <select id="status" class="form-select" aria-label="Default select example">
+                        <option value="">All</option>
+                        <option value="Started">Started</option>
+                        <option value="User not available">User not available</option>
+                        <option value="Complete">Complete</option>
+                   
                     </select>
                 </div>
                 <div class=" col-md-2 col-sm-12">
                     <div class="test-start h6 select-text">
                         Region:
                     </div>
-                    <select class="form-select" aria-label="Default select example" id="filter" name="region" id="region-dropdown">
+                    <select id="filterCity" class="form-select" aria-label="Default select example" id="filter" name="region" >
                         <option selected></option>
                         <option value="">All Regions</option>
                     
@@ -177,13 +177,10 @@
                         Techician:
                     </div>
                     <select class="form-select" aria-label="Default select example">
-                        <option selected></option>
-                        <option value="1">S. Hadebe</option>
-                        <option value="2">T. Ndlangamandla</option>
-                        <option value="3">C. Ngwenyama</option>
-                        <option value="3">C. Maphanga</option>
-                        <option value="3">C. Patel</option>
-                        <option value="3">D. Samson</option>
+                    <option value="">All</option>
+                    @foreach ($users as $user)
+                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                    @endforeach
                     </select>
                 </div>
                 <div class=" col-md-2 col-sm-12">
@@ -237,14 +234,13 @@
                                     <td class="text-center">11:40</td>
                                     <td class="table-secondary text-center">{{ $ticket['status'] }}</td>
                                     <td class="text-center">{{ $ticket['region'] }}</td>
-                                    <td class="table-secondary text-center">Thulani<br> Ndlangamandla</td>
+                                    <td class="table-secondary text-center">{{ $ticket->assigned->name }}</td>
                                     <td class="">
                                         <h6>{{ $ticket['description'] }}</h6>
                                     </td>
 
                                     <td class="table-secondary">
-                                        <h6>Breakfix-Sappi Buiding. West wing 5th floor 4 network points not working
-                                            and cables neeede for new printers to be...</h6>
+                                        <h6>{{ $ticket['comment'] }}</h6>
                                     </td>
 
                                 </tr>
@@ -296,10 +292,7 @@ function exportTableToExcel(tableID, filename = ''){
     }
 }
 
-</script>
-
-
-<script>
+//Print Table Data
   function printTable() {
         var table = document.getElementById("tblData");
         var html = table.outerHTML;
@@ -308,20 +301,69 @@ function exportTableToExcel(tableID, filename = ''){
         newWindow.print();
         newWindow.close();
   }
+
+
+
+//Search Table Data
+
+function filterTable() {
+  // Get the input value
+  var input = document.getElementById("myInput").value.toUpperCase();
+
+  // Get the table
+  var table = document.getElementById("tblData");
+
+  // Get all the rows of the table
+  var rows = table.getElementsByTagName("tr");
+
+  // Loop through all the rows and hide those that don't match the search query
+  for (var i = 0; i < rows.length; i++) {
+    var cells = rows[i].getElementsByTagName("td");
+    var found = false;
+    for (var j = 0; j < cells.length; j++) {
+      var cell = cells[j];
+      if (cell.innerText.toUpperCase().indexOf(input) > -1) {
+        found = true;
+        break;
+      }
+    }
+    if (found) {
+      rows[i].style.display = "";
+    } else {
+      rows[i].style.display = "none";
+    }
+  }
+}
+var input = document.getElementById("myInput");
+input.addEventListener("keyup", filterTable);
+
+
+
+//Filter By network Type
+const dropdown = document.getElementById('myDropdown');
+const table = document.getElementById('tblData');
+const rows = table.getElementsByTagName('tr');
+
+dropdown.addEventListener('change', () => {
+  const filterValue = dropdown.value.toLowerCase();
+
+  for (let i = 1; i < rows.length; i++) {
+    const country = rows[i].getElementsByTagName('td')[2].textContent.toLowerCase();
+
+    if (country.includes(filterValue)) {
+      rows[i].style.display = '';
+    } else {
+      rows[i].style.display = 'none';
+    }
+  }
+});
+
+
+
+
+
+
 </script>
-
-
-
-
-
-
-
-</script>
-
-
-
-
-
 
 @endsection
 

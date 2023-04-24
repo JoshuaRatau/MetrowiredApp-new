@@ -21,8 +21,6 @@ class CustomAuthController extends Controller
     ]);
   }
 
-
-
     public function registration(){
         return view("auth.registration");
     }
@@ -50,14 +48,7 @@ class CustomAuthController extends Controller
             'email' => 'required |email|unique:users',
             'password' => 'required|min:5| max:12',
 
-
-        ],
-    [
-
-        'phone.digits' => 'The phone number must be exactly 10 digits.'   
-    ]
-    
-    );
+        ]);
 
 
 
@@ -85,8 +76,6 @@ class CustomAuthController extends Controller
 
     public function loginAdmin(Request $request)
     {
-
-
         $request->validate([
 
             'email' => 'required',
@@ -122,14 +111,18 @@ class CustomAuthController extends Controller
 
     $tickets = Ticket::where('assigned_to', session('loginId'))->where('status', '!=', 'Complete')->get();
 
-    
-
     $data = array();
     if(Session::has('loginId')){
       $data = User::where('id', '=' , Session::get('loginId'))->first() ;
 
+
+      $nameSurname = $user->name_surname;
+      $nameArray = explode('', $nameSurname);
+      $name = $nameArray[0];
+
+
         //count
-        $assignedTickets = Ticket::where('assigned_to', $data->id)->where('status', '!=', 'Complete')->count();
+ $assignedTickets = Ticket::where('assigned_to', $data->id)->where('status', '!=', 'Complete')->count();
     }
     return view('technician.dashboard', compact( 'data', 'tickets', 'assignedTickets' ));
 
@@ -313,14 +306,17 @@ if(Session::has('loginId')){
             $open = Ticket::where('status', 'Active')->count();
             $closed = Ticket::where('status', 'Complete')->count();
             $ticketCount = Ticket::count();
+            $assigned =Ticket::with('assigned')->get();
             $tickets = Ticket::all();
 
 
             //Region:
             $information = DB::table('tickets')->get();
-            $regions = DB::table('tickets')->distinct()->pluck('region');
+
+            //Display All Technicians
+            $users = DB::table('users')->where('type','technician')->get();
 }
-return view('management.management_dashboard', compact('data', 'service', 'incident' , 'open', 'closed', 'ticketCount', 'tickets', 'information', 'regions'));
+return view('management.management_dashboard', compact('data', 'service', 'incident' , 'open', 'closed', 'ticketCount', 'tickets', 'information', 'users'));
 
 
 }

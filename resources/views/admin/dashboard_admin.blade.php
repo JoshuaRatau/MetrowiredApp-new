@@ -73,7 +73,7 @@
                                             <th scope="col" class="text-center">Affected User</th>
                                             <th scope="col" class="text-center">Status</th>
                                             <th scope="col" class="text-center">Region</th>
-                                            <th scope="col" class="text-center">Technician</th>
+                                            <!-- <th scope="col" class="text-center">Technician</th> -->
 
                                         </tr>
                                     </thead>
@@ -90,7 +90,8 @@
                                                     <td class="text-center">{{ $ticket['affected_user'] }}</td>
                                                     <td class="text-center">Logged</td>
                                                     <td class="text-center">{{ $ticket['region'] }}</td>
-                                                    <td class="text-center">{{ $ticket['technician'] }}</td>
+                                                  
+                                                 
 
                                                 </tr>
                                             @endforeach

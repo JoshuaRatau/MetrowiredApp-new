@@ -9,10 +9,12 @@ class Ticket extends Model
 {
     use HasFactory;
 
-    public function user()
+    public function assigned()
     {
         return $this->belongsTo(User::class, 'assigned_to');
     }
+
+    
 
     public function setStatusAttribute($value)
 {

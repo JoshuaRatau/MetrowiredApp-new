@@ -175,12 +175,12 @@
                                     <div class="col-md-4">
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="checkbox" id="checkbox1"
-                                                name="option1" value="INC-">
+                                                name="option1" value="INC">
                                             <label class="form-check-label" for="inlineCheckbox1">INC</label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="checkbox" id="checkbox2"
-                                                name="option2" value="SR-">
+                                                name="option2" value="SR">
                                             <label class="form-check-label" for="inlineCheckbox1">SR</label>
                                         </div>
                                     </div>

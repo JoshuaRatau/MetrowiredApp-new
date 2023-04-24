@@ -46,6 +46,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{ asset('assets/css/ticket_details.css') }}">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrq5_Dzl0pztNFIuuv04ls8DqEBD8_DFk"></script>
+
 
 
 
@@ -124,7 +126,7 @@
                                             <div class="mb-3">
                                                 <br>
                                                 <h6>Date Logged</h6>
-                                                <p>{{ $ticket->created_at->format('Y-m-d') }}</p>
+                                                <p id="location-input">{{ $ticket->created_at->format('Y-m-d') }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -134,16 +136,20 @@
 
                                     <div class="row">
                                         <div class="col-sm-10">
-                                            <div class="map-Text">
+                                        
                                                 <br>
                                                 <h6>Location</h6>
-                                                <p>{{ $ticket['location'] }}</p>
+                                                <p id="location">{{ $ticket['location'] }}</p>
 
-                                                <button type="button" class="btn btn-primary map">View Map</button>
+                                             
+                                                <button onclick="location.href="{{ route('map.showmap') }}" type="submit" class="btn btn-primary map">View Map</button>
+                                                
                                             </div>
+                                            
+
                                         </div>
                                         <div class="col-sm-10">
-                                            <div class="map-Text">
+                                            <div class="map-Text"> 
                                                 <br>
                                                 <h6>Description</h6>
                                                 <p>{{ $ticket['description'] }}</p>
@@ -173,5 +179,17 @@
             </div>
 
 
+
+
         </main>
+        <script>
+document.getElementById('map-button').addEventListener('click', function() {
+    var mapOptions = {
+        center: { lat: 37.7749, lng: -122.4194 }, // Set the center of the map
+        zoom: 12 // Set the zoom level
+    };
+    var map = new google.maps.Map(document.getElementById('map'), mapOptions); // Create the map
+});
+</script>
+
 @endsection

@@ -98,6 +98,11 @@ Route::get('/download-excel', [TicketController::class, 'download'])->name('down
 Route::get('/managementdashboard/{region?}', [CustomAuthController::class, 'search'])->name('search');
 
 
+Route::get('/map', 'TicketController@showmap')->name('map.showmap');
+
+
+
+
 
 
 
