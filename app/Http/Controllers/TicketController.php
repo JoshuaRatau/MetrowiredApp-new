@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Ticket;
-use Session;
+use Illuminate\Support\Facades\Session;
 use App\Models\Completed;
 use DB;
 use Hash;
@@ -87,19 +87,19 @@ class TicketController extends Controller
         $ticket->save();
         if ($ticket->status == 'User not available') {
             return redirect('/techdashboard');
-         
+
         } else if ($ticket->status == 'Complete'){
             return view('technician.complete', ['ticket' => $ticket]);
         }else{
             return redirect()->back();
         }
-            
+
         }
-    
+
 
     public function index(Request $request)
     {
-        
+
         $tickets = Tickets::all();
         $regions = DB::table('tickets')->select('region')->distinct()->get();
         return view('management.management_dashboard')->with('tickets');
@@ -115,7 +115,7 @@ class TicketController extends Controller
         $ticket->breaks_number= $request->input('breaks_number');
         $ticket->comment = $request->input('comment');
         $ticket->save();
-       
+
 
         // DRY
         $tickets = Ticket::where('assigned_to', session('loginId'))->where('status', '!=', 'Complete')->get();
@@ -123,14 +123,14 @@ class TicketController extends Controller
         $data = array();
         if(Session::has('loginId')){
           $data = User::where('id', '=' , Session::get('loginId'))->first() ;
-    
+
             //count
             $assignedTickets = Ticket::where('assigned_to', $data->id)->where('status', '!=', 'Complete')->count();
         }
-        
+
 
         //reomove ticket from techncian dashboad
-    
+
         return view('technician.dashboard', compact( 'data', 'tickets', 'assignedTickets' ));
     }
 

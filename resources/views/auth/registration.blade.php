@@ -39,7 +39,7 @@
                     <div class="col-md-12">
 
                         <form action="{{ route('register-user') }}" method="post" class="logForm">
-                        
+
                             @csrf
                             <div class="row">
                                 <div class="col-sm-5 mb-3">
@@ -79,7 +79,10 @@
                                     <label for="namr" class="form-label">Full Name</label>
                                     <input type="text" class="form-control" placeholder="name" name="name"
                                         value="{{ old('name ') }}">
-                                    <span class="text-danger"> @error('name'){{ $message }} @enderror</span>
+                                    <span class="text-danger"> @error('name')
+                                            {{ $message }}
+                                        @enderror
+                                    </span>
                                 </div>
                                 <div class="col-sm-12 mb-3">
                                     <label for="phone" class="form-label">Phone Number</label>
@@ -103,8 +106,8 @@
                                 </div>
                                 <div class="col-sm-12 mb-3">
                                     <label for="password" class="password">Password</label>
-                                    <input type="password"  id="password" class="form-control" placeholder="password" name="password"
-                                        value="">
+                                    <input type="password" id="password" class="form-control" placeholder="password"
+                                        name="password" value="">
                                     <span class="text-danger">
                                         @error('password')
                                             {{ $message }}
@@ -112,83 +115,130 @@
                                     </span>
                                 </div>
                                 <div class="col-sm-12 mb-3 text-end">
-                                    <button type="button" id="generate-password" class="btn btn-primary buttonGenerate">Generate</button>
+                                    <button type="button" id="generate-password"
+                                        class="btn btn-primary buttonGenerate">Generate</button>
                                 </div>
                                 <div class="row p-lg-3 p-sm-1">
-                                    <div class="col-sm-6">
-                                        <button type="submit" class="btn btn-ptn-primary">Submit</button>
-                                    <!-- <button class="btn btn-primary buttonLog" data-bs-toggle="modal"
-                    data-bs-target="#addModal"type="submit">Add</button> -->
+                                    <div class="col-sm-10">
+                                        <button type="submit" class="btn btn-primary btnLog" data-bs-toggle="modal"
+                                            data-bs-target="#addModal">Add</button>
+                                        <button type="button" class="btn btn-primary buttonCancel" data-bs-toggle="modal"
+                                            data-bs-target="#cancelModal">Cancel</button>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <button type="button" class="btn btn-primary buttonCancel">Cancel</button>
-                                    </div>
+
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
-            </div>
 
-          
-            <div class="modal fade" id="addModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
-                tabindex="-1">
-                <div class="modal-dialog modal-dialog-centered" role="document">
+                {{-- User Modal --}}
+                <div class="modal fade" id="addModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+                    tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
 
-                    <div class="modal-content">
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            <div class="mt-3 pt-3 d-flex align-items-center justify-content-center">
-                                <div class="row">
-                                    <div class="col-sm-12 text-center">
-                                        <h3>User Created</h3>
+                        <div class="modal-content">
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <div class="mt-3 pt-3 d-flex align-items-center justify-content-center">
+                                    <div class="row">
+                                        <div class="col-sm-12 text-center">
+                                            <h3>User Created</h3>
+                                        </div>
+                                        <div class="col-sm-12 text-center">
+                                            <p>This user has been created.Login information have been<br>sent to
+                                                user email address</p>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-12 text-center">
-                                        <p>This user has been created.Login information have been<br>sent to
-                                            user email address</p>
+                                </div>
+                                <div class="col-sm-12 mx-auto d-flex align-items-center justify-content-center">
+                                    <div class="text-center">
+                                        <img src={{ asset('assets/img/web/check_circle_outline_black_24dp.svg') }}
+                                            class="img-fluid logo" alt="logo" width="150" height="100">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-12 mx-auto d-flex align-items-center justify-content-center">
-                                <div class="text-center">
-                                    <img src={{ asset('assets/img/web/check_circle_outline_black_24dp.svg') }}
-                                        class="img-fluid logo" alt="logo" width="150" height="100">
-                                </div>
-                            </div>
+
                         </div>
 
                     </div>
-
                 </div>
+                {{-- Cancel Modal --}}
+                <div class="modal fade" id="cancelModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+                    tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            {{-- <div class="modal-header">
+                                <h4 class="modal-title">Modal Heading</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div> --}}
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <div class="mt-3 pt-3 d-flex align-items-center justify-content-center text-center">
+                                    <h3>Are you sure you want <br>to cancel</h3>
+                                </div>
+                                <div class="mt-3 pt-3 d-flex align-items-center justify-content-center">
+
+                                    <a class="btn btn-dark" onclick="window.location='{{ url('/sysadmindashboard') }}'"
+                                        data-bs-toggle="modal" data-bs-target="#sucessModal" data-bs-dismiss="modal"
+                                        id="btndelete">Yes</a>
+
+                                    <a class="btn btn-outline-dark" data-bs-dismiss="modal" href="#"
+                                        role="button" id="btndelete">No</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
+
+
+        </div>
         </div>
 
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#generate-password').click(function() {
-            // Generate a random password
-            var password = generatePassword();
+        <script>
+            $(document).ready(function() {
+                $('#generate-password').click(function() {
+                    // Generate a random password
+                    var password = generatePassword();
 
-            // Set the password field value
-            $('#password').val(password);
-        });
-    });
+                    // Set the password field value
+                    $('#password').val(password);
+                });
+            });
 
-    function generatePassword() {
-        // Define the characters to use in the password
-        var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+{}|:<>?-=[];,./';
+            function generatePassword() {
+                // Define the characters to use in the password
+                var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+{}|:<>?-=[];,./';
 
-        // Generate a random password
-        var password = '';
-        for (var i = 0; i < 12; i++) {
-            password += chars.charAt(Math.floor(Math.random() * chars.length));
-        }
+                // Generate a random password
+                var password = '';
+                for (var i = 0; i < 12; i++) {
+                    password += chars.charAt(Math.floor(Math.random() * chars.length));
+                }
 
-        return password;
-    }
-</script>
+                return password;
+            }
+            $(document).ready(function() {
+                $('#successModal').modal('show');
+                setTimeout(function() {
+                    $('#successModal').modal('close'); // Redirect to the desired page
+
+                }, 6000); // Wait for 3 seconds
+                //  window.location='{{ url('/sysadmindashboard') }}';
+                $('#successModal').on('hidden.bs.modal', function() {
+                    window.location = '{{ url('/sysadmindashboard') }}';
+                });
+            });
+        </script>
 
 
     </main>

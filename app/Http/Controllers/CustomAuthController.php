@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Ticket;
 use DB;
-use Session;
+use Illuminate\Support\Facades\Session;
 use Hash;
 use Auth;
 use Illuminate\Support\Facades\Validator;
@@ -112,7 +112,7 @@ class CustomAuthController extends Controller
       $data = User::where('id', '=' , Session::get('loginId'))->first() ;
 
 
-      
+
 
         //count
  $assignedTickets = Ticket::where('assigned_to', $data->id)->where('status', '!=', 'Complete')->count();
