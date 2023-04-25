@@ -85,10 +85,10 @@ class TicketController extends Controller
         $ticket = Ticket::findOrFail($id);
         $ticket->status = $request->status;
         $ticket->save();
-        if ($ticket->status == 'Complete') {
-            return view('technician.complete', ['ticket' => $ticket]);
+        if ($ticket->status == 'User not available') {
+            return redirect('/techdashboard');
          
-        } else if ($ticket->status == 'User not available'){
+        } else if ($ticket->status == 'Complete'){
             return view('technician.complete', ['ticket' => $ticket]);
         }else{
             return redirect()->back();

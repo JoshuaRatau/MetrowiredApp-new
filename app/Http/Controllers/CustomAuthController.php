@@ -27,7 +27,6 @@ class CustomAuthController extends Controller
 
     public function sysadmindashboard()
     {
-
         return view('system_admin.system_dashboard', [
 
             'users' => User::all(),
@@ -38,8 +37,6 @@ class CustomAuthController extends Controller
     //Add All User
     public function registerUser(Request $request)
     {
-
-
         $request->validate([
             'region' => 'required',
             'type' => 'required',
@@ -47,7 +44,6 @@ class CustomAuthController extends Controller
             'phone' => 'required | digits:10',
             'email' => 'required |email|unique:users',
             'password' => 'required|min:5| max:12',
-
         ]);
 
 
@@ -116,10 +112,7 @@ class CustomAuthController extends Controller
       $data = User::where('id', '=' , Session::get('loginId'))->first() ;
 
 
-      $nameSurname = $user->name_surname;
-      $nameArray = explode('', $nameSurname);
-      $name = $nameArray[0];
-
+      
 
         //count
  $assignedTickets = Ticket::where('assigned_to', $data->id)->where('status', '!=', 'Complete')->count();

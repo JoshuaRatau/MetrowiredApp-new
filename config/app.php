@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Facade;
+use Tymon\JWTAuth\Providers\JWT\Provider;
+
 
 return [
 
