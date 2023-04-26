@@ -12,6 +12,31 @@
     margin-bottom: 2rem;
 }
 
+.btnLogin {
+    width: 35% !important;
+    padding: 5px 5px 5px 5px;
+    height: max-content !important;
+    border-radius: 40px !important;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2) !important;
+    background-color: #242368 !important;
+    color: whitesmoke !important;
+    border: 1px solid #242368 !important;
+    font-weight: 600 !important;
+}
+
+.btnLogin:active,
+.btnLogin:hover {
+    border: 1px solid whitesmoke !important;
+    background-color: whitesmoke !important;
+    color: #242368 !important;
+    box-shadow: none !important;
+}
+@media only screen and (max-width: 980px) {
+    .btnLogin{
+        width: 60%!important;
+    }
+
+}
 #container {
     display: flex;
     justify-content: space-between;
@@ -20,32 +45,12 @@
 
 }
 
-.buttonCancel {
-    display: inline-block;
-    width: 60% !important;
-    margin: 30px 30px 30px 30px;
-    height: max-content !important;
-    border-radius: 40px !important;
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2) !important;
-    background-color: whitesmoke !important;
-    color: #100f44 !important;
-    border: 1px solid#ffffff !important;
-    font-weight: 600 !important;
 
-}
 #btndelete {
     width: 40% !important;
     margin: 10px 10px 10px 10px;
     height: max-content !important;
     border-radius: 40px !important;
-}
-
-.buttonCancel:active,
-.buttonCancel:hover {
-    border: 1px solid #100f44 !important;
-    background-color: #100f44 !important;
-    color: whitesmoke !important;
-    box-shadow: none !important;
 }
 
 .buttonNew {
@@ -86,14 +91,14 @@
 .buttonView:hover {
     border: 1px solid whitesmoke !important;
     background-color: whitesmoke !important;
-    color:#100f44 !important;
+    color: #100f44 !important;
     box-shadow: none !important;
 }
 
-.buttonLog {
+.btnLog {
     display: inline-block;
-    width: 60% !important;
-    margin: 30px 30px 30px 30px;
+    width: 30% !important;
+    margin: 15px 15px 15px 15px;
     height: max-content !important;
     border-radius: 40px !important;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2) !important;
@@ -104,11 +109,34 @@
 
 }
 
-.buttonLog:active,
-.buttonLog:hover {
+.btnLog:active,
+.btnLog:hover {
+    border: 1px solid #100f44 !important;
+    background-color: whitesmoke !important;
+    color:  #100f44 !important;
+    box-shadow: none !important;
+}
+.buttonCancel {
+    display: inline-block;
+    width: 30% !important;
+    margin: 15px 15px 15px 15px;
+    height: max-content !important;
+    border-radius: 40px !important;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2) !important;
+    background-color: whitesmoke !important;
+    color: #100f44 !important;
+    border: 1px solid#ffffff !important;
+    font-weight: 600 !important;
+
+}
+
+
+
+.buttonCancel:active,
+.buttonCancel:hover {
     border: 1px solid #100f44 !important;
     background-color: #100f44 !important;
-    color: 1px #100f44 !important;
+    color: whitesmoke !important;
     box-shadow: none !important;
 }
 

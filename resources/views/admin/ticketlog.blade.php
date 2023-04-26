@@ -28,7 +28,7 @@
             <div class="row col-sm-12 mb-6">
                 <div class="text-start" onclick="window.location='{{ url('/admindashboard') }}'">
 
-                    <h4 class="backText"onclick="window.location='{{ url('/admindashboard') }}'" >
+                    <h4 class="backText"onclick="window.location='{{ url('/admindashboard') }}'">
                         <span class="mx-2">
                             <img src="{{ asset('assets/img/web/chevron-left.svg') }}" alt="" srcset="">
                         </span>
@@ -156,7 +156,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-12 mb-3">
+                            <div class="col-md-12 mb-4">
                                 <label for="inputAddress2" class="form-label">Affected User</label>
                                 <input type="text" id="inputAddress2" placeholder="name"
                                     class="form-control"name="affected_user">
@@ -166,7 +166,7 @@
                                     @enderror
                                 </span>
                             </div>
-                            <div class="col-md-12 mb-3">
+                            <div class="col-md-12 mb-4">
                                 <label for="inputAddress2" class="form-label">Ticket Number</label>
 
                                 <div class="row">
@@ -192,7 +192,7 @@
                                     </div>
 
                                 </div>
-                                <div class="col-md-12 mb-3">
+                                <div class="col-md-12 mb-4">
                                     <label for="inputAddress2" class="form-label">Contact Details</label>
                                     <input type="text" id="contact" class="form-control" name="contact">
                                     <span class="text-danger">
@@ -201,7 +201,7 @@
                                         @enderror
                                     </span>
                                 </div>
-                                <div class="col-md-12 mb-3">
+                                <div class="col-md-12 mb-4">
                                     <label for="inputAddress2" class="form-label">Title</label>
                                     <input type="text" class="form-control" id="title" name="title">
                                 </div>
@@ -219,13 +219,13 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-md-7 mb-3">
+                                <div class="col-md-7 mb-4">
                                     <label for="inputCity" class="form-label">Points & Break-Fixes:</label>
                                     <input type="text" class="form-control" id="fixes" name="fixes">
                                 </div>
                             </div>
 
-                            <div class="col-md-12 mb-3">
+                            <div class="col-md-12 mb-4">
                                 <label for="inputCity" class="form-label">Alternate Contact Details</label>
                                 <input type="text" class="form-control" name="alternate_contact">
                                 <span class="text-danger">
@@ -234,7 +234,7 @@
                                     @enderror
                                 </span>
                             </div>
-                            <div class="col-md-12 mb-2">
+                            <div class="col-md-12 mb-3">
                                 <div class="row">
                                     <div class="col-md-6 mb-1">
                                         <label for="inputCity" class="form-label">Issue Description</label>
@@ -246,19 +246,25 @@
                                 <textarea class="form-control" placeholder="Leave a comment here" name="description" id="description"
                                     rows="4" cols="53" maxlength="250" required></textarea>
                             </div>
-                            <div class="col-md-12 mb-3">
+                            <div class="col-md-12 mb-4">
                                 <label for="inputAddress2" class="form-label">Location</label>
                                 <input type="text" class="form-control" id="location" name="location">
                                 <span class="text-danger">
-                                        @error('location')
-                                            {{ $message }}
-                                        @enderror
-                                    </span>
+                                    @error('location')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
                             </div>
                         </div>
+                        <div class="col-sm-10">
+                            <button type="button" class="btn btn-primary btnLog" data-toggle="modal"
+                                    data-target="#successModal">Log</button>
+                            <button type="button" class="btn btn-primary buttonCancel" data-bs-toggle="modal"
+                                    data-bs-target="#cancelModal">Cancel</button>
+                        </div>
 
-                        <div class="col-sm-5">
-                            <div class="mb-4" id="container">
+                        {{-- <div class="col-sm-5">
+                            <div class="p-3">
                                 <button class="btn btn-primary buttonLog" type="submit" data-toggle="modal"
                                     data-target="#successModal">Log</button>
 
@@ -266,17 +272,18 @@
 
                         </div>
                         <div class="col-sm-5">
-                            <div class="mb-4" id="container">
+                            <div class="p-2">
                                 <button type="button" class="btn btn-primary buttonCancel" data-bs-toggle="modal"
                                     data-bs-target="#cancelModal">Cancel</button>
 
                             </div>
 
-                        </div>
+                        </div> --}}
                     </div>
 
                 </form>
 
+                {{-- Cancel Modal --}}
                 <div class="modal fade" id="cancelModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
                     tabindex="-1">
                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -295,9 +302,9 @@
                                 </div>
                                 <div class="mt-3 pt-3 d-flex align-items-center justify-content-center">
 
-                                    <a class="btn btn-dark"
-                                        onclick="window.location='{{ url('/admindashboard') }}'" data-bs-toggle="modal"
-                                        data-bs-target="#sucessModal" data-bs-dismiss="modal" id="btndelete">Yes</a>
+                                    <a class="btn btn-dark" onclick="window.location='{{ url('/admindashboard') }}'"
+                                        data-bs-toggle="modal" data-bs-target="#sucessModal" data-bs-dismiss="modal"
+                                        id="btndelete">Yes</a>
 
                                     <a class="btn btn-outline-dark" data-bs-dismiss="modal" href="#"
                                         role="button" id="btndelete">No</a>
@@ -309,6 +316,40 @@
                     </div>
                 </div>
             </div>
+
+            {{-- Sucess Modal  --}}
+
+            <div class="modal fade" id="success-modal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+                tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+
+                    <div class="modal-content">
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="mt-3 pt-3 d-flex align-items-center justify-content-center">
+                                <div class="row">
+                                    <div class="col-sm-12 text-center">
+                                        <h3>Ticket Logged</h3>
+                                    </div>
+                                    <div class="col-sm-12 text-center">
+                                        <p>{{ Session::get('success') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 mx-auto d-flex align-items-center justify-content-center">
+                                <div class="text-center">
+                                    <img src={{ asset('assets/img/web/check_circle_outline_black_24dp.svg') }}
+                                        class="img-fluid logo" alt="logo" width="150" height="100">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
         </div>
         </div>
     </main>
@@ -340,5 +381,12 @@
                 }
             });
         });
+
+        //  $(document).ready(function() {
+        //                         $('#success-modal').modal('close');
+        //                         setTimeout(function() {
+        //                             window.location.href = "{{ url('/admindashboard') }}";
+        //                         }, 5000);
+        //                     });
     </script>
 @endsection

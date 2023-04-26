@@ -122,116 +122,21 @@
                                     <button type="button" class="btn btn-primary buttonGenerate">Generate</button>
                                 </div>
                                 <div class="row p-lg-3 p-sm-1">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-10">
+                                        <button type="submit" class="btn btn-primary btnLog" data-bs-toggle="modal"
+                                            data-bs-target="#editModal">Edit</button>
+                                        <button type="button" class="btn btn-primary buttonCancel" data-bs-toggle="modal"
+                                    data-bs-target="#cancelModal">Cancel</button>
+                                    </div>
+                                    {{-- <div class="col-sm-6">
                                         <button class="btn btn-primary buttonLog" data-bs-toggle="modal"
                                             data-bs-target="#editModal"type="submit">Edit</button>
                                     </div>
                                     <div class="col-sm-6">
                                         <button type="button" class="btn btn-primary buttonCancel">Cancel</button>
-                                    </div>
-                                </div>
-                                {{-- <div class="col-md-4 mb-4">
-                                    <label for="inputState" class="form-label">Region:</label>
-                                    <select class="form-control" name="region">
-                                        <option selected>All</option>
-                                        <option value="Region A">Region A</option>
-                                        <option value="Region B">Region B</option>
-                                        <option value="Region c">Region C</option>
-                                        <option value="Region D">Region D</option>
-                                        <option value="Region A">Region E</option>
-                                        <option value="Region B">Region F</option>
-                                        <option value="Region c">Region G</option>
-
-                                        <span class="text-danger">
-                                            @error('region')
-                                                {{ $message }}
-                                            @enderror
-                                        </span>
-                                    </select>
+                                    </div> --}}
                                 </div>
 
-
-
-                                <div class="col-md-5 mb-4">
-                                    <label for="inputtype" class="form-label">User Role:</label>
-                                    <select class="form-control" name="type">
-                                        <option value="Admin">Admin</option>
-                                        <option value="Management">Management</option>
-                                        <option value="Technician">Technician</option>
-                                        <option value="System Admin">System Admin</option>
-                                        <span class="text-danger">
-                                            @error('type')
-                                                {{ $message }}
-                                            @enderror
-                                        </span>
-                                    </select>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="namr" class="form-label">Full Name</label>
-                                    <input type="text" class="form-control" placeholder="name" name="name"
-                                        value="{{ $users->name }}">
-                                    <span class="text-danger">
-                                        @error('name')
-                                            {{ $message }}
-                                        @enderror
-                                    </span>
-                                </div>
-
-
-
-                                <div class="col-md-12 mb-3">
-                                    <label for="phone" class="form-label">Phone Number</label>
-                                    <input type="text" class="form-control" placeholder="phone" name="phone"
-                                        value="{{ $users->phone }}">
-                                    <span class="text-danger">
-                                        @error('phone')
-                                            {{ $message }}
-                                        @enderror
-                                    </span>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="email" class="form-label">Email Address</label>
-                                    <input type="text" class="form-control" placeholder="email" name="email"
-                                        value="{{ $users->email }}">
-                                    <span class="text-danger">
-                                        @error('email')
-                                            {{ $message }}
-                                        @enderror
-                                    </span>
-                                </div>
-
-                                <div class="col-md-12 mb-3">
-                                    <label for="password" class="password">Password</label>
-                                    <input type="password" class="form-control" placeholder="password" name="password">
-                                    <span class="text-danger">
-                                        @error('password')
-                                            {{ $message }}
-                                        @enderror
-                                    </span>
-                                </div>
-
-
-                                <div class="col-md-8 mb-3">
-                                    <button type="button" class="btn btn-primary buttonGenerate">Generate</button>
-                                </div>
-
-
-
-                                <div class="col-sm-5">
-                                    <div class="mb-4" id="container">
-                                        <button class="btn btn-primary buttonLog" type="submit" data-bs-toggle="modal"
-                                            data-bs-target="#editModal">Edit</button>
-
-
-                                        <div class="col-sm-5">
-                                            <div class="mb-4" id="container">
-                                                <button type="button" data-bs-toggle="modal" data-bs-target="#cancelModal"
-                                                    class="btn btn-primary buttonCancel">Cancel</button>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> --}}
 
 
                             </div>
@@ -303,7 +208,7 @@
                                 </div>
                                 <div class="mt-3 pt-3 d-flex align-items-center justify-content-center">
 
-                                    <a class="btn btn-dark" role="button" id="btndelete" data-bs-toggle="modal"
+                                    <a class="btn btn-dark" role="button" id="btndelete" data-bs-toggle="modal" onclick="window.location='{{ url('/sysadmindashboard') }}'"
                                         data-bs-target="#sucessModal" data-bs-dismiss="modal">Yes</a>
 
                                     <a class="btn btn-outline-dark" data-bs-dismiss="modal" href="#"
