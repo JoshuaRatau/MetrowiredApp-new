@@ -15,12 +15,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 @endsection
-
 @section('style')
     <style>
         /* */
     </style>
 @endsection
+
+
+@yield('scripts')
+@yield('errors')
 <link rel="stylesheet" href="{{ asset('assets/css/system_admin_dashboard.css') }}">
 @section('content')
 
@@ -39,7 +42,13 @@
                     <div class="col-md-12">
 
                         <form action="{{ route('register-user') }}" method="post" class="logForm">
-                        
+                            @if (Session::has('success'))
+                                <div class="alert alert-success">{{ Session::get('success') }}</div>
+                            @endif
+
+                            @if (Session::has('fail'))
+                                <div class="alert alert-danger">{{ Session::get('fail') }}</div>
+                            @endif
                             @csrf
                             <div class="row">
                                 <div class="col-sm-5 mb-3">
@@ -79,7 +88,8 @@
                                     <label for="namr" class="form-label">Full Name</label>
                                     <input type="text" class="form-control" placeholder="name" name="name"
                                         value="{{ old('name ') }}">
-                                    <span class="text-danger"> @error('name'){{ $message }} @enderror</span>
+                                    <span class="text-danger"> @error('name'){{ $message }} @enderror
+</span>
                                 </div>
                                 <div class="col-sm-12 mb-3">
                                     <label for="phone" class="form-label">Phone Number</label>
@@ -116,9 +126,8 @@
                                 </div>
                                 <div class="row p-lg-3 p-sm-1">
                                     <div class="col-sm-6">
-                                        <button type="submit" class="btn btn-ptn-primary">Submit</button>
-                                    <!-- <button class="btn btn-primary buttonLog" data-bs-toggle="modal"
-                    data-bs-target="#addModal"type="submit">Add</button> -->
+                                    <button class="btn btn-primary buttonLog" data-bs-toggle="modal"
+                    data-bs-target="#addModal"type="submit">Add</button>
                                     </div>
                                     <div class="col-sm-6">
                                         <button type="button" class="btn btn-primary buttonCancel">Cancel</button>

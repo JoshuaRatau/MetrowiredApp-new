@@ -220,7 +220,7 @@
                             <th scope="col" class="text-center" style="width:20%">Comments</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody>completed_at
                         @if (is_countable($tickets) > 0)
                             @foreach ($tickets as $ticket)
                                 <tr>
@@ -230,8 +230,8 @@
                                     <td class="text-center">{{ $ticket['network_type'] }}</td>
                                     <td class="table-secondary text-center">{{ $ticket['fixes'] }}</td>
                                     <td class=" text-center">{{ $ticket['created_at'] }}</td>
-                                    <td class=" table-secondary text-center">10:35</td>
-                                    <td class="text-center">11:40</td>
+                                    <td class=" table-secondary text-center">{{$ticket->completed_at}}</td>
+                                    <td class="text-center">{{$ticket->status_updated }}</td>
                                     <td class="table-secondary text-center">{{ $ticket['status'] }}</td>
                                     <td class="text-center">{{ $ticket['region'] }}</td>
                                     <td class="table-secondary text-center">{{ $ticket->assigned->name }}</td>

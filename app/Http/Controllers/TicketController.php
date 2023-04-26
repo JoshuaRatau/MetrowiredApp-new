@@ -84,6 +84,7 @@ class TicketController extends Controller
     {
         $ticket = Ticket::findOrFail($id);
         $ticket->status = $request->status;
+        $ticket->status_updated = now(); // status update Time
         $ticket->save();
         if ($ticket->status == 'User not available') {
             return redirect('/techdashboard');
@@ -114,6 +115,7 @@ class TicketController extends Controller
         $ticket->response = $request->input('response');
         $ticket->breaks_number= $request->input('breaks_number');
         $ticket->comment = $request->input('comment');
+        $ticket->completed_at = now(); // status update Time
         $ticket->save();
        
 

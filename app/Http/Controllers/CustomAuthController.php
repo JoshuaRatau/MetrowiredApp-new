@@ -14,6 +14,22 @@ use Illuminate\Support\Facades\Validator;
 class CustomAuthController extends Controller
 {
 
+//Testing
+public function Check(){
+    return view('technician.validations');
+}
+
+public function CheckValidation(Request $request){
+
+    $request->validate([
+        'name' => 'required',
+    ]);
+    $user = new User();
+    $user ->name = $request->name;
+          $res = $user->save();
+
+}
+
 
   public function admindashboard(){
     return view('admin.admin_dashboard',[
@@ -32,7 +48,6 @@ class CustomAuthController extends Controller
             'users' => User::all(),
         ]);
     }
-
 
     //Add All User
     public function registerUser(Request $request)

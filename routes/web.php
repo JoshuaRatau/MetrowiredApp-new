@@ -41,6 +41,13 @@ require_once "web/system_admin.php";
 require_once "web/admin.php";
 
 Auth::routes();
+
+
+//Testing Routes
+
+Route::get('/testing', [CustomAuthController::class, 'Check'])->name('testing');
+Route::post('/check-validations', [CustomAuthController::class, 'CheckValidation'])->name('check-validations');
+
 // Routes for System Admin
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/registration', [CustomAuthController::class, 'registration']);

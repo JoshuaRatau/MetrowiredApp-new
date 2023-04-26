@@ -71,7 +71,7 @@
                 </div>
             </div>
         </nav>
-
+        @yield('errors')
         <main class="py-4">
             @yield('content')
         </main>
