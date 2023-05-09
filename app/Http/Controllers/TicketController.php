@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Ticket;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Completed;
 use DB;
 use Hash;
@@ -35,17 +36,30 @@ class TicketController extends Controller
     //
     public function registerTicket(Request $request)
     {
-        $request->validate([
-            // 'region'=>'required',
-            // 'network_type'=>'required',
-            // 'affected_user'=>'required',
-            // 'ticket_number'=>'required',
-            // 'contact'=>'required',
-            // 'title'=>'required',
-            // 'technician'=>'required',
-            // 'alternate_contact'=>'required',
+        $validation= $request->validate ([
+            'region'=>'required',
+            'network_type'=>'required',
+            'affected_user'=>'required|string|max:255',
+            'ticket_number'=>'required',
+            'contact'=>'required',
+            'title'=>'required',
+            'assigned_to'=>'required',
+            'fixes'=>'required',
+            'alternate_contact'=>'required',
+            'description'=>'required',
+            'location'=>'required',
 
         ]);
+    
+
+        //if validations fails, redirect back with errors
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+
+        }
+    
+
+
         $ticket = new Ticket();
         $ticket->region = $request->region;
         $ticket->network_type = $request->network_type;
