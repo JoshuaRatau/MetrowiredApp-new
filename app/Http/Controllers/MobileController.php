@@ -57,7 +57,7 @@ class MobileController extends Controller
     //details for technician
     public function ticketList(Request $request)
     {
-        $tickets = Ticket::where('assigned_to', $request->input('id'))->whereNotIn('status', ['Complete'])->get();
+        $tickets = Ticket::where('assigned_to', $request->input('id'))->where('status', '!=', 'Complete')->get();
         return response()->json($tickets);
     }
 

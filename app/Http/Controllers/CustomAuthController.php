@@ -14,6 +14,22 @@ use Illuminate\Support\Facades\Validator;
 class CustomAuthController extends Controller
 {
 
+//Testing
+public function Check(){
+    return view('technician.validations');
+}
+
+public function CheckValidation(Request $request){
+
+    $request->validate([
+        'name' => 'required',
+    ]);
+    $user = new User();
+    $user ->name = $request->name;
+          $res = $user->save();
+
+}
+
 
   public function admindashboard(){
     return view('admin.admin_dashboard',[
@@ -32,7 +48,6 @@ class CustomAuthController extends Controller
             'users' => User::all(),
         ]);
     }
-
 
     //Add All User
     public function registerUser(Request $request)
@@ -83,7 +98,12 @@ class CustomAuthController extends Controller
             if (Hash::check($request->password, $user->password)) {
                 if ($user && $user->type === 'Admin') {
 
-      $request->session()->put('loginId', $user->id);
+            $user->last_logged_in_at = now();
+            $user->save();
+
+            $request->session()->put('last_logged_in_at', $user->last_logged_in_at);
+
+            $request->session()->put('loginId', $user->id);
       return redirect('admindashboard');
 
                 } else {
@@ -143,7 +163,10 @@ public function logout(){
             if (Hash::check($request->password, $user->password)) {
                 if ($user && $user->type === 'Technician') {
 
-
+                    $user->last_logged_in_at = now();
+                    $user->save();
+        
+                    $request->session()->put('last_logged_in_at', $user->last_logged_in_at);
 
       $request->session()->put('loginId', $user->id);
       return redirect('techdashboard');
@@ -187,7 +210,13 @@ public function logout(){
             if (Hash::check($request->password, $user->password)) {
                 if ($user && $user->type === 'System Admin') {
 
+                    $user->last_logged_in_at = now();
+                    $user->save();
+        
+                    $request->session()->put('last_logged_in_at', $user->last_logged_in_at);
 
+
+                    
 
                     $request->session()->put('loginId', $user->id);
                     return redirect('sysadmindashboard');
@@ -269,7 +298,10 @@ public function systemdashboard(){
             if (Hash::check($request->password, $user->password)) {
                 if ($user && $user->type === 'Management') {
 
-
+                    $user->last_logged_in_at = now();
+                    $user->save();
+        
+                    $request->session()->put('last_logged_in_at', $user->last_logged_in_at);
 
                     $request->session()->put('loginId', $user->id);
                     return redirect('managementdashboard');

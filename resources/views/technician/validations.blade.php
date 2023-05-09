@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>JOSHCO | Johannesburg Social Housing Company</title>
+    <title>Metrowired | Enabling Tomorrow</title>
 
     <!-- bootstrap -->
 
@@ -17,72 +17,62 @@
     <!------ Include the above in your HEAD tag ---------->
     <script></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{{asset('assets/css/login.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 
     <style>
-  
+
     </style>
 </head>
 
-<body class="container">
-
-    <div class="content">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="text-center mt-4">
-                    <h1>LEASING ADMIN 1 LOGIN</h1>
-                </div>
-            </div>
-        </div>
-        <div class="wrapper">
-
-            <div class="row">
-                <div class="d-flex justify-content-center">
-                    <img src="{{url('assets/img/web/company-logo.svg')}}" alt="company logo">
-                </div>
-                <div class="col-sm-12 loginContent">
+<body>
+    <div class="img">
+        <main class="my-auto">
 
 
-                <form action="{{route('login-tech')}}" method="post">
-                        <!-- @if(Session::has('success'))
-                            <div class="alert alert-success">{{Session::get('success')}}</div>
-                            @endif
+            <div class="container">
+                <div class="d-flex align-items-center justify-content-center" style="height: 100vh;">
 
-                            @if(Session::has('fail'))
-                            <div class="alert alert-danger">{{Session::get('fail')}}</div>
-                            @endif -->
+                    <div class="row">
+                        <div class="col-sm-12 mx-auto d-flex align-items-center justify-content-center">
+                            <div class="text-center">
+                                <img src={{ asset('assets/img/home/MWLogo.png') }} class="img-fluid logo"
+                                    alt="logo">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="text-center home-text">
+                                <h2>Technician</h2>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 mx-auto d-flex align-items-center justify-content-center">
+                            <!-- <div class="row mb-3"> -->
+                         
+
+
+
+                        <form action="{{route('check-validations')}}" method="post">
                             @csrf
+                                <div class="mb-3">
+                                    <label for="email" class="form-label ">Email</label>
+                                    <input type="text" class="form-control form-control-lg input-box" placeholder="name" name="name" id="name" value="{{old('name')}}">
+                                    <span class="text-danger">@error('name') {{$message}} @enderror</span>
+                                    
+                                </div>
+                            
 
-
-                    <div class="mb-3">
-                        <label for="formGroupExampleInput" class="form-label">Email Address:</label>
-                        <input type="email" class="form-control"  name="email">
-                        <span class="text-danger">@error('email') {{$message}} @enderror</span>
-                    </div>
-                    <div class="mb-3">
-                        <label for="formGroupExampleInput2" class="form-label">Password:</label>
-                        <div class="input-group">
-
-                            <input type="password" class="form-control"  name="password" placeholder="">
-                            <span class="text-danger">@error('password') {{$message}} @enderror</span>
+                                <div class="p-3 d-flex align-items-center justify-content-center">
+                                    <button type="submit" class="btn btn-primary btn-lg btnLogin">Login</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-end">
-                        <button type="button" class="btn btn-link">Forgot Password?</button>
-                    </div>
-                    <div class="d-flex justify-content-center ">
-                        <button type="submit" class="btn btn-light btn-lg loginBtn">LOGIN</button>
-                    </div>
-                    </form>
                 </div>
-            </div>
-        </div>
-
+          
     </div>
-
-
+    </main>
+    </div>
 </body>
 
 </html>
