@@ -57,18 +57,16 @@ class MobileController extends Controller
     //details for technician
     public function ticketList(Request $request)
     {
-        $tickets = Ticket::where('assigned_to', $request->input('id'))->get();
+        $tickets = Ticket::where('assigned_to', $request->input('id'))->whereNotIn('status', ['Complete'])->get();
         return response()->json($tickets);
     }
 
     public function ticketDetails($id)
     {
         $ticket = Ticket::find($id);
-
         if (!$ticket) {
             return response()->json(['error' => 'Ticket not found'], 404);
         }
-
         return response()->json($ticket);
     }
 
@@ -111,11 +109,6 @@ class MobileController extends Controller
         } else {
             return redirect()->back();
         }
-
-
     }
-
-
-
 
 }
