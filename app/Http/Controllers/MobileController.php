@@ -97,6 +97,7 @@ class MobileController extends Controller
     public function countTickets(Request $request){
         $activeTicketsCount = Ticket::where('assigned_to', $request->input('id'))->where('status', 'Active')->count();
         return response()->json(['count' => $activeTicketsCount]);
+    
     }
 
     public function update(Request $request, $id)
