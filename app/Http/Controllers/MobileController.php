@@ -64,11 +64,9 @@ class MobileController extends Controller
     public function ticketDetails($id)
     {
         $ticket = Ticket::find($id);
-
         if (!$ticket) {
             return response()->json(['error' => 'Ticket not found'], 404);
         }
-
         return response()->json($ticket);
     }
 
@@ -96,9 +94,10 @@ class MobileController extends Controller
         ]);
     }
 
-    public function countTickets(){
-        $activeTicketsCount = Ticket::where('status', 'Active')->count();
+    public function countTickets(Request $request){
+        $activeTicketsCount = Ticket::where('assigned_to', $request->input('id'))->where('status', 'Active')->count();
         return response()->json(['count' => $activeTicketsCount]);
+    
     }
 
     public function update(Request $request, $id)
@@ -111,11 +110,6 @@ class MobileController extends Controller
         } else {
             return redirect()->back();
         }
-
-
     }
-
-
-
 
 }
