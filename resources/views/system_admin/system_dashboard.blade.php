@@ -79,7 +79,7 @@
                         <td class="table-secondary text-center">{{ $user['type'] }}</td>
                         <td class="text-center">{{ $user['name'] }}</td>
                         <td class="table-secondary text-center">{{ $user['email'] }}</td>
-                        <td class=" text-center">{{ $user['created_at']->format('H:i:s') }}</td>
+                        <td class=" text-center">{{ $user['last_logged_in_at']}}</td>
                         <td class="table-secondary text-center">{{ $user['region'] }}</td>
                         <td class="text-center">
                             <!-- <button class="delete"> <img src={{ asset('assets/img/web/Deleteicon.svg') }}  width="20" height="25" alt="Black Icon">Delete</button> -->

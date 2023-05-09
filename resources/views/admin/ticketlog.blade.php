@@ -257,18 +257,18 @@
                             </div>
                         </div>
                         <div class="col-sm-10">
-                            <button type="button" class="btn btn-primary btnLog" data-toggle="modal"
+                            <button type="submit" class="btn btn-primary btnLog" data-toggle="modal"
                                     data-target="#successModal">Log</button>
                             <button type="button" class="btn btn-primary buttonCancel" data-bs-toggle="modal"
                                     data-bs-target="#cancelModal">Cancel</button>
                         </div>
 
-                        {{-- <div class="col-sm-5">
+                        <!-- {{-- <div class="col-sm-5">
                             <div class="p-3">
                                 <button class="btn btn-primary buttonLog" type="submit" data-toggle="modal"
-                                    data-target="#successModal">Log</button>
+                                    >Log</button>
 
-                            </div>
+                            </div> -->
 
                         </div>
                         <div class="col-sm-5">

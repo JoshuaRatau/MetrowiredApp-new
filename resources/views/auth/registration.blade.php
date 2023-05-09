@@ -1,29 +1,27 @@
 @extends('layouts.system_admin')
 
+
 @section('title', 'Metrowired')
 @section('meta')
     <meta name="description" content="" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    <link href=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    <script src=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <!------ Include the above in your HEAD tag ---------->
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href=https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src=https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js></script>
 
 @endsection
+
 @section('style')
     <style>
         /* */
     </style>
 @endsection
-
-
-@yield('scripts')
-@yield('errors')
 <link rel="stylesheet" href="{{ asset('assets/css/system_admin_dashboard.css') }}">
 @section('content')
 
@@ -122,10 +120,11 @@
                                         class="btn btn-primary buttonGenerate">Generate</button>
                                 </div>
                                 <div class="row p-lg-3 p-sm-1">
-                                    <div class="col-sm-6">
-                                        <!-- <button type="submit" class="btn btn-ptn-primary">Submit</button> -->
-                                    <button class="btn btn-primary buttonLog" data-bs-toggle="modal"
-                    data-bs-target="#addModal"type="submit">Add</button>
+                                    <div class="col-sm-10">
+                                        <button type="submit" class="btn btn-primary btnLog" data-bs-toggle="modal"
+                                            data-bs-target="#addModal">Add</button>
+                                        <button type="button" class="btn btn-primary buttonCancel" data-bs-toggle="modal"
+                                            data-bs-target="#cancelModal">Cancel</button>
                                     </div>
 
                                 </div>
@@ -201,12 +200,10 @@
 
             </div>
 
-
         </div>
         </div>
 
-
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
         <script>
             $(document).ready(function() {
                 $('#generate-password').click(function() {
@@ -242,7 +239,6 @@
                 });
             });
         </script>
-
 
     </main>
 @endsection

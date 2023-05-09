@@ -98,7 +98,12 @@ public function CheckValidation(Request $request){
             if (Hash::check($request->password, $user->password)) {
                 if ($user && $user->type === 'Admin') {
 
-      $request->session()->put('loginId', $user->id);
+            $user->last_logged_in_at = now();
+            $user->save();
+
+            $request->session()->put('last_logged_in_at', $user->last_logged_in_at);
+
+            $request->session()->put('loginId', $user->id);
       return redirect('admindashboard');
 
                 } else {
@@ -158,7 +163,10 @@ public function logout(){
             if (Hash::check($request->password, $user->password)) {
                 if ($user && $user->type === 'Technician') {
 
-
+                    $user->last_logged_in_at = now();
+                    $user->save();
+        
+                    $request->session()->put('last_logged_in_at', $user->last_logged_in_at);
 
       $request->session()->put('loginId', $user->id);
       return redirect('techdashboard');
@@ -202,7 +210,13 @@ public function logout(){
             if (Hash::check($request->password, $user->password)) {
                 if ($user && $user->type === 'System Admin') {
 
+                    $user->last_logged_in_at = now();
+                    $user->save();
+        
+                    $request->session()->put('last_logged_in_at', $user->last_logged_in_at);
 
+
+                    
 
                     $request->session()->put('loginId', $user->id);
                     return redirect('sysadmindashboard');
@@ -284,7 +298,10 @@ public function systemdashboard(){
             if (Hash::check($request->password, $user->password)) {
                 if ($user && $user->type === 'Management') {
 
-
+                    $user->last_logged_in_at = now();
+                    $user->save();
+        
+                    $request->session()->put('last_logged_in_at', $user->last_logged_in_at);
 
                     $request->session()->put('loginId', $user->id);
                     return redirect('managementdashboard');
