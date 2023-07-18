@@ -4,8 +4,8 @@
 @section('title', 'Metrowired')
 @section('meta')
     <meta name="description" content="" />
-    <link href=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
@@ -46,74 +46,56 @@
                                 <div class="col-sm-5 mb-3">
                                     <label for="inputState" class="form-label">Region:</label>
                                     <select class="form-control" name="region">
-                                        <option selected>All</option>
-                                        <option value="Region A">Region A</option>
+                                    <option  selected disabled style="font-weight: bold;">Select a Region</option>
+                                    <option value="Region A">Region A</option>
                                         <option value="Region B">Region B</option>
-                                        <option value="Region c">Region C</option>
+                                        <option value="Region C">Region C</option>
                                         <option value="Region D">Region D</option>
-                                        <option value="Region A">Region E</option>
-                                        <option value="Region B">Region F</option>
-                                        <option value="Region c">Region G</option>
-
-                                        <span class="text-danger">
-                                            @error('region')
-                                                {{ $message }}
-                                            @enderror
-                                        </span>
+                                        <option value="Region E">Region E</option>
+                                        <option value="Region F">Region F</option>
+                                        <option value="Region G">Region G</option>
+                                        <option value="All">All Regions</option>
                                     </select>
+                                    <span class="text-danger">@error('region') {{$message}} @enderror</span>
+                                   
                                 </div>
                                 <div class="col-sm-7 mb-3">
                                     <label for="inputtype" class="form-label">User Role:</label>
                                     <select class="form-control" name="type">
+                                    <option  selected disabled style="font-weight: bold;">Select User Role</option>
                                         <option value="Admin">Admin</option>
                                         <option value="Management">Management</option>
                                         <option value="Technician">Technician</option>
                                         <option value="System Admin">System Admin</option>
-                                        <span class="text-danger">
-                                            @error('type')
-                                                {{ $message }}
-                                            @enderror
-                                        </span>
                                     </select>
+                                    <span class="text-danger">@error('type') {{$message}} @enderror</span>
+                                   
                                 </div>
                                 <div class="col-sm-12 mb-3">
-                                    <label for="namr" class="form-label">Full Name</label>
-                                    <input type="text" class="form-control" placeholder="name" name="name"
-                                        value="{{ old('name ') }}">
-                                    <span class="text-danger"> @error('name')
-                                            {{ $message }}
-                                        @enderror
-                                    </span>
+                                    <label for="name" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" placeholder="name" name="name" value="{{ old('name ') }}">
+                                    <span class="text-danger">@error('name') {{$message}} @enderror</span>
+                                   
                                 </div>
                                 <div class="col-sm-12 mb-3">
                                     <label for="phone" class="form-label">Phone Number</label>
-                                    <input type="text" class="form-control" placeholder="phone" name="phone"
-                                        value="{{ old('phone') }}">
-                                    <span class="text-danger">
-                                        @error('phone')
-                                            {{ $message }}
-                                        @enderror
-                                    </span>
+                                    <input type="text" class="form-control" placeholder="phone" name="phone" value="{{ old('phone') }}">
+                                    <span class="text-danger">@error('phone') {{$message}} @enderror</span>
+                                    
                                 </div>
                                 <div class="col-sm-12 mb-3">
                                     <label for="email" class="form-label">Email Address</label>
-                                    <input type="text" class="form-control" placeholder="email" name="email"
-                                        value="{{ old('email') }}">
-                                    <span class="text-danger">
-                                        @error('email')
-                                            {{ $message }}
-                                        @enderror
+                                    <input type="text" class="form-control" placeholder="email" name="email" value="{{ old('email') }}">
+                                    <span class="text-danger">@error('email') {{$message}} @enderror</span>
+                                  
                                     </span>
                                 </div>
                                 <div class="col-sm-12 mb-3">
                                     <label for="password" class="password">Password</label>
-                                    <input type="password" id="password" class="form-control" placeholder="password"
-                                        name="password" value="">
-                                    <span class="text-danger">
-                                        @error('password')
-                                            {{ $message }}
-                                        @enderror
-                                    </span>
+                                    <input type="password" id="password" class="form-control" placeholder="password" name="password" value="">
+                                    <span class="text-danger">@error('password') {{$message}} @enderror</span>
+                                    
+                                  
                                 </div>
                                 <div class="col-sm-12 mb-3 text-end">
                                     <button type="button" id="generate-password"
@@ -121,8 +103,7 @@
                                 </div>
                                 <div class="row p-lg-3 p-sm-1">
                                     <div class="col-sm-10">
-                                        <button type="submit" class="btn btn-primary btnLog" data-bs-toggle="modal"
-                                            data-bs-target="#addModal">Add</button>
+                                        <button  class="btn btn-primary btnLog" type="submit">Add</button>
                                         <button type="button" class="btn btn-primary buttonCancel" data-bs-toggle="modal"
                                             data-bs-target="#cancelModal">Cancel</button>
                                     </div>
@@ -202,6 +183,8 @@
 
         </div>
         </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
         <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
         <script>

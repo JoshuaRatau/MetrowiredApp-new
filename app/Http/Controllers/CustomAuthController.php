@@ -19,23 +19,18 @@ public function Check(){
     return view('technician.validations');
 }
 
-public function CheckValidation(Request $request){
+// public function CheckValidation(Request $request){
 
-    $request->validate([
-        'name' => 'required',
-    ]);
-    $user = new User();
-    $user ->name = $request->name;
-          $res = $user->save();
+//     $request->validate([
+//         'name' => 'required',
+//     ]);
+//     $user = new User();
+//     $user ->name = $request->name;
+//           $res = $user->save();
 
-}
+// }
 
 
-  public function admindashboard(){
-    return view('admin.admin_dashboard',[
-      'tickets' =>Ticket::all(),
-    ]);
-  }
 
     public function registration(){
         return view("auth.registration");
@@ -82,8 +77,18 @@ public function CheckValidation(Request $request){
 
     }
 
+//Admin
+
+    //Admin Login Screen
+
+    public function admin(){
+        return view('admin.home');
+
+    }
 
     //Admin Login
+
+
 
     public function loginAdmin(Request $request)
     {
@@ -111,13 +116,38 @@ public function CheckValidation(Request $request){
                 }
 
             } else {
-                return back()->with('fail', 'This email is not an registered');
+                return back()->with('fail', 'This email is invalid');
             }
         } else {
-            return back()->with('fail', 'Your not an Admin');
+            return back()->with('fail', 'Incorrect login credentials');
         }
 
   }
+
+
+
+
+  //Admin Dashboard
+
+
+  public function admindashboard(Request $request){
+    $tickets = Ticket::all();
+
+    $data = array();
+    if(Session::has('loginId')){
+      $data = User::where('id', '=',Session::get('loginId'))->first();
+
+    
+    }
+    return view('admin.admin_dashboard', compact('tickets', 'data'));
+      
+  }
+
+//Technician
+
+public function Technician(){
+    return view('technician.home');
+}
 
   //Tech Dashboard
 
@@ -145,7 +175,7 @@ public function CheckValidation(Request $request){
 public function logout(){
   if(Session::has('loginId')){
     Session::pull('loginId');
-    return view('admin.home');
+    return redirect('Adminlogin');
   }
 }
 
@@ -196,6 +226,12 @@ public function logout(){
 
 
     //System Admin Login
+
+
+    public function Systemadmin(){
+        return view('system_admin.home');
+
+    }
 
     public function loginSystem(Request $request)
     {
@@ -248,7 +284,7 @@ public function systemdashboard(){
     public function Systemlogout(){
         if(Session::has('loginId')){
           Session::pull('loginId');
-          return view('system_admin.home');
+          return redirect('SystemAdminlogin');
         }
       }
 
@@ -283,7 +319,16 @@ public function systemdashboard(){
     }
 
 
-    //Management Screens
+    
+
+    //Admin Login Screen
+
+    public function management(){
+        return view('management.home');
+
+    }
+
+
 
     public function loginManagement(Request $request)
     {
@@ -322,7 +367,7 @@ public function systemdashboard(){
 public function managementdashboard(Request $request){
 $data = array();
 if(Session::has('loginId')){
-  $data = User::where('id', '=',Session::has('loginId'))->first();
+  $data = User::where('id', '=',Session::get('loginId'))->first();
 
 
             //Counting
@@ -349,7 +394,8 @@ return view('management.management_dashboard', compact('data', 'service', 'incid
 public function managementlogout(){
   if(Session::has('loginId')){
     Session::pull('loginId');
-    return view('management.home');
+
+    return redirect('Managementlogin');
   }
 }
 

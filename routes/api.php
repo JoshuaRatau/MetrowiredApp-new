@@ -19,8 +19,9 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-//Routes for Technician
-Route::post('/logintech', [MobileController::class, 'loginTech']);
+Route::group(['middleware' => ['web']], function () {
+    // your routes here
+    Route::post('/logintech', [MobileController::class, 'loginTech']);
 Route::get('/ticketlist', [MobileController::class, 'ticketList']);
 Route::get('/ticketdetails/{id}', [MobileController::class, 'ticketDetails']);
 Route::put('/tickets/{id}/status', [MobileController::class, 'updateStatus']);
@@ -44,4 +45,5 @@ Route::group([
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::get('/user-profile', [AuthController::class, 'userProfile']);
+});
 });

@@ -39,14 +39,14 @@
                     <div class="row">
                         <div class=" col-md-6 mb-4">
                             <label for="inputState" class="form-label">Region:</label>
-                            <select id="inputState" class="form-select">
+                            <select id="regionDropdown" onchange="filterTickets()" class="form-select">
                                 <option selected></option>
-                                <option value="1">Region A</option>
-                                <option value="2">Region B</option>
-                                <option value="3">Region C</option>
-                                <option value="4">Region D</option>
-                                <option value="5">Region E</option>
-                                <option value="5">Region F</option>
+                                <option value="Region A">Region A</option>
+                                <option value="Region B">Region B</option>
+                                <option value="Region C">Region C</option>
+                                <option value="Region D">Region D</option>
+                                <option value="Region E">Region E</option>
+                                <option value="Region F">Region F</option>
                             </select>
                         </div>
                         <div class=" col-md-6 mb-4">
@@ -69,7 +69,7 @@
                             <div class="card-body">
                                 <h6 class="card-title text-center">Total Incidents</h6>
                                 <hr>
-                                <p class="card-text text-center">{{ $incident }}</p>
+                                <p class="card-text text-center" >{{ $incident }}</p>
                             </div>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
                             <div class="card-body">
                                 <h6 class="card-title text-center">Total Logged</h6>
                                 <hr>
-                                <p class="card-text text-center">{{ $ticketCount }}</p>
+                                <p id="filteredTicketsCount" class="card-text text-center" >{{ $ticketCount }}</p>
                             </div>
                         </div>
                     </div>
@@ -145,7 +145,7 @@
                         <option value="">All</option>
                         <option value="LAN">LAN</option>
                         <option value="WAN">WAN</option>
-                        <option value="All">All</option>
+                        <option value="Other">OTHER</option>
                     </select>
 
                 </div>
@@ -153,7 +153,7 @@
                     <div class="test-start h6 select-text">
                         status:
                     </div>
-                    <select id="status" class="form-select" aria-label="Default select example">
+                    <select id="myStatus" class="form-select" aria-label="Default select example">
                         <option value="">All</option>
                         <option value="Started">Started</option>
                         <option value="User not available">User not available</option>
@@ -220,7 +220,7 @@
                             <th scope="col" class="text-center" style="width:20%">Comments</th>
                         </tr>
                     </thead>
-                    <tbody>completed_at
+                    <tbody>
                         @if (is_countable($tickets) > 0)
                             @foreach ($tickets as $ticket)
                                 <tr>
@@ -259,7 +259,7 @@
         </div>
     </main>
 
-<script>
+    <script>
 
 function exportTableToExcel(tableID, filename = ''){
     var downloadLink;
@@ -341,6 +341,7 @@ input.addEventListener("keyup", filterTable);
 
 //Filter By network Type
 const dropdown = document.getElementById('myDropdown');
+
 const table = document.getElementById('tblData');
 const rows = table.getElementsByTagName('tr');
 
@@ -361,9 +362,29 @@ dropdown.addEventListener('change', () => {
 
 
 
+const dropdown = document.getElementById('myStatus');
+
+const table = document.getElementById('tblData');
+const rows = table.getElementsByTagName('tr');
+
+dropdown.addEventListener('change', () => {
+  const filterValue = dropdown.value.toLowerCase();
+
+  for (let i = 1; i < rows.length; i++) {
+    const country = rows[i].getElementsByTagName('td')[2].textContent.toLowerCase();
+
+    if (country.includes(filterValue)) {
+      rows[i].style.display = '';
+    } else {
+      rows[i].style.display = 'none';
+    }
+  }
+});
 
 
 </script>
+
+
 
 @endsection
 

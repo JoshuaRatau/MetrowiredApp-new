@@ -142,7 +142,7 @@
                                                 <p id="location">{{ $ticket['location'] }}</p>
 
                                              
-                                                <button onclick="location.href="{{ route('map.showmap') }}" type="submit" class="btn btn-primary map">View Map</button>
+                                                <button  type="submit" class="btn btn-primary map">View Map</button>
                                                 
                                             </div>
                                             

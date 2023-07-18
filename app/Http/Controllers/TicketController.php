@@ -25,10 +25,18 @@ use Maatwebsite\Excel\Facades\Excel;
 class TicketController extends Controller
 {
 
-    public function ticket()
+    public function ticket(Request $request)
     {
         $users = DB::table('users')->where('type', 'technician')->get();
-        return view('admin.ticketlog', ['users' => $users]);
+
+        $data = array();
+        if(Session::has('loginId')){
+          $data = User::where('id', '=',Session::get('loginId'))->first();
+    
+        
+        }
+
+        return view('admin.ticketlog', compact('users', 'data'));
 
     }
 
@@ -36,29 +44,21 @@ class TicketController extends Controller
     //
     public function registerTicket(Request $request)
     {
-        $validation= $request->validate ([
+         $request->validate ([
             'region'=>'required',
             'network_type'=>'required',
             'affected_user'=>'required|string|max:255',
             'ticket_number'=>'required',
-            'contact'=>'required',
+            'contact'=>'required | digits:10',
             'title'=>'required',
             'assigned_to'=>'required',
             'fixes'=>'required',
-            'alternate_contact'=>'required',
+            'alternate_contact'=>'required | digits:10',
             'description'=>'required',
             'location'=>'required',
 
         ]);
     
-
-        //if validations fails, redirect back with errors
-        if($validator->fails()){
-            return redirect()->back()->withErrors($validator)->withInput();
-
-        }
-    
-
 
         $ticket = new Ticket();
         $ticket->region = $request->region;
@@ -150,15 +150,15 @@ class TicketController extends Controller
         return view('technician.dashboard', compact( 'data', 'tickets', 'assignedTickets' ));
     }
 
-    public function download()
-    {
-        $data = Ticket::all();
-        $fileName = 'management_reports.xlsx'; //Replace your_file_name with the name you want to give your Excel file
+    // public function download()
+    // {
+    //     $data = Ticket::all();
+    //     $fileName = 'management_reports.xlsx'; //Replace your_file_name with the name you want to give your Excel file
 
-        return Excel::download(function ($excel) use ($data) {
-            $excel->sheet('Sheet1', function ($sheet) use ($data) {
-                $sheet->fromArray($data);
-            });
-        }, $fileName);
-    }
+    //     return Excel::download(function ($excel) use ($data) {
+    //         $excel->sheet('Sheet1', function ($sheet) use ($data) {
+    //             $sheet->fromArray($data);
+    //         });
+    //     }, $fileName);
+    // }
 }

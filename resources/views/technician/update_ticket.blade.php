@@ -72,7 +72,7 @@
                         <div class="col-sm-3">
                             <br> 
                             <input type="text" class="form-control" placeholder="email" name="breaks_number">
-                            <!-- <input  class="form-control" type="number" name="breaks_number"> -->
+                       
                         </div>
 
 

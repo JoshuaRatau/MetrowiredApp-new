@@ -53,7 +53,7 @@
                 <div class="navbar-nav">  
                 </div>
                 <div class="navbar-nav ms-auto">
-                <a href="http://127.0.0.1:8000/system/admin/home" class="nav-item nav-link"><b>System Admin |</b></a>
+                <a href="/SystemAdminlogin" class="nav-item nav-link"><b>System Admin |</b></a>
                 <a href="http://127.0.0.1:8000/admin/home" class="nav-item nav-link"><b>Admin |</b></a>
                 <a href="http://127.0.0.1:8000/technician/home" class="nav-item nav-link"><b>Technician |</b></a>
                 <a href="http://127.0.0.1:8000/management/home" class="nav-item nav-link"><b>Management</b></a>
@@ -138,7 +138,7 @@
 <h5 class="widget-title">Quick Links<span></span></h5>
 <ul class="thumbnail-widget">
 <li>
-<div class="thumb-content"><a href="http://127.0.0.1:8000/system/admin/home"><b>System Admin</b></a></div> 
+<div class="thumb-content"><a href="/SystemAdminlogin"><b>System Admin</b></a></div> 
 </li>
 <li>
 <div class="thumb-content"><a href="http://127.0.0.1:8000/admin/home"><b>Admin</b></a></div> 

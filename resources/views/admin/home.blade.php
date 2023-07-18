@@ -53,14 +53,7 @@
 
 
                         <form action="{{route('login-admin')}}" method="post">
-                        @if(Session::has('success'))
-                            <div class="alert alert-success">{{Session::get('success')}}</div>
-                            @endif
-
-                            @if(Session::has('fail'))
-                            <div class="alert alert-danger">{{Session::get('fail')}}</div>
-                            @endif
-                            @csrf
+                        {{ csrf_field() }}
                                 <div class="mb-3">
                                     <label for="email" class="form-label ">Email</label>
                                     <input type="text" class="form-control form-control-lg input-box" placeholder="email" name="email" value="{{old('email')}}">

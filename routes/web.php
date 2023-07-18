@@ -43,16 +43,28 @@ require_once "web/admin.php";
 Auth::routes();
 
 
-//Testing Routes
+Route::group(['middleware' => ['web']], function () {
+    // your routes here
 
-Route::get('/testing', [CustomAuthController::class, 'Check'])->name('testing');
-Route::post('/check-validations', [CustomAuthController::class, 'CheckValidation'])->name('check-validations');
+
+Route::get('/Technicianlogin', [CustomAuthController::class, 'Technician']);
+Route::post('login-tech', [CustomAuthController::class, 'loginTech' ])->name('login-tech')->middleware('alreadyLoggedIn');
+Route::get('/techdashboard', [CustomAuthController::class, 'techdashboard'])->name('techdashboard.techdashboard');
+Route::get('technician/ticket_details/{id}', [TicketController::class, 'details']);
+Route::get('technician/ticket_update/{id}', [TicketController::class,  'update']);
+
+Route::get('/Techlogout', [CustomAuthController::class, 'Techlogout']);
+Route::get('/Technicianlogout', [TicketController::class, 'Technicianlogout']);
+Route::put('ticket-details/{id}', [TicketController::class, 'update']) ;
+
+});
+
+
 
 // Routes for System Admin
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/registration', [CustomAuthController::class, 'registration']);
 Route::post('/register-user', [CustomAuthController::class, 'registerUser'])->name('register-user');
-
 Route::get('/sysadmindashboard', [CustomAuthController::class, 'sysadmindashboard']);
 Route::get('edit/{id}', [CustomAuthController::class, 'edit']);
 Route::put('update-user/{id}', [CustomAuthController::class, 'update']) ;
@@ -63,6 +75,7 @@ Route::get('delete/{id}', [CustomAuthController::class, 'delete']);
 
 
 //Routes for Admin
+Route::get('/Adminlogin', [CustomAuthController::class, 'admin']);
 Route::post('login-admin', [CustomAuthController::class, 'loginAdmin' ])->name('login-admin');
 Route::get('/admindashboard', [CustomAuthController::class, 'admindashboard']);
 Route::get('/logout', [CustomAuthController::class, 'logout']);
@@ -72,19 +85,12 @@ Route::post('/register-ticket', [TicketController::class, 'registerTicket'])->na
 
 
 //Routes for Technician
-Route::post('login-tech', [CustomAuthController::class, 'loginTech' ])->name('login-tech')->middleware('alreadyLoggedIn');
-Route::get('/techdashboard', [CustomAuthController::class, 'techdashboard'])->name('techdashboard.techdashboard');
- Route::get('technician/ticket_details/{id}', [TicketController::class, 'details']);
- Route::get('technician/ticket_update/{id}', [TicketController::class,  'update']);
-
-Route::get('/Techlogout', [CustomAuthController::class, 'Techlogout']);
-Route::get('/Technicianlogout', [TicketController::class, 'Technicianlogout']);
-Route::put('ticket-details/{id}', [TicketController::class, 'update']) ;
 
 
 
 
 //Login for System Admin
+Route::get('/SystemAdminlogin', [CustomAuthController::class, 'Systemadmin']);
 Route::post('login-system', [CustomAuthController::class, 'loginSystem' ])->name('login-system');
 Route::get('/Systemlogout', [CustomAuthController::class, 'Systemlogout']);
 Route::get('/ticket', [TicketController::class, 'ticket']);
@@ -92,7 +98,7 @@ Route::put('/store-comment/{id}', [TicketController::class, 'storecomment']);
 
 
 //Management Login
-
+Route::get('/Managementlogin', [CustomAuthController::class, 'management']);
 Route::post('login-management', [CustomAuthController::class, 'loginManagement'])->name('login-management');
 Route::get('/managementdashboard', [CustomAuthController::class, 'managementdashboard']);
 Route::get('/managementlogout', [CustomAuthController::class, 'managementlogout']);
@@ -104,8 +110,20 @@ Route::get('/download-excel', [TicketController::class, 'download'])->name('down
 
 Route::get('/managementdashboard/{region?}', [CustomAuthController::class, 'search'])->name('search');
 
+Route::get('/registering', [CustomAuthController::class, 'registering']);
+Route::post('/add-user', [CustomAuthController::class, 'addUser'])->name('add-user');
 
-Route::get('/map', 'TicketController@showmap')->name('map.showmap');
+
+//Testing Routes
+// Route::get('/testinglogin', [CustomAuthController::class, 'testinglogin']);
+// Route::get('testingregistration', [CustomAuthController::class, 'testingregistration']);
+
+// Route::post('/testingresgister-user', [CustomAuthController::class, 'testingRegisterUser'])->name('testingresgister-user');
+
+
+
+
+
 
 
 

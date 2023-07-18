@@ -18,23 +18,23 @@
 @section('style')
     <style>
         /* */
+        
     </style>
 @endsection
 <link rel="stylesheet" href="{{ asset('assets/css/site.css') }}">
 @section('content')
 
     <main>
+        <br>
         <div class="container">
-            <div class="row col-sm-12 mb-6">
-                <div class="text-start" onclick="window.location='{{ url('/admindashboard') }}'">
-
-                    <h4 class="backText"onclick="window.location='{{ url('/admindashboard') }}'">
-                        <span class="mx-2">
-                            <img src="{{ asset('assets/img/web/chevron-left.svg') }}" alt="" srcset="">
-                        </span>
-                        Log a ticket
-                    </h4>
-                </div>
+        <div class="col-sm-4">
+           
+            <button type="button" onclick="window.location='{{ url('/admindashboard') }}'" class="btnview">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="35" viewBox="0 0 24 24">
+  <path fill="#000000" d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+</svg>View tickets
+                            </button>
+            
             </div>
             <div class="d-flex align-items-center justify-content-center">
 
@@ -76,7 +76,7 @@
                                 $('#success-modal').modal('show');
                                 setTimeout(function() {
                                     window.location.href = "{{ url('/admindashboard') }}";
-                                }, 5000);
+                                }, 3000);
                             });
                         </script>
                     @endif
@@ -130,13 +130,14 @@
                     @endif
                     @csrf
                     <div class="row">
-                        {{-- form 1 --}}
+                        
                         <div class="col-sm-6">
                             <div class="row">
-                                <div class="col-md-4 mb-4">
+                                <div class="col-md-5 mb-4">
                                     <label for="inputState" class="form-label">Region:</label>
                                     <select class="form-select" name="region">
-                                        <option selected>All</option>
+                                    <option  selected disabled style="font-weight: bold;">Select a Region</option>
+                                       
                                         <option value="Region A">Region A</option>
                                         <option value="Region B">Region B</option>
                                         <option value="Region C">Region C</option>
@@ -144,16 +145,20 @@
                                         <option value="Region E">Region E</option>
                                         <option value="Region F">Region F</option>
                                         <option value="Region G">Region G</option>
+                                        <option value="All">All Regions</option>
                                     </select>
+                                    <span class="text-danger">@error('region') {{$message}} @enderror</span>
                                 </div>
                                 <div class="col-md-5 mb-4">
                                     <label for="inputState" class="form-label">Network Type:</label>
                                     <select id="network_type" class="form-select" name="network_type">
-                                        <option selected>All</option>
+
+                                        <option  selected disabled style="font-weight: bold;">Select a Network Type</option>
                                         <option value="LAN">LAN</option>
                                         <option value="WAN">WAN</option>
                                         <option value="OTHER">OTHER</option>
                                     </select>
+                                    <span class="text-danger">@error('network_type') {{$message}} @enderror</span>
                                 </div>
                             </div>
                             <div class="col-md-12 mb-4">
@@ -201,9 +206,15 @@
                                         @enderror
                                     </span>
                                 </div>
+                                
                                 <div class="col-md-12 mb-4">
                                     <label for="inputAddress2" class="form-label">Title</label>
                                     <input type="text" class="form-control" id="title" name="title">
+                                    <span class="text-danger">
+                                        @error('title')
+                                            {{ $message }}
+                                        @enderror
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -211,17 +222,28 @@
                         <div class="col-sm-6">
                             <div class="row">
                                 <div class="col-md-5 mb-4">
-                                    <label for="inputState" class="form-label">Techician</label>
+                                    <label for="inputState" class="form-label">Technician</label>
                                     <select name="assigned_to" id="assigned_to" class="form-select">
-                                        <option value="">-- Select a technician --</option>
+                                    <option  selected disabled style="font-weight: bold;">Select a technician</option>
+                                        
                                         @foreach ($users as $user)
                                             <option value="{{ $user->id }}">{{ $user->name }}</option>
                                         @endforeach
                                     </select>
+                                    <span class="text-danger">
+                                    @error('assigned_to')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
                                 </div>
                                 <div class="col-md-7 mb-4">
                                     <label for="inputCity" class="form-label">Points & Break-Fixes:</label>
                                     <input type="text" class="form-control" id="fixes" name="fixes">
+                                    <span class="text-danger">
+                                        @error('fixes')
+                                            {{ $message }}
+                                        @enderror
+                                    </span>
                                 </div>
                             </div>
 
@@ -244,8 +266,14 @@
                                     </div>
                                 </div>
                                 <textarea class="form-control" placeholder="Leave a comment here" name="description" id="description"
-                                    rows="4" cols="53" maxlength="250" required></textarea>
+                                    rows="4" cols="53" maxlength="250"></textarea>
+                                    <span class="text-danger">
+                                        @error('description')
+                                            {{ $message }}
+                                        @enderror
+                                    </span>
                             </div>
+                            
                             <div class="col-md-12 mb-4">
                                 <label for="inputAddress2" class="form-label">Location</label>
                                 <input type="text" class="form-control" id="location" name="location">
@@ -263,22 +291,12 @@
                                     data-bs-target="#cancelModal">Cancel</button>
                         </div>
 
-                        <!-- {{-- <div class="col-sm-5">
-                            <div class="p-3">
-                                <button class="btn btn-primary buttonLog" type="submit" data-toggle="modal"
-                                    >Log</button>
-
-                            </div> -->
+                        
 
                         </div>
-                        <div class="col-sm-5">
-                            <div class="p-2">
-                                <button type="button" class="btn btn-primary buttonCancel" data-bs-toggle="modal"
-                                    data-bs-target="#cancelModal">Cancel</button>
+                      
 
-                            </div>
-
-                        </div> --}}
+                        </div> 
                     </div>
 
                 </form>
@@ -382,11 +400,5 @@
             });
         });
 
-        //  $(document).ready(function() {
-        //                         $('#success-modal').modal('close');
-        //                         setTimeout(function() {
-        //                             window.location.href = "{{ url('/admindashboard') }}";
-        //                         }, 5000);
-        //                     });
     </script>
 @endsection
