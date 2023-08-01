@@ -54,9 +54,9 @@
                 </div>
                 <div class="navbar-nav ms-auto">
                 <a href="/SystemAdminlogin" class="nav-item nav-link"><b>System Admin |</b></a>
-                <a href="http://127.0.0.1:8000/admin/home" class="nav-item nav-link"><b>Admin |</b></a>
-                <a href="http://127.0.0.1:8000/technician/home" class="nav-item nav-link"><b>Technician |</b></a>
-                <a href="http://127.0.0.1:8000/management/home" class="nav-item nav-link"><b>Management</b></a>
+                <a href="/Adminlogin" class="nav-item nav-link"><b>Admin |</b></a>
+                <a href="/Technicianlogin" class="nav-item nav-link"><b>Technician |</b></a>
+                <a href="/Managementlogin" class="nav-item nav-link"><b>Management</b></a>
                 </div> 
                
             </div>
