@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\TicketController;
 
 /*
@@ -113,7 +114,7 @@ Route::get('/managementdashboard/{region?}', [CustomAuthController::class, 'sear
 Route::get('/registering', [CustomAuthController::class, 'registering']);
 Route::post('/add-user', [CustomAuthController::class, 'addUser'])->name('add-user');
 
-
+Route::get('send-mail', [MailController::class, 'index']);
 //Testing Routes
 // Route::get('/testinglogin', [CustomAuthController::class, 'testinglogin']);
 // Route::get('testingregistration', [CustomAuthController::class, 'testingregistration']);

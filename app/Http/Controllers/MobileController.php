@@ -89,6 +89,8 @@ class MobileController extends Controller
         $ticket->comment = $request->comment;
         $ticket->save();
 
+        //this is where you have to send the email to the admin
+        
         return response()->json([
             'message' => 'Ticket completed successfully'
         ]);
@@ -97,7 +99,7 @@ class MobileController extends Controller
     public function countTickets(Request $request){
         $activeTicketsCount = Ticket::where('assigned_to', $request->input('id'))->where('status', 'Active')->count();
         return response()->json(['count' => $activeTicketsCount]);
-    
+
     }
 
     public function update(Request $request, $id)
