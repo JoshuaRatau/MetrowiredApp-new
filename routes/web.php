@@ -121,6 +121,10 @@ Route::post('/add-user', [CustomAuthController::class, 'addUser'])->name('add-us
 // Route::post('/testingresgister-user', [CustomAuthController::class, 'testingRegisterUser'])->name('testingresgister-user');
 
 
+//Management Filters
+
+Route::get('/filter-incidents', [TicketController::class, 'filterIncidents' ])->name('filterIncidents');
+
 
 
 

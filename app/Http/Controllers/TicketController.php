@@ -42,7 +42,7 @@ class TicketController extends Controller
 
 
     //
-    public function registerTicket(Request $request)
+    public function registerTicket(Request $request )
     {
          $request->validate ([
             'region'=>'required',
@@ -68,11 +68,14 @@ class TicketController extends Controller
         $ticket->contact = $request->contact;
         $ticket->title = $request->title;
         $ticket->assigned_to = $request->assigned_to;
+        $ticket->assigned_by = Session('loginId');
         $ticket->fixes = $request->fixes;
         $ticket->alternate_contact = $request->alternate_contact;
         $ticket->description = $request->description;
         $ticket->location = $request->location;
 
+
+        
         $res = $ticket->save();
         if ($res) {
             return redirect()->back()->with('success', 'User registered Successfuly');
@@ -148,6 +151,20 @@ class TicketController extends Controller
         //reomove ticket from techncian dashboad
 
         return view('technician.dashboard', compact( 'data', 'tickets', 'assignedTickets' ));
+    }
+
+
+
+    
+
+    public function filterIncidents(Request $request)
+    {
+        $startDate = $request->get('startDate');
+        $endDate = $request->get('endDate');
+
+        $tickets = Ticket::whereBetween('created_at', [$startDate, $endDate])->where('ticket_number', 'like', 'in%')->count();
+
+        return response()->json($tickets);
     }
 
     // public function download()

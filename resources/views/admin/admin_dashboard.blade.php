@@ -101,7 +101,7 @@
                             @foreach ($tickets as $ticket)
                                 <tr>
 
-                                    <td class="text-center">{{ $ticket['ticket_number'] }}</td>
+                                    <td class="text-center">{{ substr($ticket->ticket_number, 0, 2) }}</td>
                                     <td class="table-secondary text-center">{{ $ticket['ticket_number'] }}</td>
                                     <td class="text-center">{{ $ticket['network_type'] }}</td>
                                     <td class="table-secondary text-center">{{ $ticket['fixes'] }}</td>

@@ -22,7 +22,8 @@ return new class extends Migration
          $table->string('contact');
          $table->string('title');
          $table->unsignedBigInteger('assigned_to')->nullable();
-        $table->string('fixes');
+         $table->integer('assigned_by')->unsigned()->nullable()->after('id');
+         $table->string('fixes');
          $table->string('alternate_contact');
          $table->text('description');
          $table->string('location');
@@ -30,6 +31,8 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('assigned_to')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('assigned_by')->references('id')->on('users')->onDelete('set null');
+          
 
         });
     }
@@ -42,5 +45,6 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('tickets');
+       
     }
 };

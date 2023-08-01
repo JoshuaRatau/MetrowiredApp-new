@@ -49,15 +49,40 @@
                                 <option value="Region F">Region F</option>
                             </select>
                         </div>
-                        <div class=" col-md-6 mb-4">
-                            <label for="inputState" class="form-label">Period</label>
+                     <div class=" col-md-6 mb-8">
+
+                            <!-- <label for="inputState" class="form-label">Period</label>
                             <select id="inputState" class="form-select">
                                 <option selected></option>
                                 <option value="1">Monthly</option>
                                 <option value="2">Weekly</option>
                                 <option value="2">Daily</option>
                             </select>
+                        </div>  -->
+
+                        
+                        <div class=" h6 dm_sans_700">
+                            Filter By:
                         </div>
+                        
+                        <div class="d-flex flex-row flex-wrap gap-3 align-items-end justify-content-end">
+
+                            <div class="col-12 col-md-5">
+                                {{-- <span>Start date:</span> --}}
+                                <input class="form-select" type="date" name="start_end_filter" data-date=""
+                                    id="startDate" style="background-image:none; padding-right:8px; xmax-width:155px">
+                            </div>
+
+                            <div class="col-12 col-md-5">
+
+                                {{-- <span>End date:</span> --}}
+                                <input class="form-select" type="date" name="start_end_filter" id="endDate"
+                                    style="background-image:none; padding-right:8px; xmax-width:155px">
+                            </div>
+                        </div>
+
+                    </div>
+
 
                     </div>
                 </div>
@@ -69,7 +94,7 @@
                             <div class="card-body">
                                 <h6 class="card-title text-center">Total Incidents</h6>
                                 <hr>
-                                <p class="card-text text-center" >{{ $incident }}</p>
+                                <p class="card-text text-center" id="incidentCount" >{{ $incident }}</p>
                             </div>
                         </div>
                     </div>
@@ -379,6 +404,31 @@ dropdown.addEventListener('change', () => {
       rows[i].style.display = 'none';
     }
   }
+});
+
+
+
+
+///Date Filters
+
+$(document).ready(function() {
+    $("#startDate, #endDate").change(function() {
+        var startDate = $('#startDate').val();
+        var endDate = $('#endDate').val();
+
+        $.ajax({
+            url: '/filter-incidents',
+            type: 'GET',
+            data: {
+                startDate: startDate,
+                endDate: endDate
+            },
+            success: function(data) {
+                // update user count
+                $('#incidentCount').text(data);
+            }
+        });
+    });
 });
 
 
